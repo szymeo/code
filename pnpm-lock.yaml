@@ -334,6 +334,9 @@ importers:
       react-resizable-panels:
         specifier: ^3.0.6
         version: 3.0.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-scan:
+        specifier: ^0.5.6
+        version: 0.5.6(esbuild@0.25.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.57.1)
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -616,7 +619,7 @@ importers:
         version: 0.32.17(expo@54.0.33)(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react@19.1.0)
       expo-router:
         specifier: ~6.0.17
-        version: 6.0.23(97f7c790f8736a7689a3c00f6dec9af6)
+        version: 6.0.23(78ed8d6276c41226e33578f7cbbd3417)
       expo-secure-store:
         specifier: ^15.0.8
         version: 15.0.8(expo@54.0.33)
@@ -680,7 +683,7 @@ importers:
     devDependencies:
       '@testing-library/react-native':
         specifier: ^13.3.3
-        version: 13.3.3(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react-test-renderer@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 13.3.3(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react-test-renderer@19.2.6(react@19.1.0))(react@19.1.0)
       '@types/react':
         specifier: ^19.1.0
         version: 19.2.11
@@ -695,7 +698,7 @@ importers:
         version: 1.5.3(react-native-svg@15.15.2(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(typescript@5.9.3)
       react-test-renderer:
         specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        version: 19.2.6(react@19.1.0)
       tailwindcss:
         specifier: ^3.4.18
         version: 3.4.19(tsx@4.21.0)(yaml@2.8.2)
@@ -3679,6 +3682,11 @@ packages:
   '@preact/signals-core@1.13.0':
     resolution: {integrity: sha512-slT6XeTCAbdql61GVLlGU4x7XHI7kCZV5Um5uhE4zLX4ApgiiXc0UYFvVOKq06xcovzp7p+61l68oPi563ARKg==}
 
+  '@preact/signals@1.3.4':
+    resolution: {integrity: sha512-TPMkStdT0QpSc8FpB63aOwXoSiZyIrPsP9Uj347KopdS6olZdAYeeird/5FZv/M1Yc1ge5qstub2o8VDbvkT4g==}
+    peerDependencies:
+      preact: 10.x
+
   '@protobufjs/aspromise@1.1.2':
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
 
@@ -4450,6 +4458,10 @@ packages:
         optional: true
       '@types/react-dom':
         optional: true
+
+  '@react-grab/cli@0.1.34':
+    resolution: {integrity: sha512-L2eAxN46Vq2Ss3nDegrH7wQVMeWH03ahawp+OdzUtQWqL3cq6Bt149q9XhY3cWc9fJsxuWjLfCn+3T9uApIlBA==}
+    hasBin: true
 
   '@react-native-async-storage/async-storage@2.2.0':
     resolution: {integrity: sha512-gvRvjR5JAaUZF8tv2Kcq/Gbt3JHwbKFYfmb445rhOj6NUMx3qPLixmDx5pZAyb9at1bYvJ4/eTUipU5aki45xw==}
@@ -6026,6 +6038,11 @@ packages:
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
+  bippy@0.5.40:
+    resolution: {integrity: sha512-3QPSDG5tgd7FCIkcKsUqmbGdlHxBxP7II5drXPNp1I0rpA9+4+/VjQOigDTbzeqTi6Xkaf1Dq7x4E8vbOuwOkA==}
+    peerDependencies:
+      react: '>=17.0.1'
+
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
 
@@ -6290,6 +6307,10 @@ packages:
   cli-spinners@2.9.2:
     resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
     engines: {node: '>=6'}
+
+  cli-spinners@3.4.0:
+    resolution: {integrity: sha512-bXfOC4QcT1tKXGorxL3wbJm6XJPDqEnij2gQ2m7ESQuE+/z9YFIWnl/5RpTiKWbMq3EVKR4fRLJGn6DVfu0mpw==}
+    engines: {node: '>=18.20'}
 
   cli-truncate@3.1.0:
     resolution: {integrity: sha512-wfOBkjXteqSnI59oPcJkcPl/ZmwvMMOj340qUIY1SKZCv0B9Cf4D4fAucRkIKQmsIuYK3x1rrgU7MeGRruiuiA==}
@@ -7709,6 +7730,10 @@ packages:
     resolution: {integrity: sha512-QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q==}
     engines: {node: '>=18'}
 
+  get-east-asian-width@1.6.0:
+    resolution: {integrity: sha512-QRbvDIbx6YklUe6RxeTeleMR0yv3cYH6PsPZHcnVn7xv7zO1BHN8r0XETu8n6Ye3Q+ahtSarc3WgtNWmehIBfA==}
+    engines: {node: '>=18'}
+
   get-intrinsic@1.3.0:
     resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
     engines: {node: '>= 0.4'}
@@ -8457,6 +8482,9 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  jsonc-parser@3.3.1:
+    resolution: {integrity: sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==}
+
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
 
@@ -8821,6 +8849,10 @@ packages:
 
   log-symbols@6.0.0:
     resolution: {integrity: sha512-i24m8rpwhmPIS4zscNzK6MSEhk0DUWa/8iYQWxhffV8jkI4Phvs3F+quL5xvS0gdQR0FyTCMMH33Y78dDTzzIw==}
+    engines: {node: '>=18'}
+
+  log-symbols@7.0.1:
+    resolution: {integrity: sha512-ja1E3yCr9i/0hmBVaM0bfwDjnGy8I/s6PP4DFp+yP+a+mrHO4Rm7DtmnqROTUkHIkqffC84YY7AeqX6oFk0WFg==}
     engines: {node: '>=18'}
 
   log-update@5.0.1:
@@ -9622,6 +9654,10 @@ packages:
     resolution: {integrity: sha512-weP+BZ8MVNnlCm8c0Qdc1WSWq4Qn7I+9CJGm7Qali6g44e/PUzbjNqJX5NJ9ljlNMosfJvg1fKEGILklK9cwnw==}
     engines: {node: '>=18'}
 
+  ora@9.4.0:
+    resolution: {integrity: sha512-84cglkRILFxdtA8hAvLNdMrtBpPNBTrQ9/ulg0FA7xLMnD6mifv+enAIeRmvtv+WgdCE+LPGOfQmtJRrVaIVhQ==}
+    engines: {node: '>=20'}
+
   orderedmap@2.1.1:
     resolution: {integrity: sha512-TvAWxi0nDe1j/rtMcWcIj94+Ffe6n7zhow33h40SKxmsmozs6dz/e+EajymfoFcHd7sxNn8yHM8839uixMOV6g==}
 
@@ -9693,6 +9729,9 @@ packages:
 
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
+
+  package-manager-detector@1.6.0:
+    resolution: {integrity: sha512-61A5ThoTiDG/C8s8UMZwSorAGwMJ0ERVGj2OjoW5pAalsNOg15+iQiPzrLJ4jhZ1HJzmC2PIHT2oEiH3R5fzNA==}
 
   pako@1.0.11:
     resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
@@ -10295,6 +10334,15 @@ packages:
     peerDependencies:
       react: '>=17.0.0'
 
+  react-grab@0.1.34:
+    resolution: {integrity: sha512-jtdOdv0kb90oqL+pMszSh9DOLgVRaX4ZE6XN4GkDEpNNUqveQfZT014+EeJraljpqQfuWKW+96NrrRqUD93D2g==}
+    hasBin: true
+    peerDependencies:
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+
   react-hotkeys-hook@4.6.2:
     resolution: {integrity: sha512-FmP+ZriY3EG59Ug/lxNfrObCnW9xQShgk7Nb83+CkpfkcCpfS95ydv+E9JuXA5cp8KtskU7LGlIARpkc92X22Q==}
     peerDependencies:
@@ -10309,6 +10357,9 @@ packages:
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  react-is@19.2.4:
+    resolution: {integrity: sha512-W+EWGn2v0ApPKgKKCy/7s7WHXkboGcsrXE+2joLyVxkbyVQfO3MUEaUQDHoSmb8TFFrSKYa9mw64WZHNHSDzYA==}
 
   react-is@19.2.6:
     resolution: {integrity: sha512-XjBR15BhXuylgWGuslhDKqlSayuqvqBX91BP8pauG8kd1zY8kotkNWbXksTCNRarse4kuGbe2kIY05ARtwNIvw==}
@@ -10450,6 +10501,17 @@ packages:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
+  react-scan@0.5.6:
+    resolution: {integrity: sha512-FrZ75yWjabNQmBbN9wxP+FgfgcPYoOFFWXYBhi6OnUbF/DyJDwOEfV2RRs9IWVfPVjhsku2CPK3oohYC5GEHpg==}
+    hasBin: true
+    peerDependencies:
+      esbuild: '>=0.18.0'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+
   react-shadow@20.6.0:
     resolution: {integrity: sha512-kY+w4OMNZ8Nj9YI9eiTgvvJ/wYO7XyX1D/LYhvwQZv5vw69iCiDtGB0BX/2U8gLUuZAMN+x/7rHJKqHh8wXFHQ==}
     peerDependencies:
@@ -10467,10 +10529,10 @@ packages:
       '@types/react':
         optional: true
 
-  react-test-renderer@19.1.0:
-    resolution: {integrity: sha512-jXkSl3CpvPYEF+p/eGDLB4sPoDX8pKkYvRl9+rR8HxLY0X04vW7hCm1/0zHoUSjPZ3bDa+wXWNTDVIw/R8aDVw==}
+  react-test-renderer@19.2.6:
+    resolution: {integrity: sha512-GbS6V23YduFTPiWJ5xICbKEjRcqx1Z90js/V5miqhz7qp/d6xSe9Dd6NjSQODFRdzdsqRMPW82E/sFpPRbY5Mw==}
     peerDependencies:
-      react: ^19.1.0
+      react: ^19.2.6
 
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
@@ -10739,6 +10801,9 @@ packages:
   scheduler@0.26.0:
     resolution: {integrity: sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA==}
 
+  scheduler@0.27.0:
+    resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
+
   schema-utils@4.3.3:
     resolution: {integrity: sha512-eflK8wEtyOE6+hsaRVPxvUKYCpRgzLqDTb8krvAsRIwOGlHoSgYLgBXoubGgLd2fT41/OUYdb48v4k4WWHQurA==}
     engines: {node: '>= 10.13.0'}
@@ -10919,6 +10984,10 @@ packages:
     resolution: {integrity: sha512-4zemZi0HvTnYwLfrpk/CF9LOd9Lt87kAt50GnqhMpyF9U3poDAP2+iukq2bZsO/ufegbYehBkqINbsWxj4l4cw==}
     engines: {node: '>= 18'}
 
+  smol-toml@1.6.1:
+    resolution: {integrity: sha512-dWUG8F5sIIARXih1DTaQAX4SsiTXhInKf1buxdY9DIg4ZYPZK5nGM1VRIYmEbDbsHt7USo99xSLFu5Q1IqTmsg==}
+    engines: {node: '>= 18'}
+
   snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
 
@@ -11031,6 +11100,10 @@ packages:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
 
+  stdin-discarder@0.3.2:
+    resolution: {integrity: sha512-eCPu1qRxPVkl5605OTWF8Wz40b4Mf45NY5LQmVPQ599knfs5QhASUm9GbJ5BDMDOXgrnh0wyEdvzmL//YMlw0A==}
+    engines: {node: '>=18'}
+
   storybook@10.2.0:
     resolution: {integrity: sha512-fIQnFtpksRRgHR1CO1onGX3djaog4qsW/c5U8arqYTkUEr2TaWpn05mIJDOBoPJFlOdqFrB4Ttv0PZJxV7avhw==}
     hasBin: true
@@ -11066,6 +11139,10 @@ packages:
   string-width@7.2.0:
     resolution: {integrity: sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==}
     engines: {node: '>=18'}
+
+  string-width@8.2.1:
+    resolution: {integrity: sha512-IIaP0g3iy9Cyy18w3M9YcaDudujEAVHKt3a3QJg1+sr/oX96TbaGUubG0hJyCjCBThFH+tFpcIyoUHUn1ogaLA==}
+    engines: {node: '>=20'}
 
   string_decoder@1.3.0:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
@@ -11319,6 +11396,10 @@ packages:
 
   tinyexec@1.0.2:
     resolution: {integrity: sha512-W/KYk+NFhkmsYpuHq5JykngiOCnxeVL8v8dFnqxSD8qEEdRfXk1SDM6JzNqcERbcGYj9tMrDQBYV9cjgnunFIg==}
+    engines: {node: '>=18'}
+
+  tinyexec@1.1.2:
+    resolution: {integrity: sha512-dAqSqE/RabpBKI8+h26GfLq6Vb3JVXs30XYQjdMjaj/c2tS8IYYMbIzP599KtRj7c57/wYApb3QjgRgXmrCukA==}
     engines: {node: '>=18'}
 
   tinyglobby@0.2.15:
@@ -11698,6 +11779,10 @@ packages:
   unpipe@1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
+
+  unplugin@2.1.0:
+    resolution: {integrity: sha512-us4j03/499KhbGP8BU7Hrzrgseo+KdfJYWcbcajCOqsAyb8Gk0Yn2kiUIcZISYCb1JFaZfIuG3b42HmguVOKCQ==}
+    engines: {node: '>=18.12.0'}
 
   unplugin@2.3.11:
     resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
@@ -14215,7 +14300,7 @@ snapshots:
       wrap-ansi: 7.0.0
       ws: 8.19.0
     optionalDependencies:
-      expo-router: 6.0.23(97f7c790f8736a7689a3c00f6dec9af6)
+      expo-router: 6.0.23(78ed8d6276c41226e33578f7cbbd3417)
       react-native: 0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0)
     transitivePeerDependencies:
       - bufferutil
@@ -15749,6 +15834,11 @@ snapshots:
 
   '@preact/signals-core@1.13.0': {}
 
+  '@preact/signals@1.3.4(preact@10.28.3)':
+    dependencies:
+      '@preact/signals-core': 1.13.0
+      preact: 10.28.3
+
   '@protobufjs/aspromise@1.1.2': {}
 
   '@protobufjs/base64@1.1.2': {}
@@ -16560,6 +16650,18 @@ snapshots:
       '@types/react': 19.2.11
       '@types/react-dom': 19.2.3(@types/react@19.2.11)
 
+  '@react-grab/cli@0.1.34':
+    dependencies:
+      commander: 14.0.3
+      ignore: 7.0.5
+      jsonc-parser: 3.3.1
+      ora: 9.4.0
+      package-manager-detector: 1.6.0
+      picocolors: 1.1.1
+      prompts: 2.4.2
+      smol-toml: 1.6.1
+      tinyexec: 1.1.2
+
   '@react-native-async-storage/async-storage@2.2.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))':
     dependencies:
       merge-options: 3.0.4
@@ -16712,7 +16814,7 @@ snapshots:
       nanoid: 3.3.11
       query-string: 7.1.3
       react: 19.1.0
-      react-is: 19.2.6
+      react-is: 19.2.4
       use-latest-callback: 0.2.6(react@19.1.0)
       use-sync-external-store: 1.6.0(react@19.1.0)
 
@@ -17196,14 +17298,14 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react-native@13.3.3(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react-test-renderer@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@testing-library/react-native@13.3.3(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react-test-renderer@19.2.6(react@19.1.0))(react@19.1.0)':
     dependencies:
       jest-matcher-utils: 30.4.1
       picocolors: 1.1.1
       pretty-format: 30.4.1
       react: 19.1.0
       react-native: 0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0)
-      react-test-renderer: 19.1.0(react@19.1.0)
+      react-test-renderer: 19.2.6(react@19.1.0)
       redent: 3.0.0
 
   '@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.11))(@types/react@19.2.11)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
@@ -18354,6 +18456,10 @@ snapshots:
     dependencies:
       file-uri-to-path: 1.0.0
 
+  bippy@0.5.40(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+
   bl@4.1.0:
     dependencies:
       buffer: 5.7.1
@@ -18663,6 +18769,8 @@ snapshots:
       restore-cursor: 5.1.0
 
   cli-spinners@2.9.2: {}
+
+  cli-spinners@3.4.0: {}
 
   cli-truncate@3.1.0:
     dependencies:
@@ -19676,7 +19784,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  expo-router@6.0.23(97f7c790f8736a7689a3c00f6dec9af6):
+  expo-router@6.0.23(78ed8d6276c41226e33578f7cbbd3417):
     dependencies:
       '@expo/metro-runtime': 6.1.2(expo@54.0.33)(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react@19.1.0)
       '@expo/schema-utils': 0.1.8
@@ -19709,7 +19817,7 @@ snapshots:
       use-latest-callback: 0.2.6(react@19.1.0)
       vaul: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.11))(@types/react@19.2.11)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     optionalDependencies:
-      '@testing-library/react-native': 13.3.3(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react-test-renderer@19.1.0(react@19.1.0))(react@19.1.0)
+      '@testing-library/react-native': 13.3.3(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react-test-renderer@19.2.6(react@19.1.0))(react@19.1.0)
       react-dom: 19.1.0(react@19.1.0)
       react-native-reanimated: 4.1.6(@babel/core@7.29.0)(react-native-worklets@0.7.2(@babel/core@7.29.0)(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.11)(react@19.1.0))(react@19.1.0)
       react-native-web: 0.21.2(encoding@0.1.13)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -20145,6 +20253,8 @@ snapshots:
   get-caller-file@2.0.5: {}
 
   get-east-asian-width@1.4.0: {}
+
+  get-east-asian-width@1.6.0: {}
 
   get-intrinsic@1.3.0:
     dependencies:
@@ -21008,6 +21118,8 @@ snapshots:
 
   json5@2.2.3: {}
 
+  jsonc-parser@3.3.1: {}
+
   jsonfile@4.0.0:
     optionalDependencies:
       graceful-fs: 4.2.11
@@ -21328,6 +21440,11 @@ snapshots:
     dependencies:
       chalk: 5.6.2
       is-unicode-supported: 1.3.0
+
+  log-symbols@7.0.1:
+    dependencies:
+      is-unicode-supported: 2.1.0
+      yoctocolors: 2.1.2
 
   log-update@5.0.1:
     dependencies:
@@ -22532,6 +22649,17 @@ snapshots:
       string-width: 7.2.0
       strip-ansi: 7.1.2
 
+  ora@9.4.0:
+    dependencies:
+      chalk: 5.6.2
+      cli-cursor: 5.0.0
+      cli-spinners: 3.4.0
+      is-interactive: 2.0.0
+      is-unicode-supported: 2.1.0
+      log-symbols: 7.0.1
+      stdin-discarder: 0.3.2
+      string-width: 8.2.1
+
   orderedmap@2.1.1: {}
 
   os-tmpdir@1.0.2: {}
@@ -22604,6 +22732,8 @@ snapshots:
   p-try@2.2.0: {}
 
   package-json-from-dist@1.0.1: {}
+
+  package-manager-detector@1.6.0: {}
 
   pako@1.0.11: {}
 
@@ -23277,6 +23407,13 @@ snapshots:
     dependencies:
       react: 19.1.0
 
+  react-grab@0.1.34(react@19.1.0):
+    dependencies:
+      '@react-grab/cli': 0.1.34
+      bippy: 0.5.40(react@19.1.0)
+    optionalDependencies:
+      react: 19.1.0
+
   react-hotkeys-hook@4.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
@@ -23287,6 +23424,8 @@ snapshots:
   react-is@17.0.2: {}
 
   react-is@18.3.1: {}
+
+  react-is@19.2.4: {}
 
   react-is@19.2.6: {}
 
@@ -23501,6 +23640,27 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
+  react-scan@0.5.6(esbuild@0.25.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.57.1):
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/types': 7.29.0
+      '@preact/signals': 1.3.4(preact@10.28.3)
+      '@rollup/pluginutils': 5.3.0(rollup@4.57.1)
+      bippy: 0.5.40(react@19.1.0)
+      commander: 14.0.3
+      picocolors: 1.1.1
+      preact: 10.28.3
+      prompts: 2.4.2
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+      react-grab: 0.1.34(react@19.1.0)
+    optionalDependencies:
+      esbuild: 0.25.12
+      unplugin: 2.1.0
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+
   react-shadow@20.6.0(prop-types@15.8.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       humps: 2.0.1
@@ -23516,11 +23676,11 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.11
 
-  react-test-renderer@19.1.0(react@19.1.0):
+  react-test-renderer@19.2.6(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-is: 19.2.6
-      scheduler: 0.26.0
+      scheduler: 0.27.0
 
   react@19.1.0: {}
 
@@ -23848,6 +24008,8 @@ snapshots:
 
   scheduler@0.26.0: {}
 
+  scheduler@0.27.0: {}
+
   schema-utils@4.3.3:
     dependencies:
       '@types/json-schema': 7.0.15
@@ -24106,6 +24268,8 @@ snapshots:
 
   smol-toml@1.6.0: {}
 
+  smol-toml@1.6.1: {}
+
   snake-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
@@ -24213,6 +24377,8 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
+  stdin-discarder@0.3.2: {}
+
   storybook@10.2.0(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@storybook/global': 5.0.0
@@ -24260,6 +24426,11 @@ snapshots:
     dependencies:
       emoji-regex: 10.6.0
       get-east-asian-width: 1.4.0
+      strip-ansi: 7.1.2
+
+  string-width@8.2.1:
+    dependencies:
+      get-east-asian-width: 1.6.0
       strip-ansi: 7.1.2
 
   string_decoder@1.3.0:
@@ -24531,6 +24702,8 @@ snapshots:
   tinyexec@0.3.2: {}
 
   tinyexec@1.0.2: {}
+
+  tinyexec@1.1.2: {}
 
   tinyglobby@0.2.15:
     dependencies:
@@ -24861,6 +25034,12 @@ snapshots:
     optional: true
 
   unpipe@1.0.0: {}
+
+  unplugin@2.1.0:
+    dependencies:
+      acorn: 8.15.0
+      webpack-virtual-modules: 0.6.2
+    optional: true
 
   unplugin@2.3.11:
     dependencies:
@@ -25205,7 +25384,7 @@ snapshots:
       picomatch: 4.0.3
       std-env: 4.1.0
       tinybench: 2.9.0
-      tinyexec: 1.0.2
+      tinyexec: 1.1.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
       vite: 6.4.1(@types/node@25.2.0)(jiti@1.21.7)(lightningcss@1.32.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)

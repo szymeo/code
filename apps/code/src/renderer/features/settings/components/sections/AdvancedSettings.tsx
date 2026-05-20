@@ -1,3 +1,4 @@
+import { useDevFlagsStore } from "@features/dev-toolbar/devFlagsStore";
 import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
 import { SettingRow } from "@features/settings/components/SettingRow";
 import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
@@ -15,6 +16,8 @@ export function AdvancedSettings() {
   const setDebugLogsCloudRuns = useSettingsStore(
     (s) => s.setDebugLogsCloudRuns,
   );
+  const devMode = useDevFlagsStore((s) => s.devMode);
+  const setDevMode = useDevFlagsStore((s) => s.setDevMode);
 
   return (
     <Flex direction="column">
@@ -53,7 +56,6 @@ export function AdvancedSettings() {
         <SettingRow
           label="Debug logs for cloud runs"
           description="Show debug-level console output in the conversation view for cloud-executed runs"
-          noBorder
         >
           <Switch
             checked={debugLogsCloudRuns}
@@ -62,6 +64,19 @@ export function AdvancedSettings() {
           />
         </SettingRow>
       )}
+      <SettingRow
+        label="Developer mode"
+        description="Show the dev toolbar with live CPU, memory, IPC timings and render tracking"
+        noBorder
+      >
+        <Switch
+          checked={devMode}
+          onCheckedChange={(checked) => {
+            void setDevMode(checked);
+          }}
+          size="1"
+        />
+      </SettingRow>
     </Flex>
   );
 }

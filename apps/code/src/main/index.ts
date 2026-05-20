@@ -12,6 +12,8 @@ import { MAIN_TOKENS } from "./di/tokens";
 import { registerMcpSandboxProtocol } from "./protocols/mcp-sandbox";
 import type { AppLifecycleService } from "./services/app-lifecycle/service";
 import type { AuthService } from "./services/auth/service";
+import type { DevLogsService } from "./services/dev-logs/service";
+import type { DevNetworkService } from "./services/dev-network/service";
 import type { ExternalAppsService } from "./services/external-apps/service";
 import type { GitHubIntegrationService } from "./services/github-integration/service";
 import type { InboxLinkService } from "./services/inbox-link/service";
@@ -144,6 +146,9 @@ app.on("child-process-gone", (_event, details) => {
 });
 
 async function initializeServices(): Promise<void> {
+  container.get<DevNetworkService>(MAIN_TOKENS.DevNetworkService).install();
+  container.get<DevLogsService>(MAIN_TOKENS.DevLogsService).install();
+
   container.get<DatabaseService>(MAIN_TOKENS.DatabaseService);
   container.get<OAuthService>(MAIN_TOKENS.OAuthService);
   const authService = container.get<AuthService>(MAIN_TOKENS.AuthService);

@@ -12,6 +12,7 @@ import { WorktreeRepository } from "../db/repositories/worktree-repository";
 import { DatabaseService } from "../db/service";
 import { ElectronAppLifecycle } from "../platform-adapters/electron-app-lifecycle";
 import { ElectronAppMeta } from "../platform-adapters/electron-app-meta";
+import { ElectronAppMetrics } from "../platform-adapters/electron-app-metrics";
 import { ElectronBundledResources } from "../platform-adapters/electron-bundled-resources";
 import { ElectronClipboard } from "../platform-adapters/electron-clipboard";
 import { ElectronContextMenu } from "../platform-adapters/electron-context-menu";
@@ -35,6 +36,11 @@ import { CloudTaskService } from "../services/cloud-task/service";
 import { ConnectivityService } from "../services/connectivity/service";
 import { ContextMenuService } from "../services/context-menu/service";
 import { DeepLinkService } from "../services/deep-link/service";
+import { DevActionsService } from "../services/dev-actions/service";
+import { DevFlagsService } from "../services/dev-flags/service";
+import { DevLogsService } from "../services/dev-logs/service";
+import { DevMetricsService } from "../services/dev-metrics/service";
+import { DevNetworkService } from "../services/dev-network/service";
 import { EnrichmentService } from "../services/enrichment/service";
 import { EnvironmentService } from "../services/environment/service";
 import { ExternalAppsService } from "../services/external-apps/service";
@@ -76,6 +82,18 @@ export const container = new Container({
   defaultScope: "Singleton",
 });
 
+export function getService<T>(token: symbol): T {
+  return container.get<T>(token);
+}
+
+export function tryGetService<T>(token: symbol): T | null {
+  try {
+    return container.get<T>(token);
+  } catch {
+    return null;
+  }
+}
+
 container.bind(MAIN_TOKENS.UrlLauncher).to(ElectronUrlLauncher);
 container.bind(MAIN_TOKENS.StoragePaths).to(ElectronStoragePaths);
 container.bind(MAIN_TOKENS.AppMeta).to(ElectronAppMeta);
@@ -91,6 +109,7 @@ container.bind(MAIN_TOKENS.Notifier).to(ElectronNotifier);
 container.bind(MAIN_TOKENS.ContextMenu).to(ElectronContextMenu);
 container.bind(MAIN_TOKENS.BundledResources).to(ElectronBundledResources);
 container.bind(MAIN_TOKENS.ImageProcessor).to(ElectronImageProcessor);
+container.bind(MAIN_TOKENS.AppMetrics).to(ElectronAppMetrics);
 
 container.bind(MAIN_TOKENS.DatabaseService).to(DatabaseService);
 container
@@ -156,3 +175,9 @@ container.bind(MAIN_TOKENS.WatcherRegistryService).to(WatcherRegistryService);
 container.bind(MAIN_TOKENS.WorkspaceService).to(WorkspaceService);
 
 container.bind(MAIN_TOKENS.SettingsStore).toConstantValue(settingsStore);
+
+container.bind(MAIN_TOKENS.DevFlagsService).to(DevFlagsService);
+container.bind(MAIN_TOKENS.DevMetricsService).to(DevMetricsService);
+container.bind(MAIN_TOKENS.DevNetworkService).to(DevNetworkService);
+container.bind(MAIN_TOKENS.DevLogsService).to(DevLogsService);
+container.bind(MAIN_TOKENS.DevActionsService).to(DevActionsService);

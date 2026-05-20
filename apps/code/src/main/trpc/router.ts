@@ -7,6 +7,7 @@ import { cloudTaskRouter } from "./routers/cloud-task";
 import { connectivityRouter } from "./routers/connectivity";
 import { contextMenuRouter } from "./routers/context-menu";
 import { deepLinkRouter } from "./routers/deep-link";
+import { devRouter } from "./routers/dev";
 import { encryptionRouter } from "./routers/encryption";
 import { enrichmentRouter } from "./routers/enrichment";
 import { environmentRouter } from "./routers/environment";
@@ -50,6 +51,7 @@ export const trpcRouter = router({
   connectivity: connectivityRouter,
   contextMenu: contextMenuRouter,
 
+  dev: devRouter,
   enrichment: enrichmentRouter,
   environment: environmentRouter,
   encryption: encryptionRouter,

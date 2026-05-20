@@ -13,6 +13,8 @@ import {
 import { useAuthSession } from "@features/auth/hooks/useAuthSession";
 import { useIsOrgAdmin } from "@features/auth/hooks/useOrgRole";
 import { registerBillingSubscriptions } from "@features/billing/subscriptions";
+import { DevToolbar } from "@features/dev-toolbar/components/DevToolbar";
+import { installMainThreadHealth } from "@features/dev-toolbar/mainThreadHealth";
 import { AddDirectoryDialog } from "@features/folder-picker/components/AddDirectoryDialog";
 import { OnboardingFlow } from "@features/onboarding/components/OnboardingFlow";
 import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
@@ -79,6 +81,22 @@ function App() {
   useEffect(() => {
     return initializeUpdateStore();
   }, []);
+
+  // Install main-thread health observers (longtasks + FPS) for the dev toolbar.
+  useEffect(() => installMainThreadHealth(), []);
+
+  // Surface dev-toolbar triggered toasts (e.g. quick actions test toasts).
+  useSubscription(
+    trpcReact.dev.onDevToast.subscriptionOptions(undefined, {
+      onData: (data) => {
+        if (data.variant === "error") {
+          toast.error(data.message);
+        } else {
+          toast.info(data.message);
+        }
+      },
+    }),
+  );
 
   // Dev-only inbox demo command for local QA from the renderer console.
   useEffect(() => {
@@ -239,7 +257,11 @@ function App() {
   const renderContent = () => {
     if (!hasCompletedOnboarding) {
       return (
-        <motion.div key="onboarding" initial={{ opacity: 1 }}>
+        <motion.div
+          key="onboarding"
+          initial={{ opacity: 1 }}
+          className="h-full"
+        >
           <OnboardingFlow />
         </motion.div>
       );
@@ -247,7 +269,7 @@ function App() {
 
     if (!isAuthenticated) {
       return (
-        <motion.div key="auth" initial={{ opacity: 1 }}>
+        <motion.div key="auth" initial={{ opacity: 1 }} className="h-full">
           <AuthScreen />
         </motion.div>
       );
@@ -255,8 +277,12 @@ function App() {
 
     if (isCheckingAccess) {
       return (
-        <motion.div key="access-check" initial={{ opacity: 1 }}>
-          <Flex align="center" justify="center" minHeight="100vh">
+        <motion.div
+          key="access-check"
+          initial={{ opacity: 1 }}
+          className="h-full"
+        >
+          <Flex align="center" justify="center" height="100%">
             <Flex align="center" gap="3">
               <Spinner size="3" />
               <Text color="gray">Checking access...</Text>
@@ -268,7 +294,11 @@ function App() {
 
     if (needsInviteCode) {
       return (
-        <motion.div key="invite-code" initial={{ opacity: 1 }}>
+        <motion.div
+          key="invite-code"
+          initial={{ opacity: 1 }}
+          className="h-full"
+        >
           <InviteCodeScreen />
         </motion.div>
       );
@@ -276,7 +306,11 @@ function App() {
 
     if (needsAiApproval) {
       return (
-        <motion.div key="ai-approval" initial={{ opacity: 1 }}>
+        <motion.div
+          key="ai-approval"
+          initial={{ opacity: 1 }}
+          className="h-full"
+        >
           <AiApprovalScreen
             orgName={currentOrg?.name ?? null}
             isAdmin={isAdmin}
@@ -291,6 +325,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: showTransition ? 0.5 : 0 }}
+        className="h-full"
       >
         <MainLayout />
       </motion.div>
@@ -305,19 +340,24 @@ function App() {
       resetKey={authState.status}
       shouldSuppress={isNotAuthenticatedError}
     >
-      {isAuthenticated ? (
-        <AnimatePresence mode="wait">{content}</AnimatePresence>
-      ) : (
-        content
-      )}
-      <LoginTransition
-        isAnimating={showTransition}
-        isDarkMode={isDarkMode}
-        onComplete={handleTransitionComplete}
-      />
-      <ScopeReauthPrompt />
-      <AddDirectoryDialog />
-      <Toaster position="bottom-right" />
+      <div className="flex h-screen flex-col">
+        <div className="relative min-h-0 flex-1 overflow-hidden">
+          {isAuthenticated ? (
+            <AnimatePresence mode="wait">{content}</AnimatePresence>
+          ) : (
+            content
+          )}
+          <LoginTransition
+            isAnimating={showTransition}
+            isDarkMode={isDarkMode}
+            onComplete={handleTransitionComplete}
+          />
+          <ScopeReauthPrompt />
+          <AddDirectoryDialog />
+          <Toaster position="bottom-right" />
+        </div>
+        <DevToolbar />
+      </div>
     </ErrorBoundary>
   );
 }

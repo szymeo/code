@@ -13,6 +13,10 @@ import { container } from "./di/container";
 import { MAIN_TOKENS } from "./di/tokens";
 import { buildApplicationMenu } from "./menu";
 import type { ElectronMainWindow } from "./platform-adapters/electron-main-window";
+import {
+  encodeDevFlagsForArg,
+  readDevFlagsSync,
+} from "./services/dev-flags/service";
 import { trpcRouter } from "./trpc/router";
 import { isDevBuild } from "./utils/env";
 import { logger, readChromiumLogTail } from "./utils/logger";
@@ -204,7 +208,10 @@ export function createWindow(): void {
       preload: path.join(__dirname, "preload.js"),
       enableBlinkFeatures: "GetDisplayMedia",
       partition: "persist:main",
-      additionalArguments: isDev ? ["--posthog-code-dev"] : [],
+      additionalArguments: [
+        ...(isDev ? ["--posthog-code-dev"] : []),
+        encodeDevFlagsForArg(readDevFlagsSync()),
+      ],
       ...(isDev && { webSecurity: false }),
     },
   });
