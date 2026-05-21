@@ -291,9 +291,7 @@ function ResizeHandle({
 
   return (
     <div
-      role="separator"
-      aria-orientation="horizontal"
-      aria-label="Resize panel"
+      aria-hidden="true"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

@@ -22,6 +22,7 @@ export const MAIN_TOKENS = Object.freeze({
   BundledResources: Symbol.for("Platform.BundledResources"),
   ImageProcessor: Symbol.for("Platform.ImageProcessor"),
   AppMetrics: Symbol.for("Platform.AppMetrics"),
+  DevHostActions: Symbol.for("Platform.DevHostActions"),
 
   // Stores
   SettingsStore: Symbol.for("Main.SettingsStore"),

@@ -149,8 +149,13 @@ export class DevNetworkService extends TypedEventEmitter<DevNetworkEvents> {
       }
     };
 
+    const preconnect = (
+      original as unknown as {
+        preconnect?: (...args: unknown[]) => unknown;
+      }
+    ).preconnect;
     Object.defineProperty(wrapped, "preconnect", {
-      value: original.preconnect?.bind(original) ?? (() => undefined),
+      value: preconnect?.bind(original) ?? (() => undefined),
     });
 
     globalThis.fetch = wrapped as typeof fetch;

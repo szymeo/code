@@ -18,6 +18,7 @@ export default defineConfig({
     "src/bundled-resources.ts",
     "src/image-processor.ts",
     "src/app-metrics.ts",
+    "src/dev-host-actions.ts",
   ],
   format: ["esm"],
   dts: true,

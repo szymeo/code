@@ -16,6 +16,7 @@ import { ElectronAppMetrics } from "../platform-adapters/electron-app-metrics";
 import { ElectronBundledResources } from "../platform-adapters/electron-bundled-resources";
 import { ElectronClipboard } from "../platform-adapters/electron-clipboard";
 import { ElectronContextMenu } from "../platform-adapters/electron-context-menu";
+import { ElectronDevHostActions } from "../platform-adapters/electron-dev-host-actions";
 import { ElectronDialog } from "../platform-adapters/electron-dialog";
 import { ElectronFileIcon } from "../platform-adapters/electron-file-icon";
 import { ElectronImageProcessor } from "../platform-adapters/electron-image-processor";
@@ -110,6 +111,7 @@ container.bind(MAIN_TOKENS.ContextMenu).to(ElectronContextMenu);
 container.bind(MAIN_TOKENS.BundledResources).to(ElectronBundledResources);
 container.bind(MAIN_TOKENS.ImageProcessor).to(ElectronImageProcessor);
 container.bind(MAIN_TOKENS.AppMetrics).to(ElectronAppMetrics);
+container.bind(MAIN_TOKENS.DevHostActions).to(ElectronDevHostActions);
 
 container.bind(MAIN_TOKENS.DatabaseService).to(DatabaseService);
 container
