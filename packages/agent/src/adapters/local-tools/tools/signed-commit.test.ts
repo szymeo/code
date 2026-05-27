@@ -22,7 +22,9 @@ describe("signed-commit tool handler", () => {
     createSignedCommit.mockReset();
     createSignedCommit.mockResolvedValue({
       branch: "posthog-code/feature",
-      commits: [{ sha: "deadbeef", url: "https://github.com/x/y/commit/deadbeef" }],
+      commits: [
+        { sha: "deadbeef", url: "https://github.com/x/y/commit/deadbeef" },
+      ],
     });
   });
 
