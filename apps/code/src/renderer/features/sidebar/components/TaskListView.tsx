@@ -131,6 +131,7 @@ function TaskRow({
       slackThreadUrl={task.slackThreadUrl}
       prState={prState}
       hasDiff={hasDiff}
+      prUrl={task.cloudPrUrl}
       timestamp={timestamp}
       onClick={onClick}
       onDoubleClick={onDoubleClick}
