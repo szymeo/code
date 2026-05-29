@@ -5,7 +5,7 @@ import {
   invalidateGithubQueries,
   useGithubConnect,
 } from "@features/integrations/hooks/useGithubUserConnect";
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
 import {
   useUserGithubIntegrations,
   useUserRepositoryIntegration,

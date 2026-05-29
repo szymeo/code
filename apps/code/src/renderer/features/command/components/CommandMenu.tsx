@@ -1,10 +1,10 @@
-import { useReviewNavigationStore } from "@features/code-review/stores/reviewNavigationStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import { CommandKeyHints } from "@features/command/components/CommandKeyHints";
 import { useFolders } from "@features/folders/hooks/useFolders";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { TaskIcon } from "@features/sidebar/components/items/TaskIcon";
 import { useTaskPrStatus } from "@features/sidebar/hooks/useTaskPrStatus";
-import { useSidebarStore } from "@features/sidebar/stores/sidebarStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
 import { useTasks } from "@features/tasks/hooks/useTasks";
 import {
   Autocomplete,
@@ -33,7 +33,7 @@ import {
   type CommandMenuAction,
 } from "@shared/types/analytics";
 import { useNavigationStore } from "@stores/navigationStore";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { track } from "@utils/analytics";
 import { useCallback, useEffect, useMemo, useState } from "react";
 

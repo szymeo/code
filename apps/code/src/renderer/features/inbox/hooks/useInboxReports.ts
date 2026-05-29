@@ -2,7 +2,7 @@ import {
   getAuthIdentity,
   useAuthStateValue,
 } from "@features/auth/hooks/authQueries";
-import { useInboxAvailableSuggestedReviewersStore } from "@features/inbox/stores/inboxAvailableSuggestedReviewersStore";
+import { useInboxAvailableSuggestedReviewersStore } from "@posthog/ui/features/inbox/inboxAvailableSuggestedReviewersStore";
 import { useAuthenticatedInfiniteQuery } from "@hooks/useAuthenticatedInfiniteQuery";
 import { useAuthenticatedQuery } from "@hooks/useAuthenticatedQuery";
 import type {

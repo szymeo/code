@@ -1,11 +1,11 @@
 import { McpAppHost } from "@features/mcp-apps/components/McpAppHost";
 import { McpToolView } from "@features/mcp-apps/components/McpToolView";
 import { parseMcpToolKey } from "@features/mcp-apps/utils/mcp-app-host-utils";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { useTRPC } from "@renderer/trpc/client";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
-import type { ToolViewProps } from "./toolCallUtils";
+import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 interface McpToolBlockProps extends ToolViewProps {
   mcpToolName: string;

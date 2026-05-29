@@ -1,4 +1,4 @@
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { useMeQuery } from "@hooks/useMeQuery";
 import type {
   HedgehogActorOptions,

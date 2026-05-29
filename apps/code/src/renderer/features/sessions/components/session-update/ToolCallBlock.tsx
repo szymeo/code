@@ -2,22 +2,22 @@ import type {
   ConversationItem,
   TurnContext,
 } from "@features/sessions/components/buildConversationItems";
-import type { ToolCall } from "@features/sessions/types";
+import type { ToolCall } from "@posthog/ui/features/sessions/types";
 import { Box } from "@radix-ui/themes";
 import { DeleteToolView } from "./DeleteToolView";
 import { EditToolView } from "./EditToolView";
-import { ExecuteToolView } from "./ExecuteToolView";
-import { FetchToolView } from "./FetchToolView";
+import { ExecuteToolView } from "@posthog/ui/features/sessions/components/session-update/ExecuteToolView";
+import { FetchToolView } from "@posthog/ui/features/sessions/components/session-update/FetchToolView";
 import { McpToolBlock } from "./McpToolBlock";
-import { MoveToolView } from "./MoveToolView";
+import { MoveToolView } from "@posthog/ui/features/sessions/components/session-update/MoveToolView";
 import { PlanApprovalView } from "./PlanApprovalView";
-import { QuestionToolView } from "./QuestionToolView";
+import { QuestionToolView } from "@posthog/ui/features/sessions/components/session-update/QuestionToolView";
 import { ReadToolView } from "./ReadToolView";
-import { SearchToolView } from "./SearchToolView";
+import { SearchToolView } from "@posthog/ui/features/sessions/components/session-update/SearchToolView";
 import { SubagentToolView } from "./SubagentToolView";
-import { ThinkToolView } from "./ThinkToolView";
-import { ToolCallView } from "./ToolCallView";
-import type { ToolViewProps } from "./toolCallUtils";
+import { ThinkToolView } from "@posthog/ui/features/sessions/components/session-update/ThinkToolView";
+import { ToolCallView } from "@posthog/ui/features/sessions/components/session-update/ToolCallView";
+import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 interface ToolCallBlockProps extends ToolViewProps {
   childItems?: ConversationItem[];

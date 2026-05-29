@@ -1,5 +1,5 @@
+import { SHELL_SERVICE } from "@posthog/workspace-server/services/shell/identifiers";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
 import {
   createCommandInput,
   createInput,
@@ -10,11 +10,11 @@ import {
   type ShellEvents,
   sessionIdInput,
   writeInput,
-} from "../../services/shell/schemas";
-import type { ShellService } from "../../services/shell/service";
+} from "@posthog/workspace-server/services/shell/schemas";
+import type { ShellService } from "@posthog/workspace-server/services/shell/shell";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () => container.get<ShellService>(MAIN_TOKENS.ShellService);
+const getService = () => container.get<ShellService>(SHELL_SERVICE);
 
 function subscribeFiltered<K extends keyof ShellEvents>(event: K) {
   return publicProcedure

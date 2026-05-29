@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { CaretDownIcon, CaretRightIcon, Plus } from "@phosphor-icons/react";
 import { Button } from "@posthog/quill";
 import * as Collapsible from "@radix-ui/react-collapsible";

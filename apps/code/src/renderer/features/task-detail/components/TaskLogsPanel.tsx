@@ -1,9 +1,9 @@
 import { BackgroundWrapper } from "@components/BackgroundWrapper";
 import { ErrorBoundary } from "@components/ErrorBoundary";
 import { useFolders } from "@features/folders/hooks/useFolders";
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
-import { ProvisioningView } from "@features/provisioning/components/ProvisioningView";
-import { useProvisioningStore } from "@features/provisioning/stores/provisioningStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import { ProvisioningView } from "@posthog/ui/features/provisioning/ProvisioningView";
+import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
 import { SessionView } from "@features/sessions/components/SessionView";
 import { useSessionCallbacks } from "@features/sessions/hooks/useSessionCallbacks";
 import { useSessionConnection } from "@features/sessions/hooks/useSessionConnection";

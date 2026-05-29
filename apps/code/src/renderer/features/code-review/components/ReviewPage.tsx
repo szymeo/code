@@ -1,4 +1,4 @@
-import { useDiffViewerStore } from "@features/code-editor/stores/diffViewerStore";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import {
   useLocalBranchChangedFiles,
   usePrChangedFiles,
@@ -8,7 +8,7 @@ import { usePanelLayoutStore } from "@features/panels/store/panelLayoutStore";
 import { useCwd } from "@features/sidebar/hooks/useCwd";
 import type { parsePatchFiles } from "@pierre/diffs";
 import { Flex, Text } from "@radix-ui/themes";
-import { useReviewNavigationStore } from "@renderer/features/code-review/stores/reviewNavigationStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import { trpc, useTRPC } from "@renderer/trpc/client";
 import type { ChangedFile, Task } from "@shared/types";
 import { useQueryClient } from "@tanstack/react-query";

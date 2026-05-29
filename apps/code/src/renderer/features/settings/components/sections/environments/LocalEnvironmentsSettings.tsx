@@ -1,5 +1,5 @@
 import { useFolders } from "@features/folders/hooks/useFolders";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import type { Environment } from "@main/services/environment/schemas";
 import type { RegisteredFolder } from "@main/services/folders/schemas";
 import { Flex, Text } from "@radix-ui/themes";

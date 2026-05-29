@@ -1,13 +1,16 @@
-import { PostHogAPIClient } from "@renderer/api/posthogClient";
+// PORT NOTE: hooks + builder live in @posthog/ui/features/auth/authClient.
+// This app module keeps the 1-arg createAuthenticatedClient(authState) +
+// getAuthenticatedClient() helpers (used by non-React renderer services) by
+// supplying trpcClient-backed token accessors to the package builder.
+import { createAuthenticatedClient as createClient } from "@posthog/ui/features/auth/authClient";
+import type { PostHogAPIClient } from "@posthog/api-client/posthog-client";
 import { trpcClient } from "@renderer/trpc/client";
-import { NotAuthenticatedError } from "@shared/errors";
-import { getCloudUrlFromRegion } from "@shared/utils/urls";
-import { useMemo } from "react";
-import {
-  type AuthState,
-  fetchAuthState,
-  useAuthStateValue,
-} from "./authQueries";
+import { type AuthState, fetchAuthState } from "./authQueries";
+
+export {
+  useAuthenticatedClient,
+  useOptionalAuthenticatedClient,
+} from "@posthog/ui/features/auth/authClient";
 
 async function getValidAccessToken(): Promise<string> {
   const { accessToken } = await trpcClient.auth.getValidAccessToken.query();
@@ -22,43 +25,9 @@ async function refreshAccessToken(): Promise<string> {
 export function createAuthenticatedClient(
   authState: AuthState | null | undefined,
 ): PostHogAPIClient | null {
-  if (authState?.status !== "authenticated" || !authState.cloudRegion) {
-    return null;
-  }
-
-  const client = new PostHogAPIClient(
-    getCloudUrlFromRegion(authState.cloudRegion),
-    getValidAccessToken,
-    refreshAccessToken,
-    authState.projectId ?? undefined,
-  );
-
-  if (authState.projectId) {
-    client.setTeamId(authState.projectId);
-  }
-
-  return client;
+  return createClient(authState, getValidAccessToken, refreshAccessToken);
 }
 
 export async function getAuthenticatedClient(): Promise<PostHogAPIClient | null> {
   return createAuthenticatedClient(await fetchAuthState());
-}
-
-export function useOptionalAuthenticatedClient(): PostHogAPIClient | null {
-  const authState = useAuthStateValue((state) => state);
-
-  return useMemo(
-    () => createAuthenticatedClient(authState),
-    [authState.cloudRegion, authState.projectId, authState.status, authState],
-  );
-}
-
-export function useAuthenticatedClient(): PostHogAPIClient {
-  const client = useOptionalAuthenticatedClient();
-
-  if (!client) {
-    throw new NotAuthenticatedError();
-  }
-
-  return client;
 }

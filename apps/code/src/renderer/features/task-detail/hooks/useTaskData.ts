@@ -2,7 +2,7 @@ import { useTasks } from "@features/tasks/hooks/useTasks";
 import { useWorkspace } from "@features/workspace/hooks/useWorkspace";
 import { useTRPC } from "@renderer/trpc/client";
 import type { Task } from "@shared/types";
-import { cloneStore } from "@stores/cloneStore";
+import { cloneStore } from "@posthog/ui/features/clone/cloneStore";
 import { useQuery } from "@tanstack/react-query";
 import { getTaskRepository } from "@utils/repository";
 import { useMemo } from "react";

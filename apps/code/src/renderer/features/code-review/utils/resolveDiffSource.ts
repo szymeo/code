@@ -1,4 +1,4 @@
-import type { DiffSource } from "@features/code-editor/stores/diffViewerStore";
+import type { DiffSource } from "@posthog/ui/features/code-editor/diffViewerStore";
 
 export type ResolvedDiffSource = DiffSource;
 

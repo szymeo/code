@@ -1,5 +1,5 @@
 import type { DismissReportDialogResult } from "@features/inbox/components/DismissReportDialog";
-import { useInboxReportSelectionStore } from "@features/inbox/stores/inboxReportSelectionStore";
+import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/inboxReportSelectionStore";
 import { inboxStatusLabel } from "@features/inbox/utils/inboxSort";
 import { useAuthenticatedMutation } from "@hooks/useAuthenticatedMutation";
 import type { SignalReport } from "@shared/types";

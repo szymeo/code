@@ -24,7 +24,7 @@ vi.mock("../../utils/logger.js", () => ({
 }));
 
 import type { AgentService } from "../agent/service";
-import type { LlmGatewayService } from "../llm-gateway/service";
+import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
 import type { WorkspaceService } from "../workspace/service";
 import { GitService, mapPrState } from "./service";
 

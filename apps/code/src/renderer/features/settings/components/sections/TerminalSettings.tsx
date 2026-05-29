@@ -2,8 +2,8 @@ import { SettingRow } from "@features/settings/components/SettingRow";
 import {
   type TerminalFont,
   useSettingsStore,
-} from "@features/settings/stores/settingsStore";
-import { useDebounce } from "@hooks/useDebounce";
+} from "@posthog/ui/features/settings/settingsStore";
+import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
 import { Flex, Select, Text, TextField } from "@radix-ui/themes";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { track } from "@utils/analytics";

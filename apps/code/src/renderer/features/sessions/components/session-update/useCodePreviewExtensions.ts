@@ -2,7 +2,7 @@ import { EditorState } from "@codemirror/state";
 import { EditorView, lineNumbers } from "@codemirror/view";
 import { oneDark, oneLight } from "@features/code-editor/theme/editorTheme";
 import { getLanguageExtension } from "@features/code-editor/utils/languages";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { useMemo } from "react";
 
 export function useCodePreviewExtensions(

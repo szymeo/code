@@ -1,6 +1,6 @@
 import { HighlightedCode } from "@components/HighlightedCode";
-import { Tooltip } from "@components/ui/Tooltip";
-import { usePendingScrollStore } from "@features/code-editor/stores/pendingScrollStore";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { usePendingScrollStore } from "@posthog/ui/features/code-editor/pendingScrollStore";
 import { MarkdownRenderer } from "@features/editor/components/MarkdownRenderer";
 import { usePanelLayoutStore } from "@features/panels";
 import { useSessionTaskId } from "@features/sessions/hooks/useSessionTaskId";

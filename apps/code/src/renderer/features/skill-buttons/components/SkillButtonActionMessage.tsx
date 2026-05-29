@@ -1,7 +1,7 @@
 import {
   SKILL_BUTTONS,
   type SkillButtonId,
-} from "@features/skill-buttons/prompts";
+} from "@posthog/ui/features/skill-buttons/prompts";
 
 interface SkillButtonActionMessageProps {
   buttonId: SkillButtonId;

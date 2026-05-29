@@ -1,4 +1,4 @@
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { track } from "@utils/analytics";
 import { create } from "zustand";

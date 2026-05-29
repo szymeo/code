@@ -1,7 +1,7 @@
 import { useOptionalAuthenticatedClient } from "@features/auth/hooks/authClient";
 import { useCurrentUser } from "@features/auth/hooks/authQueries";
 import { useInboxAvailableSuggestedReviewers } from "@features/inbox/hooks/useInboxReports";
-import { useInboxSignalsFilterStore } from "@features/inbox/stores/inboxSignalsFilterStore";
+import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/inboxSignalsFilterStore";
 import {
   buildSuggestedReviewerFilterOptions,
   getSuggestedReviewerDisplayName,

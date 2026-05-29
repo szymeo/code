@@ -4,7 +4,7 @@ import type {
   EditorContent,
   FileAttachment,
   MentionChip,
-} from "./utils/content";
+} from "@posthog/ui/features/message-editor/content";
 
 export type GithubIssueState = GithubRefState;
 export type { GithubRefKind, GithubRefState };

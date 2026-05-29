@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import type { SidebarPrState } from "@features/sidebar/hooks/useTaskPrStatus";
 import type { WorkspaceMode } from "@main/services/workspace/schemas";
 import { Archive, PushPin } from "@phosphor-icons/react";

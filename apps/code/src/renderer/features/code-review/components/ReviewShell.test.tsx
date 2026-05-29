@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@renderer/features/code-review/stores/reviewNavigationStore", () => ({
+vi.mock("@posthog/ui/features/code-review/reviewNavigationStore", () => ({
   useReviewNavigationStore: vi.fn(),
 }));
-vi.mock("@features/code-editor/stores/diffViewerStore", () => ({
+vi.mock("@posthog/ui/features/code-editor/diffViewerStore", () => ({
   useDiffViewerStore: vi.fn(),
 }));
 vi.mock("@features/task-detail/components/ChangesPanel", () => ({
@@ -13,7 +13,7 @@ vi.mock("@features/task-detail/components/ChangesPanel", () => ({
 vi.mock("@features/git-interaction/utils/diffStats", () => ({
   computeDiffStats: () => ({ linesAdded: 0, linesRemoved: 0 }),
 }));
-vi.mock("@stores/themeStore", () => ({
+vi.mock("@posthog/ui/workbench/themeStore", () => ({
   useThemeStore: vi.fn(() => ({ isDarkMode: false })),
 }));
 vi.mock("@pierre/diffs/react", () => ({

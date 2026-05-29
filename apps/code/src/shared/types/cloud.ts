@@ -1,2 +1,1 @@
-export type PrAuthorshipMode = "user" | "bot";
-export type CloudRunSource = "manual" | "signal_report";
+export type { CloudRunSource, PrAuthorshipMode } from "@posthog/shared";

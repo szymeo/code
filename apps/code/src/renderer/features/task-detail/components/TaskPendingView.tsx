@@ -1,6 +1,6 @@
 import { PendingChatView } from "@features/sessions/components/PendingChatView";
 import { Box } from "@radix-ui/themes";
-import { usePendingTaskPrompt } from "@stores/pendingTaskPromptStore";
+import { usePendingTaskPrompt } from "@posthog/ui/workbench/pendingTaskPromptStore";
 
 interface TaskPendingViewProps {
   pendingTaskKey: string;

@@ -1,5 +1,5 @@
 import { FileIcon } from "@components/ui/FileIcon";
-import { useDiffViewerStore } from "@features/code-editor/stores/diffViewerStore";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import { computeDiffStats } from "@features/git-interaction/utils/diffStats";
 import { ChangesPanel } from "@features/task-detail/components/ChangesPanel";
 import { ArrowSquareOut, CaretDown } from "@phosphor-icons/react";
@@ -7,10 +7,10 @@ import type { FileDiffMetadata } from "@pierre/diffs/react";
 import { WorkerPoolContextProvider } from "@pierre/diffs/react";
 import WorkerUrl from "@pierre/diffs/worker/worker.js?worker&url";
 import { Flex, Spinner, Text } from "@radix-ui/themes";
-import { useReviewDraftsStore } from "@renderer/features/code-review/stores/reviewDraftsStore";
-import { useReviewNavigationStore } from "@renderer/features/code-review/stores/reviewNavigationStore";
+import { useReviewDraftsStore } from "@posthog/ui/features/code-review/reviewDraftsStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import type { ChangedFile, Task } from "@shared/types";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import {
   type ReactNode,
   useCallback,

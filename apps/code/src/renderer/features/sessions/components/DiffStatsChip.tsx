@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useDiffStatsToggle } from "@features/code-review/hooks/useDiffStatsToggle";
 import { GitDiff } from "@phosphor-icons/react";
 import { Flex, Text } from "@radix-ui/themes";

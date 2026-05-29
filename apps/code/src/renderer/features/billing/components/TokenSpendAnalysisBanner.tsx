@@ -11,7 +11,7 @@ import {
   formatWindow,
 } from "@features/billing/utils/spendAnalysisFormat";
 import { buildAnalysisPrompt } from "@features/billing/utils/spendAnalysisPrompt";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import {
   ArrowSquareOut,
   ChartLine,

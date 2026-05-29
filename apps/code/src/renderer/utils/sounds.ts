@@ -1,4 +1,4 @@
-import type { CompletionSound } from "@features/settings/stores/settingsStore";
+import type { CompletionSound } from "@posthog/ui/features/settings/settingsStore";
 import bubblesUrl from "@renderer/assets/sounds/bubbles.mp3";
 import daniloUrl from "@renderer/assets/sounds/danilo.mp3";
 import dropUrl from "@renderer/assets/sounds/drop.mp3";

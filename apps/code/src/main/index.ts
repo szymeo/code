@@ -3,35 +3,46 @@ import os from "node:os";
 import { createWorkspaceClient } from "@posthog/workspace-client/client";
 import { app, BrowserWindow, dialog } from "electron";
 import log from "electron-log/main";
+import { ConnectivityService } from "./services/connectivity/service";
+import { EnvironmentService } from "./services/environment/service";
 import { FileWatcherBridge } from "./services/file-watcher/bridge";
 import { FocusService } from "./services/focus/service";
+import { FsService } from "./services/fs/service";
+import { LocalLogsService } from "./services/local-logs/service";
 import "./utils/logger";
 import "./services/index.js";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
-import type { DatabaseService } from "./db/service";
+import type { DatabaseService } from "@posthog/workspace-server/db/service";
 import { initializeDeepLinks, registerDeepLinkHandlers } from "./deep-links";
 import { container } from "./di/container";
 import { MAIN_TOKENS } from "./di/tokens";
 import { registerMcpSandboxProtocol } from "./protocols/mcp-sandbox";
 import type { AppLifecycleService } from "./services/app-lifecycle/service";
 import type { AuthService } from "./services/auth/service";
-import type { ExternalAppsService } from "./services/external-apps/service";
-import type { GitHubIntegrationService } from "./services/github-integration/service";
-import type { InboxLinkService } from "./services/inbox-link/service";
-import type { NewTaskLinkService } from "./services/new-task-link/service";
-import type { NotificationService } from "./services/notification/service";
-import type { OAuthService } from "./services/oauth/service";
+import type { ExternalAppsService } from "@posthog/workspace-server/services/external-apps/external-apps";
+import type { GitHubIntegrationService } from "@posthog/core/integrations/github";
+import {
+  GITHUB_INTEGRATION_SERVICE,
+  SLACK_INTEGRATION_SERVICE,
+} from "@posthog/core/integrations/identifiers";
+import type { InboxLinkService } from "@posthog/core/links/inbox-link";
+import type { NewTaskLinkService } from "@posthog/core/links/new-task-link";
+import type { NotificationService } from "@posthog/core/notification/notification";
+import { NOTIFICATION_SERVICE } from "@posthog/core/notification/identifiers";
+import type { OAuthService } from "@posthog/core/oauth/oauth";
+import { OAUTH_SERVICE } from "@posthog/core/oauth/identifiers";
 import {
   captureException,
-  getPostHogClient,
+  flushAnalytics,
   initializePostHog,
   trackAppEvent,
 } from "./services/posthog-analytics";
-import type { PosthogPluginService } from "./services/posthog-plugin/service";
-import type { SlackIntegrationService } from "./services/slack-integration/service";
-import type { SuspensionService } from "./services/suspension/service";
-import type { TaskLinkService } from "./services/task-link/service";
-import type { UpdatesService } from "./services/updates/service";
+import type { PosthogPluginService } from "@posthog/workspace-server/services/posthog-plugin/posthog-plugin";
+import type { SlackIntegrationService } from "@posthog/core/integrations/slack";
+import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
+import { SUSPENSION_SERVICE } from "@posthog/workspace-server/services/suspension/identifiers";
+import type { TaskLinkService } from "@posthog/core/links/task-link";
+import type { UpdatesService } from "@posthog/core/updates/updates";
 import type { WorkspaceService } from "./services/workspace/service";
 import type { WorkspaceServerService } from "./services/workspace-server/service";
 import { ensureClaudeConfigDir } from "./utils/env";
@@ -93,9 +104,7 @@ app.on("render-process-gone", (_event, webContents, details) => {
     new Error(`Renderer process gone: ${details.reason}`),
     props,
   );
-  getPostHogClient()
-    ?.flush()
-    .catch(() => {});
+  flushAnalytics().catch(() => {});
 
   if (RECOVERABLE_RENDER_REASONS.has(details.reason)) {
     if (isCrashLoop()) {
@@ -142,22 +151,20 @@ app.on("child-process-gone", (_event, details) => {
     new Error(`Child process gone (${details.type}): ${details.reason}`),
     props,
   );
-  getPostHogClient()
-    ?.flush()
-    .catch(() => {});
+  flushAnalytics().catch(() => {});
 });
 
 async function initializeServices(): Promise<void> {
   container.get<DatabaseService>(MAIN_TOKENS.DatabaseService);
-  container.get<OAuthService>(MAIN_TOKENS.OAuthService);
+  container.get<OAuthService>(OAUTH_SERVICE);
   const authService = container.get<AuthService>(MAIN_TOKENS.AuthService);
-  container.get<NotificationService>(MAIN_TOKENS.NotificationService);
+  container.get<NotificationService>(NOTIFICATION_SERVICE);
   container.get<UpdatesService>(MAIN_TOKENS.UpdatesService);
   container.get<TaskLinkService>(MAIN_TOKENS.TaskLinkService);
   container.get<InboxLinkService>(MAIN_TOKENS.InboxLinkService);
   container.get<NewTaskLinkService>(MAIN_TOKENS.NewTaskLinkService);
-  container.get<GitHubIntegrationService>(MAIN_TOKENS.GitHubIntegrationService);
-  container.get<SlackIntegrationService>(MAIN_TOKENS.SlackIntegrationService);
+  container.get<GitHubIntegrationService>(GITHUB_INTEGRATION_SERVICE);
+  container.get<SlackIntegrationService>(SLACK_INTEGRATION_SERVICE);
   container.get<ExternalAppsService>(MAIN_TOKENS.ExternalAppsService);
   container.get<PosthogPluginService>(MAIN_TOKENS.PosthogPluginService);
 
@@ -169,9 +176,8 @@ async function initializeServices(): Promise<void> {
   );
   workspaceService.initBranchWatcher();
 
-  const suspensionService = container.get<SuspensionService>(
-    MAIN_TOKENS.SuspensionService,
-  );
+  const suspensionService =
+    container.get<SuspensionService>(SUSPENSION_SERVICE);
   suspensionService.startInactivityChecker();
 
   // Track app started event
@@ -240,12 +246,25 @@ app.whenReady().then(async () => {
   );
   const connection = await wsServer.start();
   const workspaceClient = createWorkspaceClient(connection);
+  container.bind(MAIN_TOKENS.WorkspaceClient).toConstantValue(workspaceClient);
   container
     .bind(MAIN_TOKENS.FileWatcherService)
     .toConstantValue(new FileWatcherBridge(workspaceClient));
   container
     .bind(MAIN_TOKENS.FocusService)
     .toConstantValue(new FocusService(workspaceClient));
+  container
+    .bind(MAIN_TOKENS.LocalLogsService)
+    .toConstantValue(new LocalLogsService(workspaceClient));
+  container
+    .bind(MAIN_TOKENS.ConnectivityService)
+    .toConstantValue(new ConnectivityService(workspaceClient));
+  container
+    .bind(MAIN_TOKENS.FsService)
+    .toConstantValue(new FsService(workspaceClient));
+  container
+    .bind(MAIN_TOKENS.EnvironmentService)
+    .toConstantValue(new EnvironmentService(workspaceClient));
 
   await initializeServices();
   initializeDeepLinks();

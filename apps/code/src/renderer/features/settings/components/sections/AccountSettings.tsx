@@ -4,7 +4,7 @@ import {
   useAuthStateValue,
   useCurrentUser,
 } from "@features/auth/hooks/authQueries";
-import { getUserInitials } from "@features/auth/utils/userInitials";
+import { getUserInitials } from "@posthog/ui/features/auth/userInitials";
 import { useSeat } from "@hooks/useSeat";
 import { SignOut } from "@phosphor-icons/react";
 import { Avatar, Badge, Button, Flex, Spinner, Text } from "@radix-ui/themes";

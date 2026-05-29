@@ -1,4 +1,4 @@
-import type { QueuedMessage } from "@features/sessions/stores/sessionStore";
+import type { QueuedMessage } from "@posthog/ui/features/sessions/sessionStore";
 import { describe, expect, it } from "vitest";
 import type { ConversationItem } from "./buildConversationItems";
 import { mergeConversationItems } from "./mergeConversationItems";

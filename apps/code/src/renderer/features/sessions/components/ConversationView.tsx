@@ -8,8 +8,8 @@ import {
   usePendingPermissionsForTask,
   useQueuedMessagesForTask,
   useSessionForTask,
-} from "@features/sessions/stores/sessionStore";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+} from "@posthog/ui/features/sessions/sessionStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { SkillButtonActionMessage } from "@features/skill-buttons/components/SkillButtonActionMessage";
 import { ArrowDown, XCircle } from "@phosphor-icons/react";
 import { WorkerPoolContextProvider } from "@pierre/diffs/react";

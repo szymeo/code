@@ -4,7 +4,7 @@ import {
 } from "@features/git-interaction/utils/prStatus";
 import type { PrActionType } from "@main/services/git/schemas";
 import { useTRPC } from "@renderer/trpc";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function usePrActions(prUrl: string | null) {

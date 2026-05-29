@@ -1,9 +1,9 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { EnvelopeSimple, Plus } from "@phosphor-icons/react";
 import { Badge, type ButtonProps } from "@posthog/quill";
 import { SHORTCUTS } from "@renderer/constants/keyboard-shortcuts";
-import { useDraftStore } from "@renderer/features/message-editor/stores/draftStore";
-import { isContentEmpty } from "@renderer/features/message-editor/utils/content";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import { isContentEmpty } from "@posthog/ui/features/message-editor/content";
 import { SidebarItem } from "../SidebarItem";
 import { SidebarKbdHint } from "./SidebarKbdHint";
 

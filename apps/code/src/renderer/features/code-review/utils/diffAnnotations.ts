@@ -3,7 +3,7 @@ import type {
   FileDiffMetadata,
   SelectedLineRange,
 } from "@pierre/diffs";
-import type { DraftComment } from "../stores/reviewDraftsStore";
+import type { DraftComment } from "@posthog/ui/features/code-review/reviewDraftsStore";
 import type { AnnotationMetadata, DiffOptions } from "../types";
 
 export function getLastChangeLineNumber(

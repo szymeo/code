@@ -1,7 +1,7 @@
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { Trash } from "@phosphor-icons/react";
 import { Button, Flex, Text } from "@radix-ui/themes";
-import { DotsCircleSpinner } from "@renderer/components/DotsCircleSpinner";
+import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
 import { useNavigationStore } from "@renderer/stores/navigationStore";
 import type { Task } from "@shared/types";
 import { WorktreeSize } from "./WorktreeSize";

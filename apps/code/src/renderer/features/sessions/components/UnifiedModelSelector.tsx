@@ -2,7 +2,7 @@ import type {
   SessionConfigOption,
   SessionConfigSelectGroup,
 } from "@agentclientprotocol/sdk";
-import type { AgentAdapter } from "@features/settings/stores/settingsStore";
+import type { AgentAdapter } from "@posthog/ui/features/settings/settingsStore";
 import {
   ArrowsClockwise,
   CaretDown,
@@ -22,7 +22,7 @@ import {
   MenuLabel,
 } from "@posthog/quill";
 import { Fragment, useMemo, useRef, useState } from "react";
-import { flattenSelectOptions } from "../stores/sessionStore";
+import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
 
 const ADAPTER_ICONS: Record<AgentAdapter, React.ReactNode> = {
   claude: <Robot size={14} weight="regular" />,

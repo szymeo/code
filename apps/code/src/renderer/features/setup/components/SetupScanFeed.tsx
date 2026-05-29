@@ -1,5 +1,5 @@
-import { DotsCircleSpinner } from "@components/DotsCircleSpinner";
-import type { ActivityEntry } from "@features/setup/stores/setupStore";
+import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+import type { ActivityEntry } from "@posthog/ui/features/setup/setupStore";
 import type { Icon } from "@phosphor-icons/react";
 import {
   ArrowsClockwise,

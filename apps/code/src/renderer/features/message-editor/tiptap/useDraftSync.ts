@@ -1,11 +1,11 @@
 import type { Editor, JSONContent } from "@tiptap/core";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
-import { useDraftStore } from "../stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import {
   type EditorContent,
   type FileAttachment,
   isContentEmpty,
-} from "../utils/content";
+} from "@posthog/ui/features/message-editor/content";
 
 function tiptapJsonToEditorContent(json: JSONContent): EditorContent {
   const segments: EditorContent["segments"] = [];

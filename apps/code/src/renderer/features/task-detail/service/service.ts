@@ -1,6 +1,6 @@
 import { getAuthenticatedClient } from "@features/auth/hooks/authClient";
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { workspaceApi } from "@features/workspace/hooks/useWorkspace";
 import type { Workspace } from "@main/services/workspace/schemas";
 import type { SagaResult } from "@posthog/shared";

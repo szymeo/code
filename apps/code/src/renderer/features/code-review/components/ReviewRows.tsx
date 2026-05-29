@@ -1,5 +1,5 @@
 import type { parsePatchFiles } from "@pierre/diffs";
-import { useInView } from "@renderer/hooks/useInView";
+import { useInView } from "@posthog/ui/primitives/hooks/useInView";
 import type { ChangedFile } from "@shared/types";
 import { memo, useCallback, useMemo } from "react";
 import { REVIEW_PREFETCH_ROOT_MARGIN } from "../constants";

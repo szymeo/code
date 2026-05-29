@@ -6,11 +6,11 @@ import {
   selectRepoDiscovery,
   selectRepoEnricher,
   useSetupStore,
-} from "@features/setup/stores/setupStore";
+} from "@posthog/ui/features/setup/setupStore";
 import {
   buildTaskDiscoverySchema,
   type DiscoveredTask,
-} from "@features/setup/types";
+} from "@posthog/ui/features/setup/types";
 import { trpcClient } from "@renderer/trpc/client";
 import { EXPERIMENT_SUGGESTIONS_FLAG } from "@shared/constants";
 import { isTerminalStatus, type Task } from "@shared/types";

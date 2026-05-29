@@ -1,3 +1,4 @@
+import type { McpAppsService } from "@posthog/core/mcp-apps/mcp-apps";
 import {
   getToolDefinitionInput,
   getUiResourceInput,
@@ -8,14 +9,12 @@ import {
   openLinkInput,
   proxyResourceReadInput,
   proxyToolCallInput,
-} from "@shared/types/mcp-apps";
+} from "@posthog/core/mcp-apps/schemas";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
-import type { McpAppsService } from "../../services/mcp-apps/service";
+import { MCP_APPS_SERVICE } from "@posthog/core/mcp-apps/identifiers";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () =>
-  container.get<McpAppsService>(MAIN_TOKENS.McpAppsService);
+const getService = () => container.get<McpAppsService>(MCP_APPS_SERVICE);
 
 export const mcpAppsRouter = router({
   getUiResource: publicProcedure

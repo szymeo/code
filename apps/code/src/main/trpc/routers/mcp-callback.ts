@@ -1,16 +1,16 @@
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
 import {
   getCallbackUrlOutput,
   McpCallbackEvent,
   openAndWaitInput,
   openAndWaitOutput,
-} from "../../services/mcp-callback/schemas";
-import type { McpCallbackService } from "../../services/mcp-callback/service";
+} from "@posthog/workspace-server/services/mcp-callback/schemas";
+import { MCP_CALLBACK_SERVICE } from "@posthog/workspace-server/services/mcp-callback/identifiers";
+import type { McpCallbackService } from "@posthog/workspace-server/services/mcp-callback/mcp-callback";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>
-  container.get<McpCallbackService>(MAIN_TOKENS.McpCallbackService);
+  container.get<McpCallbackService>(MCP_CALLBACK_SERVICE);
 
 export const mcpCallbackRouter = router({
   /**

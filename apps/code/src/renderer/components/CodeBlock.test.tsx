@@ -3,10 +3,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { CodeBlock } from "./CodeBlock";
+import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
 import { HighlightedCode } from "./HighlightedCode";
 
-vi.mock("@stores/themeStore", () => ({
+vi.mock("@posthog/ui/workbench/themeStore", () => ({
   useThemeStore: (selector: (state: { isDarkMode: boolean }) => unknown) =>
     selector({ isDarkMode: false }),
 }));

@@ -2,7 +2,7 @@ import { PgAnalyzeIcon } from "@features/inbox/components/utils/PgAnalyzeIcon";
 import {
   type SourceProduct,
   useInboxSignalsFilterStore,
-} from "@features/inbox/stores/inboxSignalsFilterStore";
+} from "@posthog/ui/features/inbox/inboxSignalsFilterStore";
 import {
   inboxStatusAccentCss,
   inboxStatusLabel,

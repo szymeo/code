@@ -8,7 +8,7 @@ import { trpcClient } from "@renderer/trpc/client";
 import { handleExternalAppAction } from "@utils/handleExternalAppAction";
 import { isAbsolutePath } from "@utils/path";
 import { memo, useCallback } from "react";
-import { getFilename } from "./toolCallUtils";
+import { getFilename } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 interface FileMentionChipProps {
   filePath: string;

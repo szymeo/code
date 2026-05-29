@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { Text } from "@radix-ui/themes";
 import { formatRelativeTimeLong } from "@utils/time";
 

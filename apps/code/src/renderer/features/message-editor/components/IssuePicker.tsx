@@ -1,4 +1,4 @@
-import { useDebounce } from "@hooks/useDebounce";
+import { useDebounce } from "@posthog/ui/primitives/hooks/useDebounce";
 import {
   Combobox,
   ComboboxContent,
@@ -11,7 +11,7 @@ import { useTRPC } from "@renderer/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import type { GithubRefKind, GithubRefState } from "../types";
-import type { MentionChip } from "../utils/content";
+import type { MentionChip } from "@posthog/ui/features/message-editor/content";
 import {
   githubIssueToMentionChip,
   githubPullRequestToMentionChip,

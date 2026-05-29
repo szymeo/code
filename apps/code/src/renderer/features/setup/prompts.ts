@@ -1,4 +1,4 @@
-import { BASE_CATEGORY_ENUM } from "./types";
+import { BASE_CATEGORY_ENUM } from "@posthog/ui/features/setup/types";
 
 export const WIZARD_PROMPT = `/instrument-integration
 

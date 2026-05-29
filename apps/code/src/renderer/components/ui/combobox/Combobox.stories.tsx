@@ -2,7 +2,7 @@ import { Plus } from "@phosphor-icons/react";
 import { Button, Text } from "@radix-ui/themes";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { Combobox } from "./Combobox";
+import { Combobox } from "@posthog/ui/primitives/combobox/Combobox";
 
 const meta: Meta = {
   title: "Components/UI/Combobox",

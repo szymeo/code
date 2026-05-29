@@ -1,5 +1,5 @@
 import { useSandboxEnvironments } from "@features/settings/hooks/useSandboxEnvironments";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { ArrowLeft, PencilSimple, Plus, Trash } from "@phosphor-icons/react";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import {

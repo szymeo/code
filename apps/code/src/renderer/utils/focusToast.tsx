@@ -1,6 +1,6 @@
 import { Text } from "@radix-ui/themes";
-import type { FocusSagaResult } from "@stores/focusStore";
-import { toast } from "@utils/toast";
+import type { FocusSagaResult } from "@posthog/ui/features/focus/focusStore";
+import { toast } from "@posthog/ui/primitives/toast";
 
 export function showFocusSuccessToast(
   branchName: string,

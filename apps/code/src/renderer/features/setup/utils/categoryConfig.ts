@@ -1,4 +1,4 @@
-import type { DiscoveredTask } from "@features/setup/types";
+import type { DiscoveredTask } from "@posthog/ui/features/setup/types";
 import type { Icon } from "@phosphor-icons/react";
 import {
   Bug,

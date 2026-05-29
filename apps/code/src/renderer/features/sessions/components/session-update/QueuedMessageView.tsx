@@ -1,5 +1,5 @@
 import { MarkdownRenderer } from "@features/editor/components/MarkdownRenderer";
-import type { QueuedMessage } from "@features/sessions/stores/sessionStore";
+import type { QueuedMessage } from "@posthog/ui/features/sessions/sessionStore";
 import { Clock, X } from "@phosphor-icons/react";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import { hasFileMentions, parseFileMentions } from "./parseFileMentions";

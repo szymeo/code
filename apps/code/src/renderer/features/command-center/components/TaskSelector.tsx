@@ -1,10 +1,10 @@
-import { Combobox } from "@components/ui/combobox/Combobox";
+import { Combobox } from "@posthog/ui/primitives/combobox/Combobox";
 import { Plus } from "@phosphor-icons/react";
 import { Popover } from "@radix-ui/themes";
 import { useNavigationStore } from "@stores/navigationStore";
 import { type ReactNode, useCallback } from "react";
 import { useAvailableTasks } from "../hooks/useAvailableTasks";
-import { useCommandCenterStore } from "../stores/commandCenterStore";
+import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
 
 interface TaskSelectorProps {
   cellIndex: number;

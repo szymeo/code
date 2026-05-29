@@ -1,5 +1,5 @@
 import { useWorkspace } from "@features/workspace/hooks/useWorkspace";
-import { selectIsFocusedOnWorktree, useFocusStore } from "@stores/focusStore";
+import { selectIsFocusedOnWorktree, useFocusStore } from "@posthog/ui/features/focus/focusStore";
 
 /**
  * Resolves the local repo path to run git commands against for a task.

@@ -1,11 +1,11 @@
-import { useAuthStore } from "@features/auth/stores/authStore";
+import { useAuthStateValue } from "@posthog/ui/features/auth/store";
 import { useAuthenticatedQuery } from "@hooks/useAuthenticatedQuery";
 import type { Evaluation } from "@renderer/api/posthogClient";
 
 const POLL_INTERVAL_MS = 5_000;
 
 export function useEvaluations() {
-  const projectId = useAuthStore((s) => s.projectId);
+  const projectId = useAuthStateValue((s) => s.projectId);
   return useAuthenticatedQuery<Evaluation[]>(
     ["evaluations", projectId],
     (client) =>

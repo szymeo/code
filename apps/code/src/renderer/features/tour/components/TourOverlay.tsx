@@ -1,5 +1,5 @@
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
-import { useCommandMenuStore } from "@stores/commandMenuStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
+import { useCommandMenuStore } from "@posthog/ui/workbench/commandMenuStore";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";

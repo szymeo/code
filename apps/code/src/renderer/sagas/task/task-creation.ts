@@ -1,7 +1,7 @@
 import { buildPromptBlocks } from "@features/editor/utils/prompt-builder";
 import { DEFAULT_PANEL_IDS } from "@features/panels/constants/panelConstants";
 import { usePanelLayoutStore } from "@features/panels/store/panelLayoutStore";
-import { useProvisioningStore } from "@features/provisioning/stores/provisioningStore";
+import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
 import {
   type ConnectParams,
   getSessionService,

@@ -10,7 +10,7 @@ import {
   keymap,
   lineNumbers,
 } from "@codemirror/view";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { useMemo } from "react";
 import { postHogEnrichmentExtension } from "../extensions/postHogEnrichment";
 import { oneDark, oneLight } from "../theme/editorTheme";

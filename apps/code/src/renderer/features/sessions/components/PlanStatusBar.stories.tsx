@@ -1,4 +1,4 @@
-import type { Plan } from "@features/sessions/types";
+import type { Plan } from "@posthog/ui/features/sessions/types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PlanStatusBar } from "./PlanStatusBar";
 

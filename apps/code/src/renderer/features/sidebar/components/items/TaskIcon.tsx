@@ -1,5 +1,5 @@
-import { DotsCircleSpinner } from "@components/DotsCircleSpinner";
-import { Tooltip } from "@components/ui/Tooltip";
+import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import type { SidebarPrState } from "@features/sidebar/hooks/useTaskPrStatus";
 import type { WorkspaceMode } from "@main/services/workspace/schemas";
 import {

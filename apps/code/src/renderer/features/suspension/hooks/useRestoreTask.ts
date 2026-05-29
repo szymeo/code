@@ -6,7 +6,7 @@ import { workspaceApi } from "@features/workspace/hooks/useWorkspace";
 import { trpc, trpcClient } from "@renderer/trpc";
 import { useQueryClient } from "@tanstack/react-query";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useState } from "react";
 
 const log = logger.scope("restore-task");

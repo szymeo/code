@@ -1,5 +1,6 @@
 import { container } from "../../di/container";
 import { MAIN_TOKENS } from "../../di/tokens";
+import type { ExternalAppsService } from "@posthog/workspace-server/services/external-apps/external-apps";
 import {
   copyPathInput,
   getDetectedAppsOutput,
@@ -7,8 +8,7 @@ import {
   openInAppInput,
   openInAppOutput,
   setLastUsedInput,
-} from "../../services/external-apps/schemas";
-import type { ExternalAppsService } from "../../services/external-apps/service";
+} from "@posthog/workspace-server/services/external-apps/schemas";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>

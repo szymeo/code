@@ -1,7 +1,7 @@
 import { Box } from "@radix-ui/themes";
 import type { UserShellExecuteResult } from "@shared/types/session-events";
 import { memo } from "react";
-import { ExecuteToolView } from "./ExecuteToolView";
+import { ExecuteToolView } from "@posthog/ui/features/sessions/components/session-update/ExecuteToolView";
 
 export interface UserShellExecute {
   type: "user_shell_execute";

@@ -1,4 +1,4 @@
-import type { DiscoveredTask } from "@features/setup/types";
+import type { DiscoveredTask } from "@posthog/ui/features/setup/types";
 import {
   CATEGORY_CONFIG,
   FALLBACK_CATEGORY_CONFIG,

@@ -1,5 +1,5 @@
-import { useSessionForTask } from "@features/sessions/hooks/useSession";
-import type { AgentSession } from "@features/sessions/stores/sessionStore";
+import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
 import { useTasks } from "@features/tasks/hooks/useTasks";
 import type { Task } from "@shared/types";
 

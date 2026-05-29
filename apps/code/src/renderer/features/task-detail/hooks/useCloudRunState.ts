@@ -1,5 +1,5 @@
 import { resolveCloudPrUrl } from "@features/git-interaction/hooks/useCloudPrUrl";
-import { useSessionForTask } from "@features/sessions/hooks/useSession";
+import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
 import { useCloudEventSummary } from "@features/task-detail/hooks/useCloudEventSummary";
 import { extractCloudToolChangedFiles } from "@features/task-detail/utils/cloudToolChanges";
 import { useTasks } from "@features/tasks/hooks/useTasks";

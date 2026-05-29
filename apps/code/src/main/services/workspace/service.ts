@@ -1,26 +1,30 @@
-import { execFile } from "node:child_process";
 import * as fs from "node:fs";
-import * as fsPromises from "node:fs/promises";
 import path from "node:path";
-import { promisify } from "node:util";
 import { trackAppEvent } from "@main/services/posthog-analytics";
 import { createGitClient } from "@posthog/git/client";
 import {
   getCurrentBranch,
   getDefaultBranch,
   hasTrackedFiles,
-  listWorktrees,
 } from "@posthog/git/queries";
+import {
+  getBranchFromPath,
+  hasAnyFiles,
+} from "@posthog/workspace-server/services/repo-fs-query/repo-fs-query";
+import {
+  deleteWorktree as deleteGitWorktree,
+  listTwigWorktrees,
+  resolveLocalWorktreePath,
+} from "@posthog/workspace-server/services/worktree-query/worktree-query";
 import { CreateOrSwitchBranchSaga } from "@posthog/git/sagas/branch";
 import { DetachHeadSaga } from "@posthog/git/sagas/head";
 import { WorktreeManager } from "@posthog/git/worktree";
 import { FileWatcherEventKind as FileWatcherEvent } from "@posthog/workspace-server/services/watcher/schemas";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { inject, injectable } from "inversify";
-import type { RepositoryRepository } from "../../db/repositories/repository-repository";
-import type { WorkspaceRepository } from "../../db/repositories/workspace-repository";
-import type { WorktreeRepository } from "../../db/repositories/worktree-repository";
-import { container } from "../../di/container";
+import type { RepositoryRepository } from "@posthog/workspace-server/db/repositories/repository-repository";
+import type { WorkspaceRepository } from "@posthog/workspace-server/db/repositories/workspace-repository";
+import type { WorktreeRepository } from "@posthog/workspace-server/db/repositories/worktree-repository";
 import { MAIN_TOKENS } from "../../di/tokens";
 import { logger } from "../../utils/logger";
 import { TypedEventEmitter } from "../../utils/typed-event-emitter";
@@ -30,10 +34,10 @@ import type { AgentService } from "../agent/service";
 import type { FileWatcherBridge } from "../file-watcher/bridge";
 import type { FocusService } from "../focus/service";
 import { FocusServiceEvent } from "../focus/service";
-import type { ProcessTrackingService } from "../process-tracking/service";
-import type { ProvisioningService } from "../provisioning/service";
+import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
+import type { ProvisioningService } from "@posthog/core/provisioning/provisioning";
 import { getWorktreeLocation } from "../settingsStore";
-import type { SuspensionService } from "../suspension/service.js";
+import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
 import type {
   BranchChangedPayload,
   CreateWorkspaceInput,
@@ -47,8 +51,6 @@ import type {
   WorktreeInfo,
 } from "./schemas";
 
-const execFileAsync = promisify(execFile);
-
 type TaskAssociation =
   | { taskId: string; folderId: string; mode: "local" }
   | { taskId: string; folderId: string | null; mode: "cloud" }
@@ -59,66 +61,6 @@ type TaskAssociation =
       worktree: string;
       branchName: string | null;
     };
-
-/**
- * True if a worktree exclude file (.worktreelink / .worktreeinclude) exists and has at least
- * one non-empty, non-comment entry.
- */
-async function hasExcludeFileEntries(
-  mainRepoPath: string,
-  fileName: string,
-): Promise<boolean> {
-  try {
-    const contents = await fsPromises.readFile(
-      path.join(mainRepoPath, fileName),
-      "utf8",
-    );
-    return contents.split("\n").some((line) => {
-      const trimmed = line.trim();
-      return trimmed.length > 0 && !trimmed.startsWith("#");
-    });
-  } catch {
-    return false;
-  }
-}
-
-async function hasAnyFiles(repoPath: string): Promise<boolean> {
-  try {
-    const entries = await fsPromises.readdir(repoPath);
-    return entries.some((entry) => entry !== ".git");
-  } catch {
-    return false;
-  }
-}
-
-/**
- * Get the current branch name for a repo or worktree by reading its Git HEAD file.
- * Returns null if in detached HEAD state or doesn't exist.
- */
-async function getBranchFromPath(repoPath: string): Promise<string | null> {
-  try {
-    const gitPath = path.join(repoPath, ".git");
-    const stat = await fsPromises.stat(gitPath);
-
-    let headPath: string;
-    if (stat.isDirectory()) {
-      // Regular repo - .git is a directory
-      headPath = path.join(gitPath, "HEAD");
-    } else {
-      // Worktree - .git is a file pointing to gitdir
-      const gitContent = await fsPromises.readFile(gitPath, "utf-8");
-      const gitdirMatch = gitContent.match(/gitdir:\s*(.+)/);
-      if (!gitdirMatch) return null;
-      headPath = path.join(path.resolve(gitdirMatch[1].trim()), "HEAD");
-    }
-
-    const headContent = await fsPromises.readFile(headPath, "utf-8");
-    const branchMatch = headContent.match(/ref: refs\/heads\/(.+)/);
-    return branchMatch ? branchMatch[1].trim() : null;
-  } catch {
-    return null;
-  }
-}
 
 const log = logger.scope("workspace");
 
@@ -160,6 +102,12 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
 
   @inject(MAIN_TOKENS.ProvisioningService)
   private provisioningService!: ProvisioningService;
+
+  @inject(MAIN_TOKENS.FileWatcherService)
+  private fileWatcher!: FileWatcherBridge;
+
+  @inject(MAIN_TOKENS.FocusService)
+  private focusService!: FocusService;
 
   private creatingWorkspaces = new Map<string, Promise<WorkspaceInfo>>();
   private branchWatcherInitialized = false;
@@ -248,17 +196,12 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
     if (this.branchWatcherInitialized) return;
     this.branchWatcherInitialized = true;
 
-    const fileWatcher = container.get<FileWatcherBridge>(
-      MAIN_TOKENS.FileWatcherService,
-    );
-    const focusService = container.get<FocusService>(MAIN_TOKENS.FocusService);
-
-    fileWatcher.on(
+    this.fileWatcher.on(
       FileWatcherEvent.GitStateChanged,
       this.handleGitStateChanged.bind(this),
     );
 
-    focusService.on(
+    this.focusService.on(
       FocusServiceEvent.BranchRenamed,
       this.handleFocusBranchRenamed.bind(this),
     );
@@ -413,25 +356,10 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
     log.info("Unlinked branch from task", { taskId, source });
   }
 
-  private async getLocalWorktreePathIfExists(
+  private getLocalWorktreePathIfExists(
     mainRepoPath: string,
   ): Promise<string | null> {
-    try {
-      const worktreeBasePath = getWorktreeLocation();
-      const worktreeManager = new WorktreeManager({
-        mainRepoPath,
-        worktreeBasePath,
-      });
-      const localPath = worktreeManager.getLocalWorktreePath();
-      const exists = await worktreeManager.localWorktreeExists();
-      if (exists) {
-        return localPath;
-      }
-      return null;
-    } catch (error) {
-      log.warn(`Error checking local worktree for ${mainRepoPath}:`, error);
-      return null;
-    }
+    return resolveLocalWorktreePath(mainRepoPath, getWorktreeLocation());
   }
 
   // Batched cloud-workspace reconcile. The renderer calls this once on boot
@@ -1116,47 +1044,17 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
     }>
   > {
     const worktreeBasePath = getWorktreeLocation();
-    const rawWorktrees = await listWorktrees(mainRepoPath);
+    const twigWorktrees = await listTwigWorktrees(
+      mainRepoPath,
+      worktreeBasePath,
+    );
 
-    const twigWorktrees = rawWorktrees.filter((wt) => {
-      const isMainRepo = path.resolve(wt.path) === path.resolve(mainRepoPath);
-      const isUnderTwig = path
-        .resolve(wt.path)
-        .startsWith(path.resolve(worktreeBasePath));
-      return !isMainRepo && isUnderTwig;
-    });
-
-    return twigWorktrees.map((wt) => {
-      const taskIds = this.getWorktreeTasks(wt.path).map((t) => t.taskId);
-      return {
-        worktreePath: wt.path,
-        head: wt.head,
-        branch: wt.branch,
-        taskIds,
-      };
-    });
-  }
-
-  async getWorktreeFileUsage(
-    mainRepoPath: string,
-  ): Promise<{ usesWorktreeLink: boolean; usesWorktreeInclude: boolean }> {
-    const [usesWorktreeLink, usesWorktreeInclude] = await Promise.all([
-      hasExcludeFileEntries(mainRepoPath, ".worktreelink"),
-      hasExcludeFileEntries(mainRepoPath, ".worktreeinclude"),
-    ]);
-    return { usesWorktreeLink, usesWorktreeInclude };
-  }
-
-  async getWorktreeSize(worktreePath: string): Promise<{ sizeBytes: number }> {
-    try {
-      const { stdout } = await execFileAsync("du", ["-s", worktreePath]);
-      const [sizeStr] = stdout.trim().split("\t");
-      const sizeBytes = sizeStr ? parseInt(sizeStr, 10) * 512 : 0;
-      return { sizeBytes };
-    } catch (error) {
-      log.warn(`Failed to get size for ${worktreePath}:`, error);
-      return { sizeBytes: 0 };
-    }
+    return twigWorktrees.map((wt) => ({
+      worktreePath: wt.worktreePath,
+      head: wt.head,
+      branch: wt.branch,
+      taskIds: this.getWorktreeTasks(wt.worktreePath).map((t) => t.taskId),
+    }));
   }
 
   async deleteWorktree(
@@ -1173,8 +1071,7 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
     }
 
     const worktreeBasePath = getWorktreeLocation();
-    const manager = new WorktreeManager({ mainRepoPath, worktreeBasePath });
-    await manager.deleteWorktree(worktreePath);
+    await deleteGitWorktree(mainRepoPath, worktreeBasePath, worktreePath);
 
     if (worktree) {
       this.worktreeRepo.deleteByWorkspaceId(worktree.workspaceId);
@@ -1188,10 +1085,7 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
     branchName: string | null,
   ): Promise<void> {
     try {
-      const fileWatcher = container.get<FileWatcherBridge>(
-        MAIN_TOKENS.FileWatcherService,
-      );
-      await fileWatcher.stopWatching(worktreePath);
+      await this.fileWatcher.stopWatching(worktreePath);
     } catch (error) {
       log.warn(
         `Failed to stop file watcher for worktree ${worktreePath}:`,
@@ -1201,8 +1095,7 @@ export class WorkspaceService extends TypedEventEmitter<WorkspaceServiceEvents> 
 
     try {
       const worktreeBasePath = getWorktreeLocation();
-      const manager = new WorktreeManager({ mainRepoPath, worktreeBasePath });
-      await manager.deleteWorktree(worktreePath);
+      await deleteGitWorktree(mainRepoPath, worktreeBasePath, worktreePath);
     } catch (error) {
       log.error(`Failed to delete worktree for task ${taskId}:`, error);
     }

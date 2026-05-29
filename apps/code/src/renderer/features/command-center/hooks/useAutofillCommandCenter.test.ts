@@ -30,7 +30,7 @@ vi.mock("@features/archive/hooks/useArchivedTaskIds", () => ({
 import {
   COMMAND_CENTER_INITIAL_STATE,
   useCommandCenterStore,
-} from "../stores/commandCenterStore";
+} from "@posthog/ui/features/command-center/commandCenterStore";
 import { useAutofillCommandCenter } from "./useAutofillCommandCenter";
 
 const NOW = new Date("2026-02-27T12:00:00Z").getTime();

@@ -1,4 +1,4 @@
-import { Badge } from "@components/ui/Badge";
+import { Badge } from "@posthog/ui/primitives/Badge";
 import { PgAnalyzeIcon } from "@features/inbox/components/utils/PgAnalyzeIcon";
 import {
   ArrowSquareOutIcon,

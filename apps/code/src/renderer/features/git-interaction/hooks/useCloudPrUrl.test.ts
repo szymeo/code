@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@features/sessions/hooks/useSession", () => ({
+vi.mock("@posthog/ui/features/sessions/useSession", () => ({
   useSessionForTask: vi.fn(),
 }));
 
@@ -8,7 +8,7 @@ vi.mock("@features/tasks/hooks/useTasks", () => ({
   useTasks: vi.fn(() => ({ data: [] })),
 }));
 
-import type { AgentSession } from "@features/sessions/stores/sessionStore";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
 import type { Task } from "@shared/types";
 import { resolveCloudPrUrl } from "./useCloudPrUrl";
 

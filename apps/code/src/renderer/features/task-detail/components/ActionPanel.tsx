@@ -1,4 +1,4 @@
-import { ActionTerminal } from "@features/terminal/components/ActionTerminal";
+import { ActionTerminal } from "@posthog/ui/features/terminal/ActionTerminal";
 import { Box } from "@radix-ui/themes";
 
 interface ActionPanelProps {

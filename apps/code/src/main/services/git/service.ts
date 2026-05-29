@@ -42,7 +42,7 @@ import { MAIN_TOKENS } from "../../di/tokens";
 import { logger } from "../../utils/logger";
 import { TypedEventEmitter } from "../../utils/typed-event-emitter";
 import type { AgentService } from "../agent/service";
-import type { LlmGatewayService } from "../llm-gateway/service";
+import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
 import type { SidebarPrState } from "../workspace/schemas";
 import type { WorkspaceService } from "../workspace/service";
 import { CreatePrSaga } from "./create-pr-saga";

@@ -1,5 +1,5 @@
 import { useInboxReportById } from "@features/inbox/hooks/useInboxReports";
-import { useInboxReportSelectionStore } from "@features/inbox/stores/inboxReportSelectionStore";
+import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/inboxReportSelectionStore";
 import { INBOX_REFETCH_INTERVAL_MS } from "@features/inbox/utils/inboxConstants";
 import type { SignalReport } from "@shared/types";
 import { useEffect, useMemo, useRef } from "react";

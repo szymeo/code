@@ -15,7 +15,7 @@ import type { SerializedEnrichment } from "@posthog/enricher";
 import {
   type EnrichmentPopoverEntry,
   useEnrichmentPopoverStore,
-} from "../stores/enrichmentPopoverStore";
+} from "@features/code-editor/stores/enrichmentPopoverStore";
 
 export const setEnrichmentEffect =
   StateEffect.define<SerializedEnrichment | null>();

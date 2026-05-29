@@ -5,7 +5,7 @@ import {
   parseDiffFromFile,
 } from "@pierre/diffs";
 import { FileDiff, MultiFileDiff } from "@pierre/diffs/react";
-import { useInView } from "@renderer/hooks/useInView";
+import { useInView } from "@posthog/ui/primitives/hooks/useInView";
 import { trpcClient, useTRPC } from "@renderer/trpc/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo, useRef, useState } from "react";
@@ -15,7 +15,7 @@ import {
   useCommentState,
 } from "../hooks/useCommentState";
 import { useExpandableFileDiff } from "../hooks/useExpandableFileDiff";
-import { useReviewDraftsStore } from "../stores/reviewDraftsStore";
+import { useReviewDraftsStore } from "@posthog/ui/features/code-review/reviewDraftsStore";
 import type {
   AnnotationMetadata,
   FilesDiffProps,

@@ -11,7 +11,7 @@ import {
 import { Text, Tooltip } from "@radix-ui/themes";
 import { isSendMessageSubmitKey } from "@utils/sendMessageKey";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useReviewDraftsStore } from "../stores/reviewDraftsStore";
+import { useReviewDraftsStore } from "@posthog/ui/features/code-review/reviewDraftsStore";
 import { buildInlineCommentPrompt } from "../utils/reviewPrompts";
 
 interface CommentAnnotationProps {

@@ -1,12 +1,12 @@
-import { Badge } from "@components/ui/Badge";
-import { Button } from "@components/ui/Button";
+import { Badge } from "@posthog/ui/primitives/Badge";
+import { Button } from "@posthog/ui/primitives/Button";
 import { MarkdownRenderer } from "@features/editor/components/MarkdownRenderer";
 import { useFolders } from "@features/folders/hooks/useFolders";
 import {
   isTaskForRepo,
   useSetupStore,
-} from "@features/setup/stores/setupStore";
-import type { DiscoveredTask } from "@features/setup/types";
+} from "@posthog/ui/features/setup/setupStore";
+import type { DiscoveredTask } from "@posthog/ui/features/setup/types";
 import { buildDiscoveredTaskPrompt } from "@features/setup/utils/buildDiscoveredTaskPrompt";
 import {
   CATEGORY_CONFIG,
@@ -23,7 +23,7 @@ import {
   VisuallyHidden,
 } from "@radix-ui/themes";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
-import { useActiveRepoStore } from "@stores/activeRepoStore";
+import { useActiveRepoStore } from "@posthog/ui/workbench/activeRepoStore";
 import { useNavigationStore } from "@stores/navigationStore";
 import { track } from "@utils/analytics";
 

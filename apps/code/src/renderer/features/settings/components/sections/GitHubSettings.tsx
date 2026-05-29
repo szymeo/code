@@ -30,7 +30,7 @@ import {
 } from "@radix-ui/themes";
 import type { UserGitHubIntegration } from "@renderer/api/posthogClient";
 import { formatRelativeTimeLong } from "@renderer/utils/time";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { openUrlInBrowser } from "@utils/browser";
 import { useState } from "react";

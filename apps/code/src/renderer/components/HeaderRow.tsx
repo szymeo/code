@@ -1,15 +1,15 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
 import { useDiffStatsToggle } from "@features/code-review/hooks/useDiffStatsToggle";
 import { BranchSelector } from "@features/git-interaction/components/BranchSelector";
 import { CloudGitInteractionHeader } from "@features/git-interaction/components/CloudGitInteractionHeader";
 import { TaskActionsMenu } from "@features/git-interaction/components/TaskActionsMenu";
 import { HandoffConfirmDialog } from "@features/sessions/components/HandoffConfirmDialog";
-import { useSessionForTask } from "@features/sessions/hooks/useSession";
+import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
 import { useSessionCallbacks } from "@features/sessions/hooks/useSessionCallbacks";
-import { useHandoffDialogStore } from "@features/sessions/stores/handoffDialogStore";
+import { useHandoffDialogStore } from "@posthog/ui/features/sessions/handoffDialogStore";
 import { SidebarTrigger } from "@features/sidebar/components/SidebarTrigger";
-import { useSidebarStore } from "@features/sidebar/stores/sidebarStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
 import { SkillButtonsMenu } from "@features/skill-buttons/components/SkillButtonsMenu";
 import { useWorkspace } from "@features/workspace/hooks/useWorkspace";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
@@ -22,7 +22,7 @@ import {
   SHORTCUTS,
 } from "@renderer/constants/keyboard-shortcuts";
 import type { Task } from "@shared/types";
-import { useHeaderStore } from "@stores/headerStore";
+import { useHeaderStore } from "@posthog/ui/workbench/headerStore";
 import { useNavigationStore } from "@stores/navigationStore";
 import { isWindows } from "@utils/platform";
 import { useState } from "react";

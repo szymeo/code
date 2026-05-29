@@ -2,7 +2,7 @@ import { sendPromptToAgent } from "@features/sessions/utils/sendPromptToAgent";
 import { PaperPlaneTilt } from "@phosphor-icons/react";
 import { Button } from "@posthog/quill";
 import { Badge, Flex } from "@radix-ui/themes";
-import { useReviewDraftsStore } from "../stores/reviewDraftsStore";
+import { useReviewDraftsStore } from "@posthog/ui/features/code-review/reviewDraftsStore";
 import { buildBatchedInlineCommentsPrompt } from "../utils/reviewPrompts";
 
 interface PendingReviewBarProps {

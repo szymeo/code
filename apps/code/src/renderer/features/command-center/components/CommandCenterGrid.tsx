@@ -5,7 +5,7 @@ import {
   getGridDimensions,
   type LayoutPreset,
   useCommandCenterStore,
-} from "../stores/commandCenterStore";
+} from "@posthog/ui/features/command-center/commandCenterStore";
 import { CommandCenterPanel } from "./CommandCenterPanel";
 
 interface CommandCenterGridProps {

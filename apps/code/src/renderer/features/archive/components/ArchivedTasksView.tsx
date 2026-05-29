@@ -1,5 +1,5 @@
-import { DotsCircleSpinner } from "@components/DotsCircleSpinner";
-import { Tooltip } from "@components/ui/Tooltip";
+import { DotsCircleSpinner } from "@posthog/ui/primitives/DotsCircleSpinner";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useTasks } from "@features/tasks/hooks/useTasks";
 import { useSetHeaderContent } from "@hooks/useSetHeaderContent";
 import type { WorkspaceMode } from "@main/services/workspace/schemas";
@@ -29,7 +29,7 @@ import type { ArchivedTask } from "@shared/types/archive";
 import { useNavigationStore } from "@stores/navigationStore";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { formatRelativeTimeLong } from "@utils/time";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useMemo, useState } from "react";
 
 const BRANCH_NOT_FOUND_PATTERN = /Branch '(.+)' does not exist/;

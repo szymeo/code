@@ -1,5 +1,5 @@
 import { useSandboxEnvironments } from "@features/settings/hooks/useSandboxEnvironments";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
 import type { WorkspaceMode } from "@main/services/workspace/schemas";
 import {

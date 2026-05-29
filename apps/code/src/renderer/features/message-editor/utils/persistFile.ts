@@ -1,8 +1,8 @@
 import { getImageMimeType, isRasterImageFile } from "@posthog/shared";
 import { trpcClient } from "@renderer/trpc/client";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { getFilePath } from "@utils/getFilePath";
-import type { FileAttachment } from "./content";
+import type { FileAttachment } from "@posthog/ui/features/message-editor/content";
 
 const CHUNK_SIZE = 8192;
 

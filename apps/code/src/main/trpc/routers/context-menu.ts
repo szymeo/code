@@ -20,8 +20,8 @@ import {
   tabContextMenuOutput,
   taskContextMenuInput,
   taskContextMenuOutput,
-} from "../../services/context-menu/schemas";
-import type { ContextMenuService } from "../../services/context-menu/service";
+} from "@posthog/core/context-menu/schemas";
+import type { ContextMenuService } from "@posthog/core/context-menu/context-menu";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>

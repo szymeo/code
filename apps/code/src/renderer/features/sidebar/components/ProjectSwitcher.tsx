@@ -5,7 +5,7 @@ import {
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
 import { CommandKeyHints } from "@features/command/components/CommandKeyHints";
 import { useProjects } from "@features/projects/hooks/useProjects";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import {
   ArrowSquareOut,
   Check,

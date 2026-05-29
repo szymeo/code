@@ -1,5 +1,5 @@
 import type { GithubRefState } from "../types";
-import type { MentionChip } from "./content";
+import type { MentionChip } from "@posthog/ui/features/message-editor/content";
 
 export interface GithubIssueChipSource {
   number: number;

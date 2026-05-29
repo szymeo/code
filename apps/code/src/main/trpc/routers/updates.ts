@@ -7,8 +7,8 @@ import {
   UpdatesEvent,
   type UpdatesEvents,
   updatesStatusOutput,
-} from "../../services/updates/schemas";
-import type { UpdatesService } from "../../services/updates/service";
+} from "@posthog/core/updates/schemas";
+import type { UpdatesService } from "@posthog/core/updates/updates";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>

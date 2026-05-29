@@ -1,12 +1,12 @@
-import { useTerminalStore } from "@features/terminal/stores/terminalStore";
+import { useTerminalStore } from "@posthog/ui/features/terminal/terminalStore";
 import { Text } from "@radix-ui/themes";
 import {
   selectIsFocusedOnWorktree,
   selectIsLoading,
   useFocusStore,
-} from "@stores/focusStore";
+} from "@posthog/ui/features/focus/focusStore";
 import { showFocusSuccessToast } from "@utils/focusToast";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useCallback, useMemo } from "react";
 import { useWorkspace } from "./useWorkspace";
 

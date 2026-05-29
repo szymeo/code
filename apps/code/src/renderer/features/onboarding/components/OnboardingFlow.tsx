@@ -1,7 +1,7 @@
 import { FullScreenLayout } from "@components/FullScreenLayout";
 import { useLogoutMutation } from "@features/auth/hooks/authMutations";
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
 import { useUserGithubIntegrations } from "@hooks/useIntegrations";
 import { ArrowRight, SignOut } from "@phosphor-icons/react";
 import { Button, Flex } from "@radix-ui/themes";
@@ -12,7 +12,7 @@ import {
 } from "@shared/types/analytics";
 import { useNavigationStore } from "@stores/navigationStore";
 import { track } from "@utils/analytics";
-import { shipIt } from "@utils/confetti";
+import { shipIt } from "@posthog/ui/primitives/confetti";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";

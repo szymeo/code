@@ -24,9 +24,10 @@ import {
   subscribeSessionInput,
 } from "../../services/agent/schemas";
 import type { AgentService } from "../../services/agent/service";
-import type { ProcessTrackingService } from "../../services/process-tracking/service";
-import type { ShellService } from "../../services/shell/service";
-import type { SleepService } from "../../services/sleep/service";
+import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
+import { SHELL_SERVICE } from "@posthog/workspace-server/services/shell/identifiers";
+import type { ShellService } from "@posthog/workspace-server/services/shell/shell";
+import type { SleepService } from "@posthog/core/sleep/sleep";
 import { logger } from "../../utils/logger";
 import { publicProcedure, router } from "../trpc";
 
@@ -161,7 +162,7 @@ export const agentRouter = router({
     await agentService.cleanupAll();
 
     // Destroy all shell PTY sessions
-    const shellService = container.get<ShellService>(MAIN_TOKENS.ShellService);
+    const shellService = container.get<ShellService>(SHELL_SERVICE);
     shellService.destroyAll();
 
     // Kill any remaining tracked processes (belt and suspenders)

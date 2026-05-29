@@ -5,7 +5,7 @@ import type { Task } from "@shared/types";
 
 import { ContextUsageIndicator } from "./ContextUsageIndicator";
 import { DiffStatsChip } from "./DiffStatsChip";
-import { formatDuration, GeneratingIndicator } from "./GeneratingIndicator";
+import { formatDuration, GeneratingIndicator } from "@posthog/ui/features/sessions/components/GeneratingIndicator";
 
 interface SessionFooterProps {
   task?: Task;

@@ -1,9 +1,9 @@
-import { useDiffViewerStore } from "@features/code-editor/stores/diffViewerStore";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import { usePrDetails } from "@features/git-interaction/hooks/usePrDetails";
 import { useCloudChangedFiles } from "@features/task-detail/hooks/useCloudChangedFiles";
 import { extractCloudFileDiff } from "@features/task-detail/utils/cloudToolChanges";
 import { Flex, Spinner, Text } from "@radix-ui/themes";
-import { useReviewNavigationStore } from "@renderer/features/code-review/stores/reviewNavigationStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import type { Task } from "@shared/types";
 import { useMemo } from "react";
 import { PatchedFileDiff } from "./PatchedFileDiff";

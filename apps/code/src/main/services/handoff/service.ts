@@ -20,14 +20,17 @@ import {
 } from "@posthog/git/handoff";
 import { ResetToDefaultBranchSaga } from "@posthog/git/sagas/branch";
 import { StashPushSaga } from "@posthog/git/sagas/stash";
-import type { IAppLifecycle } from "@posthog/platform/app-lifecycle";
-import type { IDialog } from "@posthog/platform/dialog";
+import {
+  APP_LIFECYCLE_SERVICE,
+  type IAppLifecycle,
+} from "@posthog/platform/app-lifecycle";
+import { DIALOG_SERVICE, type IDialog } from "@posthog/platform/dialog";
 import { inject, injectable } from "inversify";
-import type { IRepositoryRepository } from "../../db/repositories/repository-repository";
-import type { IWorkspaceRepository } from "../../db/repositories/workspace-repository";
+import type { IRepositoryRepository } from "@posthog/workspace-server/db/repositories/repository-repository";
+import type { IWorkspaceRepository } from "@posthog/workspace-server/db/repositories/workspace-repository";
 import type { AgentAuthAdapter } from "../agent/auth-adapter";
 import type { AgentService } from "../agent/service";
-import type { CloudTaskService } from "../cloud-task/service";
+import type { CloudTaskService } from "@posthog/core/cloud-task/cloud-task";
 import type { GitService } from "../git/service";
 import { HandoffSaga, type HandoffSagaDeps } from "./handoff-saga";
 import {
@@ -77,9 +80,9 @@ export class HandoffService extends TypedEventEmitter<HandoffServiceEvents> {
     private readonly workspaceRepo: IWorkspaceRepository,
     @inject(MAIN_TOKENS.RepositoryRepository)
     private readonly repositoryRepo: IRepositoryRepository,
-    @inject(MAIN_TOKENS.Dialog)
+    @inject(DIALOG_SERVICE)
     private readonly dialog: IDialog,
-    @inject(MAIN_TOKENS.AppLifecycle)
+    @inject(APP_LIFECYCLE_SERVICE)
     private readonly appLifecycle: IAppLifecycle,
   ) {
     super();

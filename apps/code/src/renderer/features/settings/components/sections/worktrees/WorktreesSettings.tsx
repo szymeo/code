@@ -7,7 +7,7 @@ import { trpcClient, useTRPC } from "@renderer/trpc";
 import type { Task } from "@shared/types";
 import { useMutation, useQueries, useQueryClient } from "@tanstack/react-query";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useCallback, useMemo, useState } from "react";
 import type { WorktreeGroup } from "./WorktreeGroupSection";
 import { WorktreeGroupSection } from "./WorktreeGroupSection";

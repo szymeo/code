@@ -1,13 +1,10 @@
+import { UI_SERVICE } from "@posthog/core/ui/identifiers";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
-import {
-  UIServiceEvent,
-  type UIServiceEvents,
-} from "../../services/ui/schemas";
-import type { UIService } from "../../services/ui/service";
+import { UIServiceEvent, type UIServiceEvents } from "@posthog/core/ui/schemas";
+import type { UIService } from "@posthog/core/ui/ui";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () => container.get<UIService>(MAIN_TOKENS.UIService);
+const getService = () => container.get<UIService>(UI_SERVICE);
 
 function subscribeToUIEvent<K extends keyof UIServiceEvents>(event: K) {
   return publicProcedure.subscription(async function* (opts) {

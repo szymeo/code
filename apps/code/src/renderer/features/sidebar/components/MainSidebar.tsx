@@ -1,9 +1,9 @@
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
 import { useWorkspaces } from "@features/workspace/hooks/useWorkspace";
 import { Box } from "@radix-ui/themes";
 import { useEffect } from "react";
-import { useSidebarStore } from "../stores/sidebarStore";
-import { useTaskSelectionStore } from "../stores/taskSelectionStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
+import { useTaskSelectionStore } from "@posthog/ui/features/sidebar/taskSelectionStore";
 import { Sidebar, SidebarContent } from "./index";
 
 function isEditableTarget(target: EventTarget | null): boolean {

@@ -2,11 +2,11 @@ import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import { Providers } from "@components/Providers";
 import { ReasoningLevelSelector } from "@features/sessions/components/ReasoningLevelSelector";
 import { UnifiedModelSelector } from "@features/sessions/components/UnifiedModelSelector";
-import type { AgentAdapter } from "@features/settings/stores/settingsStore";
+import type { AgentAdapter } from "@posthog/ui/features/settings/settingsStore";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useEffect, useRef, useState } from "react";
 import type { EditorHandle } from "../types";
-import type { MentionChip } from "../utils/content";
+import type { MentionChip } from "@posthog/ui/features/message-editor/content";
 import { PromptInput } from "./PromptInput";
 
 // --- Mock data matching SessionConfigOption shape ---

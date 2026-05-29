@@ -1,5 +1,5 @@
 import { isAgentVersion } from "@utils/agentVersion";
-import { useSessionStore } from "../stores/sessionStore";
+import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
 
 /**
  * Returns the connected agent's version for the given task, or `undefined`

@@ -132,10 +132,8 @@ export async function fetchSessionLogs(
   }
 }
 
-export type PermissionRequest = Omit<RequestPermissionRequest, "sessionId"> & {
-  taskRunId: string;
-  receivedAt: number;
-};
+import type { PermissionRequest } from "@posthog/ui/features/sessions/sessionLogTypes";
+export type { PermissionRequest };
 
 type SessionUpdate = {
   sessionUpdate?: string;

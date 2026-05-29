@@ -1,5 +1,5 @@
 import { ActionSelector } from "@components/ActionSelector";
-import { getFilename } from "@features/sessions/components/session-update/toolCallUtils";
+import { getFilename } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 import { Code } from "@radix-ui/themes";
 import {
   type BasePermissionProps,

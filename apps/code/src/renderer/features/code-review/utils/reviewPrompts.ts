@@ -1,6 +1,6 @@
 import type { PrReviewComment } from "@main/services/git/schemas";
 import type { AnnotationSide } from "@pierre/diffs";
-import type { DraftComment } from "../stores/reviewDraftsStore";
+import type { DraftComment } from "@posthog/ui/features/code-review/reviewDraftsStore";
 
 function escapeXmlAttr(value: string): string {
   return value

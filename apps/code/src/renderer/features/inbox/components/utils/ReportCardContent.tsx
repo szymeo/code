@@ -1,4 +1,4 @@
-import { Badge } from "@components/ui/Badge";
+import { Badge } from "@posthog/ui/primitives/Badge";
 import { ReportImplementationPrLink } from "@features/inbox/components/utils/ReportImplementationPrLink";
 import { SignalReportActionabilityBadge } from "@features/inbox/components/utils/SignalReportActionabilityBadge";
 import { SignalReportPriorityBadge } from "@features/inbox/components/utils/SignalReportPriorityBadge";

@@ -1,6 +1,6 @@
 import { act, fireEvent, render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { useImagePanAndZoom } from "./useImagePanAndZoom";
+import { useImagePanAndZoom } from "@posthog/ui/primitives/hooks/useImagePanAndZoom";
 
 type HookResult = ReturnType<typeof useImagePanAndZoom>;
 

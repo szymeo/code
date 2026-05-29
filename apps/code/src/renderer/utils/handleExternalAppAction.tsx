@@ -1,10 +1,10 @@
 import { externalAppsApi } from "@features/external-apps/hooks/useExternalApps";
-import type { ExternalAppAction } from "@main/services/context-menu/schemas";
+import type { ExternalAppAction } from "@posthog/core/context-menu/schemas";
 import type { Workspace } from "@main/services/workspace/schemas";
 import { trpcClient } from "@renderer/trpc/client";
-import { useFocusStore } from "@stores/focusStore";
+import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { showFocusSuccessToast } from "./focusToast";
 
 const log = logger.scope("external-app-action");

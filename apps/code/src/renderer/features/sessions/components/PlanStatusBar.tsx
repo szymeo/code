@@ -1,6 +1,10 @@
-import { StepIcon, StepList, type StepStatus } from "@components/ui/StepList";
+import {
+  StepIcon,
+  StepList,
+  type StepStatus,
+} from "@posthog/ui/primitives/StepList";
 import { CHAT_CONTENT_MAX_WIDTH } from "@features/sessions/constants";
-import type { Plan } from "@features/sessions/types";
+import type { Plan } from "@posthog/ui/features/sessions/types";
 import { CaretDown, CaretRight } from "@phosphor-icons/react";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useMemo, useState } from "react";

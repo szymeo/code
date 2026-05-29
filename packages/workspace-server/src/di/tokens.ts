@@ -4,4 +4,7 @@ export const TOKENS = Object.freeze({
   GitService: Symbol.for("WorkspaceServer.GitService"),
   FsService: Symbol.for("WorkspaceServer.FsService"),
   WatcherService: Symbol.for("WorkspaceServer.WatcherService"),
+  LocalLogsService: Symbol.for("WorkspaceServer.LocalLogsService"),
+  ConnectivityService: Symbol.for("WorkspaceServer.ConnectivityService"),
+  EnvironmentService: Symbol.for("WorkspaceServer.EnvironmentService"),
 });

@@ -1,6 +1,6 @@
 import { useArchivedTaskIds } from "@features/archive/hooks/useArchivedTaskIds";
-import { useProvisioningStore } from "@features/provisioning/stores/provisioningStore";
-import { useSessions } from "@features/sessions/stores/sessionStore";
+import { useProvisioningStore } from "@posthog/ui/features/provisioning/store";
+import { useSessions } from "@posthog/ui/features/sessions/sessionStore";
 import { useSuspendedTaskIds } from "@features/suspension/hooks/useSuspendedTaskIds";
 import {
   useSlackTasks,
@@ -11,7 +11,7 @@ import { useWorkspaces } from "@features/workspace/hooks/useWorkspace";
 import type { Schemas } from "@posthog/api-client";
 import type { Task, TaskRunStatus } from "@shared/types";
 import { useEffect, useMemo, useRef } from "react";
-import { useSidebarStore } from "../stores/sidebarStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
 import type { SortMode } from "../types";
 import {
   type TaskGroup as GenericTaskGroup,

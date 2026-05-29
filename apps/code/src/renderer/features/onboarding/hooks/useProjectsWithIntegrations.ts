@@ -1,6 +1,6 @@
 import { useOptionalAuthenticatedClient } from "@features/auth/hooks/authClient";
 import { AUTH_SCOPED_QUERY_META } from "@features/auth/hooks/authQueries";
-import type { Integration } from "@features/integrations/stores/integrationStore";
+import type { Integration } from "@posthog/ui/features/integrations/store";
 import { useProjects } from "@features/projects/hooks/useProjects";
 import { useQueries } from "@tanstack/react-query";
 import { useMemo } from "react";

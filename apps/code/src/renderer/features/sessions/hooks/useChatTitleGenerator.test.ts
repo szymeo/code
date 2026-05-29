@@ -49,7 +49,7 @@ vi.mock("@utils/queryClient", () => ({
   },
 }));
 
-vi.mock("@utils/session", () => ({
+vi.mock("@posthog/ui/features/sessions/session", () => ({
   extractUserPromptsFromEvents: () => mockPrompts.value,
 }));
 
@@ -70,7 +70,7 @@ vi.mock("@utils/logger", () => ({
   },
 }));
 
-vi.mock("@features/sessions/stores/sessionStore", () => {
+vi.mock("@posthog/ui/features/sessions/sessionStore", () => {
   const state = {
     taskIdIndex: { "task-1": "run-1" },
     sessions: { "run-1": { events: mockPrompts.value } },

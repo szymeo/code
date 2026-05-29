@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useGitInteractionStore } from "@features/git-interaction/state/gitInteractionStore";
 import { getSuggestedBranchName } from "@features/git-interaction/utils/getSuggestedBranchName";
 import { invalidateGitBranchQueries } from "@features/git-interaction/utils/gitCacheKeys";
@@ -24,7 +24,7 @@ import {
   InputGroupButton,
 } from "@posthog/quill";
 import { useTRPC } from "@renderer/trpc";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import type { GitBusyOperation, GitBusyState } from "@shared/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { type RefObject, useEffect, useRef, useState } from "react";

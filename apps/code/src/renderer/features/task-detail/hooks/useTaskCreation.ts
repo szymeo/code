@@ -1,14 +1,14 @@
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
 import { buildCloudTaskDescription } from "@features/editor/utils/cloud-prompt";
-import { useTaskInputHistoryStore } from "@features/message-editor/stores/taskInputHistoryStore";
+import { useTaskInputHistoryStore } from "@posthog/ui/features/message-editor/taskInputHistoryStore";
 import type { EditorHandle } from "@features/message-editor/types";
 import {
   contentToPlainText,
   contentToXml,
   type EditorContent,
   extractFilePaths,
-} from "@features/message-editor/utils/content";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+} from "@posthog/ui/features/message-editor/content";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { useCreateTask } from "@features/tasks/hooks/useTasks";
 import { useTourStore } from "@features/tour/stores/tourStore";
 import { createFirstTaskTour } from "@features/tour/tours/createFirstTaskTour";
@@ -17,11 +17,11 @@ import type { WorkspaceMode } from "@main/services/workspace/schemas";
 import { get } from "@renderer/di/container";
 import { RENDERER_TOKENS } from "@renderer/di/tokens";
 import { trpcClient } from "@renderer/trpc/client";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import type { ExecutionMode, Task } from "@shared/types";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { useNavigationStore } from "@stores/navigationStore";
-import { pendingTaskPromptStoreApi } from "@stores/pendingTaskPromptStore";
+import { pendingTaskPromptStoreApi } from "@posthog/ui/workbench/pendingTaskPromptStore";
 import { track } from "@utils/analytics";
 import { logger } from "@utils/logger";
 import { useCallback, useState } from "react";

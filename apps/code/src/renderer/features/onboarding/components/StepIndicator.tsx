@@ -1,5 +1,5 @@
 import { Flex } from "@radix-ui/themes";
-import type { OnboardingStep } from "../types";
+import type { OnboardingStep } from "@posthog/ui/features/onboarding/types";
 
 interface StepIndicatorProps {
   currentStep: OnboardingStep;

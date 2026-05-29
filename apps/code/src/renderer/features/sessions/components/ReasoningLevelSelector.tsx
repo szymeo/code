@@ -10,7 +10,7 @@ import {
   MenuLabel,
 } from "@posthog/quill";
 import { useRef, useState } from "react";
-import { flattenSelectOptions } from "../stores/sessionStore";
+import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
 
 interface ReasoningLevelSelectorProps {
   thoughtOption?: SessionConfigOption;

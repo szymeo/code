@@ -1,6 +1,1 @@
-import { createSidebarStore } from "@stores/createSidebarStore";
-
-export const useSkillsSidebarStore = createSidebarStore({
-  name: "skills-sidebar",
-  defaultWidth: 380,
-});
+export { useSkillsSidebarStore } from "@posthog/ui/features/skills/skillsSidebarStore";

@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@posthog/quill";
-import { useDiffViewerStore } from "@renderer/features/code-editor/stores/diffViewerStore";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 
 export function DiffSettingsMenu() {
   const wordWrap = useDiffViewerStore((s) => s.wordWrap);

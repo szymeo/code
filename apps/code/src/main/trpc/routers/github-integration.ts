@@ -1,19 +1,19 @@
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
 import {
   startGitHubFlowInput,
   startGitHubFlowOutput,
 } from "../../services/github-integration/schemas";
+import { GITHUB_INTEGRATION_SERVICE } from "@posthog/core/integrations/identifiers";
 import {
   type FlowTimedOut,
   GitHubIntegrationEvent,
   type GitHubIntegrationService,
   type IntegrationCallback,
-} from "../../services/github-integration/service";
+} from "@posthog/core/integrations/github";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>
-  container.get<GitHubIntegrationService>(MAIN_TOKENS.GitHubIntegrationService);
+  container.get<GitHubIntegrationService>(GITHUB_INTEGRATION_SERVICE);
 
 export const githubIntegrationRouter = router({
   startFlow: publicProcedure

@@ -9,8 +9,10 @@ import { inject, injectable } from "inversify";
 import { MAIN_TOKENS } from "../../di/tokens";
 import { logger } from "../../utils/logger";
 import type { AuthService } from "../auth/service";
-import type { AuthProxyService } from "../auth-proxy/service";
-import type { McpProxyService } from "../mcp-proxy/service";
+import { AUTH_PROXY_SERVICE } from "@posthog/workspace-server/services/auth-proxy/identifiers";
+import type { AuthProxyService } from "@posthog/workspace-server/services/auth-proxy/auth-proxy";
+import { MCP_PROXY_SERVICE } from "@posthog/workspace-server/services/mcp-proxy/identifiers";
+import type { McpProxyService } from "@posthog/workspace-server/services/mcp-proxy/mcp-proxy";
 import type { Credentials } from "./schemas";
 
 const log = logger.scope("agent-auth-adapter");
@@ -59,9 +61,9 @@ export class AgentAuthAdapter {
   constructor(
     @inject(MAIN_TOKENS.AuthService)
     private readonly authService: AuthService,
-    @inject(MAIN_TOKENS.AuthProxyService)
+    @inject(AUTH_PROXY_SERVICE)
     private readonly authProxy: AuthProxyService,
-    @inject(MAIN_TOKENS.McpProxyService)
+    @inject(MCP_PROXY_SERVICE)
     private readonly mcpProxy: McpProxyService,
   ) {}
 

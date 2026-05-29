@@ -1,14 +1,16 @@
-import type { ISecureStorage } from "@posthog/platform/secure-storage";
+import {
+  type ISecureStorage,
+  SECURE_STORAGE_SERVICE,
+} from "@posthog/platform/secure-storage";
 import { z } from "zod";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
 import { logger } from "../../utils/logger";
 import { publicProcedure, router } from "../trpc";
 
 const log = logger.scope("encryptionRouter");
 
 const getSecureStorage = () =>
-  container.get<ISecureStorage>(MAIN_TOKENS.SecureStorage);
+  container.get<ISecureStorage>(SECURE_STORAGE_SERVICE);
 
 export const encryptionRouter = router({
   /**

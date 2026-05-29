@@ -1,4 +1,4 @@
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import { SessionView } from "@features/sessions/components/SessionView";
 import { useSessionCallbacks } from "@features/sessions/hooks/useSessionCallbacks";
 import { useSessionConnection } from "@features/sessions/hooks/useSessionConnection";

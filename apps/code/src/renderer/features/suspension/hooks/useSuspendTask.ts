@@ -1,7 +1,7 @@
-import { useTerminalStore } from "@features/terminal/stores/terminalStore";
+import { useTerminalStore } from "@posthog/ui/features/terminal/terminalStore";
 import { workspaceApi } from "@features/workspace/hooks/useWorkspace";
 import { trpc, trpcClient } from "@renderer/trpc";
-import { useFocusStore } from "@stores/focusStore";
+import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
 import { useQueryClient } from "@tanstack/react-query";
 import { logger } from "@utils/logger";
 

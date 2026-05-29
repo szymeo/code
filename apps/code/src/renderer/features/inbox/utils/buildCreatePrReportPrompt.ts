@@ -1,4 +1,4 @@
-import { getDeeplinkProtocol } from "@shared/deeplink";
+import { getDeeplinkProtocol } from "@posthog/shared";
 
 interface BuildCreatePrReportPromptOptions {
   reportId: string;

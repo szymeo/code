@@ -38,25 +38,34 @@ import { getLlmGatewayUrl } from "@posthog/agent/posthog-api";
 import { extractCreatedPrUrl } from "@posthog/agent/pr-url-detector";
 import type * as AgentTypes from "@posthog/agent/types";
 import { getCurrentBranch } from "@posthog/git/queries";
-import type { IAppMeta } from "@posthog/platform/app-meta";
-import type { IBundledResources } from "@posthog/platform/bundled-resources";
-import type { IPowerManager } from "@posthog/platform/power-manager";
-import type { IStoragePaths } from "@posthog/platform/storage-paths";
+import { APP_META_SERVICE, type IAppMeta } from "@posthog/platform/app-meta";
+import {
+  BUNDLED_RESOURCES_SERVICE,
+  type IBundledResources,
+} from "@posthog/platform/bundled-resources";
+import {
+  type IPowerManager,
+  POWER_MANAGER_SERVICE,
+} from "@posthog/platform/power-manager";
+import {
+  STORAGE_PATHS_SERVICE,
+  type IStoragePaths,
+} from "@posthog/platform/storage-paths";
 import { isAuthError } from "@shared/errors";
 import type { AcpMessage } from "@shared/types/session-events";
 import { inject, injectable, preDestroy } from "inversify";
-import type { IDefaultAdditionalDirectoryRepository } from "../../db/repositories/default-additional-directory-repository";
-import type { IWorkspaceRepository } from "../../db/repositories/workspace-repository";
+import type { IDefaultAdditionalDirectoryRepository } from "@posthog/workspace-server/db/repositories/default-additional-directory-repository";
+import type { IWorkspaceRepository } from "@posthog/workspace-server/db/repositories/workspace-repository";
 import { MAIN_TOKENS } from "../../di/tokens";
 import { isDevBuild } from "../../utils/env";
 import { logger } from "../../utils/logger";
 import { TypedEventEmitter } from "../../utils/typed-event-emitter";
 import type { FsService } from "../fs/service";
-import type { McpAppsService } from "../mcp-apps/service";
-import type { PosthogPluginService } from "../posthog-plugin/service";
-import type { ProcessTrackingService } from "../process-tracking/service";
-import { loadSessionEnvOverrides } from "../session-env/loader";
-import type { SleepService } from "../sleep/service";
+import type { McpAppsService } from "@posthog/core/mcp-apps/mcp-apps";
+import type { PosthogPluginService } from "@posthog/workspace-server/services/posthog-plugin/posthog-plugin";
+import type { ProcessTrackingService } from "@posthog/workspace-server/services/process-tracking/process-tracking";
+import { loadSessionEnvOverrides } from "@posthog/workspace-server/services/session-env/loader";
+import type { SleepService } from "@posthog/core/sleep/sleep";
 import type { AgentAuthAdapter, McpToolInstallations } from "./auth-adapter";
 import { discoverExternalPlugins } from "./discover-plugins";
 import {
@@ -311,13 +320,13 @@ export class AgentService extends TypedEventEmitter<AgentServiceEvents> {
     agentAuthAdapter: AgentAuthAdapter,
     @inject(MAIN_TOKENS.McpAppsService)
     mcpAppsService: McpAppsService,
-    @inject(MAIN_TOKENS.PowerManager)
+    @inject(POWER_MANAGER_SERVICE)
     powerManager: IPowerManager,
-    @inject(MAIN_TOKENS.BundledResources)
+    @inject(BUNDLED_RESOURCES_SERVICE)
     private readonly bundledResources: IBundledResources,
-    @inject(MAIN_TOKENS.AppMeta)
+    @inject(APP_META_SERVICE)
     private readonly appMeta: IAppMeta,
-    @inject(MAIN_TOKENS.StoragePaths)
+    @inject(STORAGE_PATHS_SERVICE)
     private readonly storagePaths: IStoragePaths,
     @inject(MAIN_TOKENS.DefaultAdditionalDirectoryRepository)
     private readonly defaultAdditionalDirectoryRepository: IDefaultAdditionalDirectoryRepository,

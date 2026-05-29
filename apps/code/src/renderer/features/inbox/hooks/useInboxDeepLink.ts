@@ -4,8 +4,8 @@ import {
   useAuthStateValue,
 } from "@features/auth/hooks/authQueries";
 import { reportKeys } from "@features/inbox/hooks/useInboxReports";
-import { useInboxReportSelectionStore } from "@features/inbox/stores/inboxReportSelectionStore";
-import { useInboxSignalsFilterStore } from "@features/inbox/stores/inboxSignalsFilterStore";
+import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/inboxReportSelectionStore";
+import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/inboxSignalsFilterStore";
 import { setPendingInboxOpenMethod } from "@features/inbox/utils/pendingInboxOpenMethod";
 import { trpcClient, useTRPC } from "@renderer/trpc";
 import { useNavigationStore } from "@stores/navigationStore";

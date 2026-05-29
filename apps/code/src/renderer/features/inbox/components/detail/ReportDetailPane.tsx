@@ -1,5 +1,5 @@
-import { Badge } from "@components/ui/Badge";
-import { Button } from "@components/ui/Button";
+import { Badge } from "@posthog/ui/primitives/Badge";
+import { Button } from "@posthog/ui/primitives/Button";
 import {
   useInboxReportArtefacts,
   useInboxReportSignals,
@@ -36,7 +36,7 @@ import {
 } from "@radix-ui/themes";
 import { useTRPC } from "@renderer/trpc";
 import { EXTERNAL_LINKS } from "@renderer/utils/links";
-import { buildInboxDeeplink } from "@shared/deeplink";
+import { buildInboxDeeplink } from "@posthog/shared";
 import type {
   ActionabilityJudgmentArtefact,
   ActionabilityJudgmentContent,

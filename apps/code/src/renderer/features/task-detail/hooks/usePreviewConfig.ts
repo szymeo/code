@@ -1,6 +1,6 @@
 import type { SessionConfigOption } from "@agentclientprotocol/sdk";
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { getReasoningEffortOptions } from "@posthog/agent/adapters/reasoning-effort";
 import { trpcClient } from "@renderer/trpc/client";
 import { getCloudUrlFromRegion } from "@shared/utils/urls";

@@ -1,4 +1,9 @@
-import type { WorkspaceRepository } from "../../db/repositories/workspace-repository";
+import { WORKSPACE_METADATA_SERVICE } from "@posthog/workspace-server/services/workspace-metadata/identifiers";
+import type { WorkspaceMetadataService } from "@posthog/workspace-server/services/workspace-metadata/workspace-metadata";
+import {
+  getWorktreeFileUsage,
+  getWorktreeSize,
+} from "@posthog/workspace-server/services/worktree-query/worktree-query";
 import { container } from "../../di/container";
 import { MAIN_TOKENS } from "../../di/tokens";
 import type { GitService } from "../../services/git/service";
@@ -49,8 +54,8 @@ const getService = () =>
 
 const getGitService = () => container.get<GitService>(MAIN_TOKENS.GitService);
 
-const getWorkspaceRepo = () =>
-  container.get<WorkspaceRepository>(MAIN_TOKENS.WorkspaceRepository);
+const getMetadata = () =>
+  container.get<WorkspaceMetadataService>(WORKSPACE_METADATA_SERVICE);
 
 function subscribe<K extends keyof WorkspaceServiceEvents>(event: K) {
   return publicProcedure.subscription(async function* (opts) {
@@ -115,14 +120,12 @@ export const workspaceRouter = router({
   getWorktreeSize: publicProcedure
     .input(getWorktreeSizeInput)
     .output(getWorktreeSizeOutput)
-    .query(({ input }) => getService().getWorktreeSize(input.worktreePath)),
+    .query(({ input }) => getWorktreeSize(input.worktreePath)),
 
   getWorktreeFileUsage: publicProcedure
     .input(getWorktreeFileUsageInput)
     .output(getWorktreeFileUsageOutput)
-    .query(({ input }) =>
-      getService().getWorktreeFileUsage(input.mainRepoPath),
-    ),
+    .query(({ input }) => getWorktreeFileUsage(input.mainRepoPath)),
 
   deleteWorktree: publicProcedure
     .input(deleteWorktreeInput)
@@ -133,78 +136,28 @@ export const workspaceRouter = router({
   togglePin: publicProcedure
     .input(togglePinInput)
     .output(togglePinOutput)
-    .mutation(({ input }) => {
-      const repo = getWorkspaceRepo();
-      const workspace = repo.findByTaskId(input.taskId);
-      if (!workspace) {
-        return { isPinned: false, pinnedAt: null };
-      }
-      const newPinnedAt = workspace.pinnedAt ? null : new Date().toISOString();
-      repo.updatePinnedAt(input.taskId, newPinnedAt);
-      return { isPinned: newPinnedAt !== null, pinnedAt: newPinnedAt };
-    }),
+    .mutation(({ input }) => getMetadata().togglePin(input.taskId)),
 
-  markViewed: publicProcedure.input(markViewedInput).mutation(({ input }) => {
-    const repo = getWorkspaceRepo();
-    repo.updateLastViewedAt(input.taskId, new Date().toISOString());
-  }),
+  markViewed: publicProcedure
+    .input(markViewedInput)
+    .mutation(({ input }) => getMetadata().markViewed(input.taskId)),
 
   markActivity: publicProcedure
     .input(markActivityInput)
-    .mutation(({ input }) => {
-      const repo = getWorkspaceRepo();
-      const workspace = repo.findByTaskId(input.taskId);
-      const lastViewedAt = workspace?.lastViewedAt
-        ? new Date(workspace.lastViewedAt).getTime()
-        : 0;
-      const now = Date.now();
-      const activityTime = Math.max(now, lastViewedAt + 1);
-      repo.updateLastActivityAt(
-        input.taskId,
-        new Date(activityTime).toISOString(),
-      );
-    }),
+    .mutation(({ input }) => getMetadata().markActivity(input.taskId)),
 
-  getPinnedTaskIds: publicProcedure.output(getPinnedTaskIdsOutput).query(() => {
-    const repo = getWorkspaceRepo();
-    return repo.findAllPinned().map((w) => w.taskId);
-  }),
+  getPinnedTaskIds: publicProcedure
+    .output(getPinnedTaskIdsOutput)
+    .query(() => getMetadata().getPinnedTaskIds()),
 
   getTaskTimestamps: publicProcedure
     .input(getTaskTimestampsInput)
     .output(getTaskTimestampsOutput)
-    .query(({ input }) => {
-      const repo = getWorkspaceRepo();
-      const workspace = repo.findByTaskId(input.taskId);
-      return {
-        pinnedAt: workspace?.pinnedAt ?? null,
-        lastViewedAt: workspace?.lastViewedAt ?? null,
-        lastActivityAt: workspace?.lastActivityAt ?? null,
-      };
-    }),
+    .query(({ input }) => getMetadata().getTaskTimestamps(input.taskId)),
 
   getAllTaskTimestamps: publicProcedure
     .output(getAllTaskTimestampsOutput)
-    .query(() => {
-      const repo = getWorkspaceRepo();
-      const workspaces = repo.findAll();
-      const result: Record<
-        string,
-        {
-          pinnedAt: string | null;
-          lastViewedAt: string | null;
-          lastActivityAt: string | null;
-        }
-      > = {};
-      for (const w of workspaces) {
-        result[w.taskId] = {
-          pinnedAt: w.pinnedAt,
-          lastViewedAt: w.lastViewedAt,
-          lastActivityAt: w.lastActivityAt,
-        };
-      }
-      return result;
-    }),
+    .query(() => getMetadata().getAllTaskTimestamps()),
 
   linkBranch: publicProcedure
     .input(linkBranchInput)

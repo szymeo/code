@@ -1,11 +1,10 @@
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
-import { promptInput, promptOutput } from "../../services/llm-gateway/schemas";
-import type { LlmGatewayService } from "../../services/llm-gateway/service";
+import { LLM_GATEWAY_SERVICE } from "@posthog/core/llm-gateway/identifiers";
+import { promptInput, promptOutput } from "@posthog/core/llm-gateway/schemas";
+import type { LlmGatewayService } from "@posthog/core/llm-gateway/llm-gateway";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () =>
-  container.get<LlmGatewayService>(MAIN_TOKENS.LlmGatewayService);
+const getService = () => container.get<LlmGatewayService>(LLM_GATEWAY_SERVICE);
 
 export const llmGatewayRouter = router({
   prompt: publicProcedure

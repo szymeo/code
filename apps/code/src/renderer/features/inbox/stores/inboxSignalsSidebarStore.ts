@@ -1,4 +1,4 @@
-import { createSidebarStore } from "@stores/createSidebarStore";
+import { createSidebarStore } from "@posthog/ui/workbench/createSidebarStore";
 
 export const useInboxSignalsSidebarStore = createSidebarStore({
   name: "inbox-signals-sidebar-storage",

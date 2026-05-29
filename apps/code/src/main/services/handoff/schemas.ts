@@ -1,7 +1,7 @@
 import type { PostHogAPIClient } from "@posthog/agent/posthog-api";
 import { handoffLocalGitStateSchema } from "@posthog/agent/server/schemas";
+import type { WorkspaceMode } from "@posthog/shared";
 import { z } from "zod";
-import type { WorkspaceMode } from "../../db/repositories/workspace-repository";
 
 const handoffBaseInput = z.object({
   taskId: z.string(),

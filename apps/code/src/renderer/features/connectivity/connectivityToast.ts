@@ -1,5 +1,5 @@
-import { useConnectivityStore } from "@stores/connectivityStore";
-import { toast } from "@utils/toast";
+import { useConnectivityStore } from "@posthog/ui/features/connectivity/connectivityStore";
+import { toast } from "@posthog/ui/primitives/toast";
 import { toast as sonnerToast } from "sonner";
 
 const TOAST_ID = "connectivity-offline";

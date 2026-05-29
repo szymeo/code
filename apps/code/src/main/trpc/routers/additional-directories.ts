@@ -1,6 +1,6 @@
 import { z } from "zod";
-import type { IDefaultAdditionalDirectoryRepository } from "../../db/repositories/default-additional-directory-repository";
-import type { IWorkspaceRepository } from "../../db/repositories/workspace-repository";
+import type { IDefaultAdditionalDirectoryRepository } from "@posthog/workspace-server/db/repositories/default-additional-directory-repository";
+import type { IWorkspaceRepository } from "@posthog/workspace-server/db/repositories/workspace-repository";
 import { container } from "../../di/container";
 import { MAIN_TOKENS } from "../../di/tokens";
 import { publicProcedure, router } from "../trpc";

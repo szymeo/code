@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { container } from "../../di/container";
 import { MAIN_TOKENS } from "../../di/tokens";
-import type { SleepService } from "../../services/sleep/service";
+import type { SleepService } from "@posthog/core/sleep/sleep";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () => container.get<SleepService>(MAIN_TOKENS.SleepService);

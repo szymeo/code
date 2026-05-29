@@ -1,4 +1,4 @@
-import { useSessionForTask } from "@features/sessions/hooks/useSession";
+import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
 import {
   buildCloudEventSummary,
   type CloudEventSummary,

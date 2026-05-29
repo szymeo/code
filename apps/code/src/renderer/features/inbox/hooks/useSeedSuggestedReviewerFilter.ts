@@ -1,4 +1,4 @@
-import { useInboxSignalsFilterStore } from "@features/inbox/stores/inboxSignalsFilterStore";
+import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/inboxSignalsFilterStore";
 import { useEffect } from "react";
 
 /**

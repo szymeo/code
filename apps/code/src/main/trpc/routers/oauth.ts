@@ -1,10 +1,10 @@
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
-import { cancelFlowOutput } from "../../services/oauth/schemas";
-import type { OAuthService } from "../../services/oauth/service";
+import { OAUTH_SERVICE } from "@posthog/core/oauth/identifiers";
+import { cancelFlowOutput } from "@posthog/core/oauth/schemas";
+import type { OAuthService } from "@posthog/core/oauth/oauth";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () => container.get<OAuthService>(MAIN_TOKENS.OAuthService);
+const getService = () => container.get<OAuthService>(OAUTH_SERVICE);
 
 export const oauthRouter = router({
   cancelFlow: publicProcedure

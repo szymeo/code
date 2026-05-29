@@ -1,11 +1,11 @@
 import { getAuthenticatedClient } from "@features/auth/hooks/authClient";
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
-import { xmlToPlainText } from "@features/message-editor/utils/content";
+import { xmlToPlainText } from "@posthog/ui/features/message-editor/content";
 import { getSessionService } from "@features/sessions/service/service";
 import {
   sessionStoreSetters,
   useSessionStore,
-} from "@features/sessions/stores/sessionStore";
+} from "@posthog/ui/features/sessions/sessionStore";
 import { taskKeys } from "@features/tasks/hooks/taskKeys";
 import type { Schemas } from "@posthog/api-client";
 import type { Task } from "@shared/types";
@@ -15,7 +15,7 @@ import {
 } from "@utils/generateTitle";
 import { logger } from "@utils/logger";
 import { getCachedTask, queryClient } from "@utils/queryClient";
-import { extractUserPromptsFromEvents } from "@utils/session";
+import { extractUserPromptsFromEvents } from "@posthog/ui/features/sessions/session";
 import { useEffect, useRef } from "react";
 
 const log = logger.scope("chat-title-generator");

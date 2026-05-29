@@ -1,14 +1,23 @@
 import "reflect-metadata";
+// Side effect: registers the host (electron-trpc-backed) storage with @posthog/ui
+// before any persisted store hydrates.
+import "@utils/electronStorage";
+// Side effect: registers the host CloneClient with @posthog/ui.
+import "@features/clone/cloneClientAdapter";
+import "@features/connectivity/connectivityClientAdapter";
+import "@features/updates-client/updatesClientAdapter";
+import "@features/terminal-client/shellClientAdapter";
+import "@features/focus-client/focusClientAdapter";
 // Side effect: attaches window focus/visibility listeners so `focused` is accurate before inbox queries mount.
-import "@stores/rendererWindowFocusStore";
+import "@posthog/ui/workbench/rendererWindowFocusStore";
 import { Providers } from "@components/Providers";
 import { preloadHighlighter } from "@pierre/diffs";
-import { ServiceProvider } from "@posthog/ui/workbench/service-context";
+import { startWorkbench } from "@posthog/di/contribution";
+import { ServiceProvider } from "@posthog/di/react";
 import App from "@renderer/App";
 import { registerDesktopContributions } from "@renderer/desktop-contributions";
 import { container } from "@renderer/di/container";
 import "@renderer/desktop-services";
-import { startWorkbenchContributions } from "@posthog/ui/workbench/contribution";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/globals.css";
@@ -65,7 +74,7 @@ document.title = import.meta.env.DEV
   : "PostHog Code";
 
 registerDesktopContributions();
-void startWorkbenchContributions(container);
+void startWorkbench(container);
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");

@@ -1,5 +1,5 @@
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
+import { CLOUD_TASK_SERVICE } from "@posthog/core/cloud-task/identifiers";
 import {
   CloudTaskEvent,
   onUpdateInput,
@@ -8,12 +8,11 @@ import {
   sendCommandOutput,
   unwatchInput,
   watchInput,
-} from "../../services/cloud-task/schemas";
-import type { CloudTaskService } from "../../services/cloud-task/service";
+} from "@posthog/core/cloud-task/schemas";
+import type { CloudTaskService } from "@posthog/core/cloud-task/cloud-task";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () =>
-  container.get<CloudTaskService>(MAIN_TOKENS.CloudTaskService);
+const getService = () => container.get<CloudTaskService>(CLOUD_TASK_SERVICE);
 
 export const cloudTaskRouter = router({
   watch: publicProcedure

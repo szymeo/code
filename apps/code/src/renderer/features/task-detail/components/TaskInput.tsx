@@ -1,5 +1,6 @@
-import { DotPatternBackground } from "@components/DotPatternBackground";
-import { EnvironmentSelector } from "@features/environments/components/EnvironmentSelector";
+import { DotPatternBackground } from "@posthog/ui/primitives/DotPatternBackground";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
+import { EnvironmentSelector } from "@posthog/ui/features/environments/EnvironmentSelector";
 import { FolderPicker } from "@features/folder-picker/components/FolderPicker";
 import { GitHubRepoPicker } from "@features/folder-picker/components/GitHubRepoPicker";
 import { useFolders } from "@features/folders/hooks/useFolders";
@@ -11,18 +12,18 @@ import {
   createBranch,
   getBranchNameInputState,
 } from "@features/git-interaction/utils/branchCreation";
-import { useInboxReportSelectionStore } from "@features/inbox/stores/inboxReportSelectionStore";
+import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/inboxReportSelectionStore";
 import { PromptHistoryDialog } from "@features/message-editor/components/PromptHistoryDialog";
 import { PromptInput } from "@features/message-editor/components/PromptInput";
-import { useTaskInputHistoryStore } from "@features/message-editor/stores/taskInputHistoryStore";
+import { useTaskInputHistoryStore } from "@posthog/ui/features/message-editor/taskInputHistoryStore";
 import type { EditorHandle } from "@features/message-editor/types";
 import { resolveAndAttachDroppedFiles } from "@features/message-editor/utils/persistFile";
-import { DropZoneOverlay } from "@features/sessions/components/DropZoneOverlay";
+import { DropZoneOverlay } from "@posthog/ui/features/sessions/components/DropZoneOverlay";
 import { ReasoningLevelSelector } from "@features/sessions/components/ReasoningLevelSelector";
 import { UnifiedModelSelector } from "@features/sessions/components/UnifiedModelSelector";
-import { getCurrentModeFromConfigOptions } from "@features/sessions/stores/sessionStore";
-import type { AgentAdapter } from "@features/settings/stores/settingsStore";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { getCurrentModeFromConfigOptions } from "@posthog/ui/features/sessions/sessionStore";
+import type { AgentAdapter } from "@posthog/ui/features/settings/settingsStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { useAutoFocusOnTyping } from "@hooks/useAutoFocusOnTyping";
 import { useConnectivity } from "@hooks/useConnectivity";
 import {
@@ -33,11 +34,11 @@ import {
 import { X } from "@phosphor-icons/react";
 import { ButtonGroup } from "@posthog/quill";
 import { Flex, Text, Tooltip } from "@radix-ui/themes";
-import { useAuthStore } from "@renderer/features/auth/stores/authStore";
-import { useDraftStore } from "@renderer/features/message-editor/stores/draftStore";
+import { useAuthStateValue } from "@posthog/ui/features/auth/store";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import { trpcClient, useTRPC } from "@renderer/trpc/client";
-import { toast } from "@renderer/utils/toast";
-import { useActiveRepoStore } from "@stores/activeRepoStore";
+import { toast } from "@posthog/ui/primitives/toast";
+import { useActiveRepoStore } from "@posthog/ui/workbench/activeRepoStore";
 import {
   type TaskInputReportAssociation,
   useNavigationStore,
@@ -74,7 +75,7 @@ export function TaskInput({
   initialMode,
   reportAssociation,
 }: TaskInputProps = {}) {
-  const { cloudRegion } = useAuthStore();
+  const cloudRegion = useAuthStateValue((s) => s.cloudRegion);
   const trpcReact = useTRPC();
   const { view, clearTaskInputReportAssociation, navigateToInbox } =
     useNavigationStore();
@@ -648,6 +649,11 @@ export function TaskInput({
                 value={selectedEnvironment}
                 onChange={setSelectedEnvironment}
                 disabled={isCreatingTask}
+                onCreateEnvironment={() =>
+                  useSettingsDialogStore.getState().open("environments", {
+                    repoPath: effectiveRepoPath ?? undefined,
+                  })
+                }
               />
             )}
             <ButtonGroup

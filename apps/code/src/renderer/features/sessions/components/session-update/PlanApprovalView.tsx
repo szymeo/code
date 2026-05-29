@@ -2,7 +2,7 @@ import { PlanContent } from "@components/permissions/PlanContent";
 import { CaretDown, CaretRight, CheckCircle } from "@phosphor-icons/react";
 import { Box, Flex, Text } from "@radix-ui/themes";
 import { useMemo, useState } from "react";
-import { type ToolViewProps, useToolCallStatus } from "./toolCallUtils";
+import { type ToolViewProps, useToolCallStatus } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 export function PlanApprovalView({
   toolCall,

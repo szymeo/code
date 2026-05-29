@@ -1,11 +1,11 @@
 import { TreeDirectoryRow, TreeFileRow } from "@components/TreeDirectoryRow";
-import { PanelMessage } from "@components/ui/PanelMessage";
+import { PanelMessage } from "@posthog/ui/primitives/PanelMessage";
 import { usePanelLayoutStore } from "@features/panels/store/panelLayoutStore";
 import { isFileTabActiveInTree } from "@features/panels/store/panelStoreHelpers";
 import {
   selectIsPathExpanded,
   useFileTreeStore,
-} from "@features/right-sidebar/stores/fileTreeStore";
+} from "@posthog/ui/features/right-sidebar/fileTreeStore";
 import { useCwd } from "@features/sidebar/hooks/useCwd";
 import { useCloudRunState } from "@features/task-detail/hooks/useCloudRunState";
 import { Cloud } from "@phosphor-icons/react";

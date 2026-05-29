@@ -14,7 +14,7 @@ import {
   type ToolViewProps,
   truncateText,
   useToolCallStatus,
-} from "@features/sessions/components/session-update/toolCallUtils";
+} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 import { Plugs } from "@phosphor-icons/react";
 import { Box, Flex } from "@radix-ui/themes";
 import { useState } from "react";

@@ -7,7 +7,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { logger } from "@utils/logger";
 import { useEffect } from "react";
 import { getSessionService } from "../service/service";
-import { type AgentSession, sessionStoreSetters } from "../stores/sessionStore";
+import { type AgentSession, sessionStoreSetters } from "@posthog/ui/features/sessions/sessionStore";
 import { useChatTitleGenerator } from "./useChatTitleGenerator";
 
 const log = logger.scope("session-connection");

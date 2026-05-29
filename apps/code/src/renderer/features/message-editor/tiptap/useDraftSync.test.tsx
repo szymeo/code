@@ -9,7 +9,7 @@ vi.mock("@utils/electronStorage", () => ({
   },
 }));
 
-import { useDraftStore } from "../stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import { useDraftSync } from "./useDraftSync";
 
 function DraftAttachmentsProbe({ sessionId }: { sessionId: string }) {

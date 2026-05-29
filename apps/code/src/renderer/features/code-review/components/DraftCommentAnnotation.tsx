@@ -1,6 +1,6 @@
 import { PencilSimple, Trash } from "@phosphor-icons/react";
 import { Badge, Flex, IconButton, Text } from "@radix-ui/themes";
-import { useReviewDraftsStore } from "../stores/reviewDraftsStore";
+import { useReviewDraftsStore } from "@posthog/ui/features/code-review/reviewDraftsStore";
 
 interface DraftCommentAnnotationProps {
   taskId: string;

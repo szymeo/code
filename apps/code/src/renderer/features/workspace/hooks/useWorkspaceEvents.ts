@@ -1,5 +1,5 @@
 import { trpcClient } from "@renderer/trpc/client";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useEffect } from "react";
 
 export function useWorkspaceEvents(taskId: string) {

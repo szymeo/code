@@ -1,4 +1,4 @@
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { Cloud, HardDrives } from "@phosphor-icons/react";
 import { Flex, SegmentedControl, Text } from "@radix-ui/themes";
 import { CloudEnvironmentsSettings } from "./CloudEnvironmentsSettings";

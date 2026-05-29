@@ -9,7 +9,7 @@ const mockUpdateTask = vi.hoisted(() => vi.fn());
 const mockClient = vi.hoisted(() => ({ updateTask: mockUpdateTask }));
 const mockUpdateSessionTaskTitle = vi.hoisted(() => vi.fn());
 
-vi.mock("@features/auth/hooks/authClient", () => ({
+vi.mock("@posthog/ui/features/auth/authClient", () => ({
   useOptionalAuthenticatedClient: () => mockClient,
 }));
 

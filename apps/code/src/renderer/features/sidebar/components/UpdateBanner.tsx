@@ -1,6 +1,6 @@
 import { ArrowsClockwise, Gift, Spinner } from "@phosphor-icons/react";
 import { Box } from "@radix-ui/themes";
-import { useUpdateStore } from "@stores/updateStore";
+import { useUpdateStore } from "@posthog/ui/features/updates/updateStore";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface UpdateBannerProps {

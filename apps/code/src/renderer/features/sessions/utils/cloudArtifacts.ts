@@ -11,7 +11,7 @@ import type {
 } from "@renderer/api/posthogClient";
 import { trpcClient } from "@renderer/trpc/client";
 import { getFileName, pathToFileUri } from "@utils/path";
-import type { EditorContent } from "../../message-editor/utils/content";
+import type { EditorContent } from "@posthog/ui/features/message-editor/content";
 
 const FILE_URI_PREFIX = "file://";
 const ATTACHMENT_SOURCE = "posthog_code";

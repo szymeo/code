@@ -1,6 +1,6 @@
 import type { AvailableCommand } from "@agentclientprotocol/sdk";
 import { CODE_COMMANDS } from "@features/message-editor/commands";
-import { getAvailableCommandsForTask } from "@features/sessions/stores/sessionStore";
+import { getAvailableCommandsForTask } from "@posthog/ui/features/sessions/sessionStore";
 import {
   fetchRepoFiles,
   pathToFileItem,
@@ -10,7 +10,7 @@ import { trpc } from "@renderer/trpc/client";
 import { isAbsolutePath } from "@utils/path";
 import { queryClient } from "@utils/queryClient";
 import Fuse, { type IFuseOptions } from "fuse.js";
-import { useDraftStore } from "../stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import type {
   CommandSuggestionItem,
   FileSuggestionItem,

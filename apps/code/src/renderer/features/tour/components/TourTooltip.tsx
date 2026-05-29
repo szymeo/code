@@ -1,5 +1,5 @@
 import { Button, Flex, Text, Theme } from "@radix-ui/themes";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";

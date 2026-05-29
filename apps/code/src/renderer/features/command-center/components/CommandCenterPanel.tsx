@@ -1,5 +1,5 @@
 import { useCloudPrUrl } from "@features/git-interaction/hooks/useCloudPrUrl";
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import { TaskIcon } from "@features/sidebar/components/items/TaskIcon";
 import { useTaskPrStatus } from "@features/sidebar/hooks/useTaskPrStatus";
 import { TaskInput } from "@features/task-detail/components/TaskInput";
@@ -24,7 +24,7 @@ import type {
 import {
   getCellSessionId,
   useCommandCenterStore,
-} from "../stores/commandCenterStore";
+} from "@posthog/ui/features/command-center/commandCenterStore";
 import { CommandCenterPRButton } from "./CommandCenterPRButton";
 import { CommandCenterSessionView } from "./CommandCenterSessionView";
 import { TaskSelector } from "./TaskSelector";

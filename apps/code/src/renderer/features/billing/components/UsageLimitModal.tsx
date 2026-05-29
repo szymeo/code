@@ -1,6 +1,6 @@
-import { useUsageLimitStore } from "@features/billing/stores/usageLimitStore";
+import { useUsageLimitStore } from "@posthog/ui/features/billing/usageLimitStore";
 import { formatResetTime } from "@features/billing/utils";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { useSeat } from "@hooks/useSeat";
 import { WarningCircle } from "@phosphor-icons/react";
 import { Button, Dialog, Flex, Text } from "@radix-ui/themes";

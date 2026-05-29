@@ -2,7 +2,7 @@ import { FullScreenLayout } from "@components/FullScreenLayout";
 import { useLogoutMutation } from "@features/auth/hooks/authMutations";
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
 import { SettingsDialog } from "@features/settings/components/SettingsDialog";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import {
   ArrowSquareOut,
   GearSix,

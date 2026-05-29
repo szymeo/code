@@ -1,8 +1,8 @@
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
 import { SettingRow } from "@features/settings/components/SettingRow";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
-import { useSetupStore } from "@features/setup/stores/setupStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
+import { useSetupStore } from "@posthog/ui/features/setup/setupStore";
 import { useTourStore } from "@features/tour/stores/tourStore";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
 import { Button, Flex, Switch } from "@radix-ui/themes";

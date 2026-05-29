@@ -1,4 +1,4 @@
-import { useSessionForTask } from "@features/sessions/stores/sessionStore";
+import { useSessionForTask } from "@posthog/ui/features/sessions/sessionStore";
 import { sendPromptToAgent } from "@features/sessions/utils/sendPromptToAgent";
 import { useNavigationStore } from "@stores/navigationStore";
 import { useCallback } from "react";

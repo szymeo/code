@@ -1,5 +1,6 @@
+import { FOLDERS_SERVICE } from "@posthog/workspace-server/services/folders/identifiers";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
+import type { FoldersService } from "@posthog/workspace-server/services/folders/folders";
 import {
   addFolderInput,
   addFolderOutput,
@@ -8,12 +9,10 @@ import {
   removeFolderInput,
   repositoryLookupResult,
   updateFolderAccessedInput,
-} from "../../services/folders/schemas";
-import type { FoldersService } from "../../services/folders/service";
+} from "@posthog/workspace-server/services/folders/schemas";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () =>
-  container.get<FoldersService>(MAIN_TOKENS.FoldersService);
+const getService = () => container.get<FoldersService>(FOLDERS_SERVICE);
 
 export const foldersRouter = router({
   getFolders: publicProcedure.output(getFoldersOutput).query(() => {

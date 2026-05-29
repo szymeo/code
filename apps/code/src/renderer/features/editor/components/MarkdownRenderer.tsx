@@ -1,11 +1,11 @@
-import { CodeBlock } from "@components/CodeBlock";
-import { Divider } from "@components/Divider";
+import { CodeBlock } from "@posthog/ui/primitives/CodeBlock";
+import { Divider } from "@posthog/ui/primitives/Divider";
 import { HighlightedCode } from "@components/HighlightedCode";
-import { List, ListItem } from "@components/List";
+import { List, ListItem } from "@posthog/ui/primitives/List";
 import { parseGithubIssueUrl } from "@features/message-editor/utils/githubIssueUrl";
 import { Blockquote, Checkbox, Code, Kbd, Text } from "@radix-ui/themes";
 import { trpcClient } from "@renderer/trpc/client";
-import { isPostHogCodeDeeplink } from "@shared/deeplink";
+import { isPostHogCodeDeeplink } from "@posthog/shared";
 import { memo, useMemo } from "react";
 import type { Components } from "react-markdown";
 import ReactMarkdown, { defaultUrlTransform } from "react-markdown";

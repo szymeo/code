@@ -5,8 +5,8 @@ import {
   SKILL_BUTTONS,
   type SkillButton,
   type SkillButtonId,
-} from "@features/skill-buttons/prompts";
-import { useSkillButtonsStore } from "@features/skill-buttons/stores/skillButtonsStore";
+} from "@posthog/ui/features/skill-buttons/prompts";
+import { useSkillButtonsStore } from "@posthog/ui/features/skill-buttons/skillButtonsStore";
 import { CaretDown } from "@phosphor-icons/react";
 import {
   Button,

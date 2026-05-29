@@ -1,16 +1,16 @@
-import { sessionStoreSetters } from "@features/sessions/stores/sessionStore";
-import { useSettingsStore as useFeatureSettingsStore } from "@features/settings/stores/settingsStore";
+import { sessionStoreSetters } from "@posthog/ui/features/sessions/sessionStore";
+import { useSettingsStore as useFeatureSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { trpc } from "@renderer/trpc/client";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import type { EditorView } from "@tiptap/pm/view";
 import { useEditor } from "@tiptap/react";
 import { queryClient } from "@utils/queryClient";
 import { isSendMessageSubmitKey } from "@utils/sendMessageKey";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { usePromptHistoryStore } from "../stores/promptHistoryStore";
-import type { FileAttachment, MentionChip } from "../utils/content";
-import { contentToXml, isContentEmpty } from "../utils/content";
+import { usePromptHistoryStore } from "@posthog/ui/features/message-editor/promptHistoryStore";
+import type { FileAttachment, MentionChip } from "@posthog/ui/features/message-editor/content";
+import { contentToXml, isContentEmpty } from "@posthog/ui/features/message-editor/content";
 import {
   githubIssueToMentionChip,
   githubPullRequestToMentionChip,

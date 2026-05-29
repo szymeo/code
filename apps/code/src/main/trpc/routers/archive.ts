@@ -1,5 +1,6 @@
+import { ARCHIVE_SERVICE } from "@posthog/workspace-server/services/archive/identifiers";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
+import type { ArchiveService } from "@posthog/workspace-server/services/archive/archive";
 import {
   archivedTaskIdsOutput,
   archiveTaskInput,
@@ -9,12 +10,10 @@ import {
   listArchivedTasksOutput,
   unarchiveTaskInput,
   unarchiveTaskOutput,
-} from "../../services/archive/schemas";
-import type { ArchiveService } from "../../services/archive/service";
+} from "@posthog/workspace-server/services/archive/schemas";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () =>
-  container.get<ArchiveService>(MAIN_TOKENS.ArchiveService);
+const getService = () => container.get<ArchiveService>(ARCHIVE_SERVICE);
 
 export const archiveRouter = router({
   archive: publicProcedure

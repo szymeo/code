@@ -8,7 +8,7 @@ import { Button, Flex, Text, TextArea, TextField } from "@radix-ui/themes";
 import { trpcClient } from "@renderer/trpc";
 import { useTRPC } from "@renderer/trpc/client";
 import { useQueryClient } from "@tanstack/react-query";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useState } from "react";
 
 interface EnvironmentFormProps {

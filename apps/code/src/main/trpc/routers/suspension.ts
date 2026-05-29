@@ -1,5 +1,5 @@
 import { container } from "../../di/container.js";
-import { MAIN_TOKENS } from "../../di/tokens.js";
+import { SUSPENSION_SERVICE } from "@posthog/workspace-server/services/suspension/identifiers";
 import {
   listSuspendedTasksOutput,
   restoreTaskInput,
@@ -9,12 +9,11 @@ import {
   suspendTaskOutput,
   suspensionSettingsOutput,
   updateSuspensionSettingsInput,
-} from "../../services/suspension/schemas.js";
-import type { SuspensionService } from "../../services/suspension/service.js";
+} from "@posthog/workspace-server/services/suspension/schemas";
+import type { SuspensionService } from "@posthog/workspace-server/services/suspension/suspension";
 import { publicProcedure, router } from "../trpc.js";
 
-const getService = () =>
-  container.get<SuspensionService>(MAIN_TOKENS.SuspensionService);
+const getService = () => container.get<SuspensionService>(SUSPENSION_SERVICE);
 
 export const suspensionRouter = router({
   suspend: publicProcedure

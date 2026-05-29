@@ -5,7 +5,7 @@ import { Button } from "@posthog/quill";
 import { trpcClient, useTRPC } from "@renderer/trpc";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useEffect, useState } from "react";
 
 const log = logger.scope("workspaces-settings");

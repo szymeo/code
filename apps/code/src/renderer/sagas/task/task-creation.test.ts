@@ -27,7 +27,7 @@ vi.mock("@hooks/useRepositoryDirectory", () => ({
   getTaskDirectory: mockGetTaskDirectory,
 }));
 
-vi.mock("@features/provisioning/stores/provisioningStore", () => ({
+vi.mock("@posthog/ui/features/provisioning/store", () => ({
   useProvisioningStore: {
     getState: () => ({
       setActive: vi.fn(),

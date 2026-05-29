@@ -2,7 +2,7 @@ import { useCwd } from "@features/sidebar/hooks/useCwd";
 import { useIsCloudTask } from "@features/workspace/hooks/useIsCloudTask";
 import { useWorkspace } from "@features/workspace/hooks/useWorkspace";
 import type { Task } from "@shared/types";
-import { useSessionForTask } from "../stores/sessionStore";
+import { useSessionForTask } from "@posthog/ui/features/sessions/sessionStore";
 
 export function useSessionViewState(taskId: string, task: Task) {
   const session = useSessionForTask(taskId);

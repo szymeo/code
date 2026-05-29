@@ -6,7 +6,7 @@ import { useEffect, useMemo } from "react";
 import { setEnrichmentEffect } from "../extensions/postHogEnrichment";
 import { useCodeMirror } from "../hooks/useCodeMirror";
 import { useEditorExtensions } from "../hooks/useEditorExtensions";
-import { usePendingScrollStore } from "../stores/pendingScrollStore";
+import { usePendingScrollStore } from "@posthog/ui/features/code-editor/pendingScrollStore";
 
 interface CodeMirrorEditorProps {
   content: string;

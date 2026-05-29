@@ -1,4 +1,4 @@
-import type { ToolViewProps } from "@features/sessions/components/session-update/toolCallUtils";
+import type { ToolViewProps } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 import type { McpUiDisplayMode } from "@modelcontextprotocol/ext-apps/app-bridge";
 import type {
   CallToolResult,
@@ -8,7 +8,7 @@ import type {
 import { ArrowsIn, ArrowsOut, Plugs, X } from "@phosphor-icons/react";
 import { Box, Flex, IconButton, Text } from "@radix-ui/themes";
 import { useTRPC } from "@renderer/trpc/client";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSubscription } from "@trpc/tanstack-react-query";
 import { logger } from "@utils/logger";

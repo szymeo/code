@@ -36,7 +36,7 @@ vi.mock("@utils/getFilePath", () => ({
 }));
 
 const mockToastWarning = vi.hoisted(() => vi.fn());
-vi.mock("@renderer/utils/toast", () => ({
+vi.mock("@posthog/ui/primitives/toast", () => ({
   toast: { warning: mockToastWarning },
 }));
 

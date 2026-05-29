@@ -1,5 +1,5 @@
-import { Tooltip } from "@components/ui/Tooltip";
-import { useDiffViewerStore } from "@features/code-editor/stores/diffViewerStore";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import { ArrowsClockwise, Columns, Rows, X } from "@phosphor-icons/react";
 import { Button } from "@posthog/quill";
 import { Flex, Separator, Text } from "@radix-ui/themes";
@@ -8,7 +8,7 @@ import { DiffSourceSelector } from "@renderer/features/code-review/components/Di
 import {
   type ReviewMode,
   useReviewNavigationStore,
-} from "@renderer/features/code-review/stores/reviewNavigationStore";
+} from "@posthog/ui/features/code-review/reviewNavigationStore";
 import type { ResolvedDiffSource } from "@renderer/features/code-review/utils/resolveDiffSource";
 import { FoldVertical, Maximize, Minimize, UnfoldVertical } from "lucide-react";
 import { memo } from "react";

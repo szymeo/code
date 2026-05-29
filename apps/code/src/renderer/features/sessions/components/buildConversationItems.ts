@@ -2,13 +2,13 @@ import type {
   ContentBlock,
   SessionNotification,
 } from "@agentclientprotocol/sdk";
-import type { Step, StepStatus } from "@components/ui/StepList";
-import type { QueuedMessage } from "@features/sessions/stores/sessionStore";
-import type { SessionUpdate, ToolCall } from "@features/sessions/types";
+import type { Step, StepStatus } from "@posthog/ui/primitives/StepList";
+import type { QueuedMessage } from "@posthog/ui/features/sessions/sessionStore";
+import type { SessionUpdate, ToolCall } from "@posthog/ui/features/sessions/types";
 import {
   extractSkillButtonId,
   type SkillButtonId,
-} from "@features/skill-buttons/prompts";
+} from "@posthog/ui/features/skill-buttons/prompts";
 import { isNotification, POSTHOG_NOTIFICATIONS } from "@posthog/agent";
 import {
   type AcpMessage,
@@ -17,10 +17,10 @@ import {
   isJsonRpcResponse,
   type UserShellExecuteParams,
 } from "@shared/types/session-events";
-import { extractPromptDisplayContent } from "@utils/promptContent";
+import { extractPromptDisplayContent } from "@posthog/ui/features/sessions/promptContent";
 import { type GitActionType, parseGitActionMessage } from "./GitActionMessage";
 import type { RenderItem } from "./session-update/SessionUpdateView";
-import type { UserMessageAttachment } from "./session-update/UserMessage";
+import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
 import type { UserShellExecute } from "./session-update/UserShellExecuteView";
 
 export interface TurnContext {

@@ -1,4 +1,4 @@
-import { StepList, type StepStatus } from "@components/ui/StepList";
+import { StepList, type StepStatus } from "@posthog/ui/primitives/StepList";
 import {
   CommitAllToggle,
   ErrorContainer,

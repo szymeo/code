@@ -1,10 +1,10 @@
 import type { AvailableCommand } from "@agentclientprotocol/sdk";
-import { useAddDirectoryDialogStore } from "@features/folder-picker/stores/addDirectoryDialogStore";
+import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
 import { trpcClient } from "@renderer/trpc/client";
 import { ANALYTICS_EVENTS, type FeedbackType } from "@shared/types/analytics";
 import type { Editor } from "@tiptap/core";
 import { track } from "@utils/analytics";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import type { MentionChipAttrs } from "./tiptap/MentionChipNode";
 
 interface CommandContext {

@@ -1,9 +1,9 @@
-import { useUsageLimitStore } from "@features/billing/stores/usageLimitStore";
+import { useUsageLimitStore } from "@posthog/ui/features/billing/usageLimitStore";
 import { formatResetTime } from "@features/billing/utils";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { trpcClient } from "@renderer/trpc/client";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 
 const log = logger.scope("billing-subscriptions");
 

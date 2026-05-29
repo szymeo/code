@@ -1,19 +1,19 @@
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
 import {
   startSlackFlowInput,
   startSlackFlowOutput,
 } from "../../services/slack-integration/schemas";
+import { SLACK_INTEGRATION_SERVICE } from "@posthog/core/integrations/identifiers";
 import {
   type SlackFlowTimedOut,
   type SlackIntegrationCallback,
   SlackIntegrationEvent,
   type SlackIntegrationService,
-} from "../../services/slack-integration/service";
+} from "@posthog/core/integrations/slack";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>
-  container.get<SlackIntegrationService>(MAIN_TOKENS.SlackIntegrationService);
+  container.get<SlackIntegrationService>(SLACK_INTEGRATION_SERVICE);
 
 export const slackIntegrationRouter = router({
   startFlow: publicProcedure

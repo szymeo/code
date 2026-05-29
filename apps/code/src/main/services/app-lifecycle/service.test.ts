@@ -6,6 +6,9 @@ const {
   mockAppLifecycle,
   mockContainer,
   mockDatabaseService,
+  mockSuspensionService,
+  mockWatcherRegistry,
+  mockProcessTracking,
   mockTrackAppEvent,
   mockShutdownPostHog,
   mockShutdownOtelTransport,
@@ -15,6 +18,21 @@ const {
     close: vi.fn(),
   };
   return {
+    mockSuspensionService: {
+      stopInactivityChecker: vi.fn(),
+    },
+    mockWatcherRegistry: {
+      shutdownAll: vi.fn(() => Promise.resolve()),
+    },
+    mockProcessTracking: {
+      getSnapshot: vi.fn(() =>
+        Promise.resolve({
+          tracked: { shell: [], agent: [], child: [] },
+          discovered: [],
+        }),
+      ),
+      killAll: vi.fn(),
+    },
     mockAppLifecycle: {
       whenReady: vi.fn().mockResolvedValue(undefined),
       quit: vi.fn(),
@@ -74,6 +92,10 @@ describe("AppLifecycleService", () => {
     process.exit = mockProcessExit;
     service = new AppLifecycleService(
       mockAppLifecycle as unknown as IAppLifecycle,
+      mockDatabaseService as never,
+      mockSuspensionService as never,
+      mockWatcherRegistry as never,
+      mockProcessTracking as never,
     );
   });
 

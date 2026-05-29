@@ -1,4 +1,4 @@
-import { Badge } from "@components/ui/Badge";
+import { Badge } from "@posthog/ui/primitives/Badge";
 import { inboxStatusLabel } from "@features/inbox/utils/inboxSort";
 import { Tooltip } from "@radix-ui/themes";
 import type { SignalReportStatus } from "@shared/types";

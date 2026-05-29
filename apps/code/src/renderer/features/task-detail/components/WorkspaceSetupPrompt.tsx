@@ -7,7 +7,7 @@ import { trpcClient } from "@renderer/trpc/client";
 import type { Task } from "@shared/types";
 import { logger } from "@utils/logger";
 import { getTaskRepository } from "@utils/repository";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useCallback, useState } from "react";
 
 const log = logger.scope("workspace-setup-prompt");

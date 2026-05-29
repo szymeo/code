@@ -1,5 +1,5 @@
 import { SettingRow } from "@features/settings/components/SettingRow";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { ArrowSquareOut, Check, Copy, Warning } from "@phosphor-icons/react";
 import {
   AlertDialog,
@@ -11,7 +11,7 @@ import {
   Switch,
   Text,
 } from "@radix-ui/themes";
-import { Tooltip } from "@renderer/components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { track } from "@utils/analytics";
 import { useCallback, useState } from "react";

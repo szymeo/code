@@ -15,7 +15,7 @@ import {
   StatusIndicators,
   type ToolViewProps,
   useToolCallStatus,
-} from "./toolCallUtils";
+} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 interface SubagentToolViewProps extends ToolViewProps {
   childItems: ConversationItem[];

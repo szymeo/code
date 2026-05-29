@@ -1,4 +1,4 @@
-import { useDiffViewerStore } from "@features/code-editor/stores/diffViewerStore";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import { useLinkedBranchPrUrl } from "@features/git-interaction/hooks/useLinkedBranchPrUrl";
 import type { DiffStats } from "@features/git-interaction/utils/diffStats";
 import { useCwd } from "@features/sidebar/hooks/useCwd";

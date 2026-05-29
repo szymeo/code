@@ -2,7 +2,7 @@ import { useAuthStateValue } from "@features/auth/hooks/authQueries";
 import {
   type Integration,
   useIntegrationSelectors,
-} from "@features/integrations/stores/integrationStore";
+} from "@posthog/ui/features/integrations/store";
 import { useIntegrations } from "@hooks/useIntegrations";
 import { ArrowSquareOutIcon, SlackLogoIcon } from "@phosphor-icons/react";
 import { Box, Button, Flex, Spinner, Text, Tooltip } from "@radix-ui/themes";

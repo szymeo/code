@@ -1,15 +1,15 @@
+import { USAGE_MONITOR_SERVICE } from "@posthog/core/usage/identifiers";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
+import type { UsageMonitorService } from "@posthog/core/usage/usage-monitor";
 import {
   UsageMonitorEvent,
   type UsageMonitorEvents,
   usageSnapshotOutput,
-} from "../../services/usage-monitor/schemas";
-import type { UsageMonitorService } from "../../services/usage-monitor/service";
+} from "@posthog/core/usage/monitor-schemas";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>
-  container.get<UsageMonitorService>(MAIN_TOKENS.UsageMonitorService);
+  container.get<UsageMonitorService>(USAGE_MONITOR_SERVICE);
 
 function subscribe<K extends keyof UsageMonitorEvents>(event: K) {
   return publicProcedure.subscription(async function* (opts) {

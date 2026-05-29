@@ -7,9 +7,9 @@ import { useGitInteractionStore } from "@features/git-interaction/state/gitInter
 import { getSuggestedBranchName } from "@features/git-interaction/utils/getSuggestedBranchName";
 import { DirtyTreeDialog } from "@features/sessions/components/DirtyTreeDialog";
 import { HandoffConfirmDialog } from "@features/sessions/components/HandoffConfirmDialog";
-import { useSessionForTask } from "@features/sessions/hooks/useSession";
+import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
 import { getLocalHandoffService } from "@features/sessions/service/localHandoffService";
-import { useHandoffDialogStore } from "@features/sessions/stores/handoffDialogStore";
+import { useHandoffDialogStore } from "@posthog/ui/features/sessions/handoffDialogStore";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
 import { Laptop, Spinner } from "@phosphor-icons/react";
 import { Button as QuillButton } from "@posthog/quill";

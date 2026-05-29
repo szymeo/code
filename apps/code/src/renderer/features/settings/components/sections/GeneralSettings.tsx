@@ -8,7 +8,7 @@ import {
   type DiffOpenMode,
   type SendMessagesWith,
   useSettingsStore,
-} from "@features/settings/stores/settingsStore";
+} from "@posthog/ui/features/settings/settingsStore";
 import { ArrowSquareOut } from "@phosphor-icons/react";
 import {
   Button,
@@ -21,8 +21,8 @@ import {
 } from "@radix-ui/themes";
 import { useTRPC } from "@renderer/trpc";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
-import type { ThemePreference } from "@stores/themeStore";
-import { useThemeStore } from "@stores/themeStore";
+import type { ThemePreference } from "@posthog/ui/workbench/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { track } from "@utils/analytics";
 import { playCompletionSound } from "@utils/sounds";

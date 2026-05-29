@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { IconButton } from "@radix-ui/themes";
 import {
@@ -6,7 +6,7 @@ import {
   SHORTCUTS,
 } from "@renderer/constants/keyboard-shortcuts";
 import type React from "react";
-import { useSidebarStore } from "../stores/sidebarStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
 
 export const SidebarTrigger: React.FC = () => {
   const toggle = useSidebarStore((state) => state.toggle);

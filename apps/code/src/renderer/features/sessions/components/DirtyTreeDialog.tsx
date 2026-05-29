@@ -6,7 +6,7 @@ import {
 } from "@features/git-interaction/utils/gitStatusUtils";
 import { Warning } from "@phosphor-icons/react";
 import { Badge, Box, Flex, Text } from "@radix-ui/themes";
-import type { HandoffChangedFile } from "../stores/handoffDialogStore";
+import type { HandoffChangedFile } from "@posthog/ui/features/sessions/handoffDialogStore";
 
 interface DirtyTreeDialogProps {
   open: boolean;

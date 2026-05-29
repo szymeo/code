@@ -1,7 +1,7 @@
-import { useReviewNavigationStore } from "@renderer/features/code-review/stores/reviewNavigationStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import type { Task } from "@shared/types";
 import { useCallback } from "react";
-import type { ReviewMode } from "../stores/reviewNavigationStore";
+import type { ReviewMode } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import { useTaskDiffSummaryStats } from "./useTaskDiffSummaryStats";
 
 interface DiffStatsToggleResult {

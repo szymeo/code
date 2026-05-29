@@ -1,6 +1,6 @@
 import { ResizableSidebar } from "@components/ResizableSidebar";
 import type React from "react";
-import { useSidebarStore } from "../stores/sidebarStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
 
 export const Sidebar: React.FC<{ children: React.ReactNode }> = ({
   children,

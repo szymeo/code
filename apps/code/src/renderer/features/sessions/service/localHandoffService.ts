@@ -1,8 +1,8 @@
 import { trpcClient } from "@renderer/trpc/client";
 import type { Task } from "@shared/types";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
-import { useHandoffDialogStore } from "../stores/handoffDialogStore";
+import { toast } from "@posthog/ui/primitives/toast";
+import { useHandoffDialogStore } from "@posthog/ui/features/sessions/handoffDialogStore";
 import { getSessionService } from "./service";
 
 const log = logger.scope("local-handoff-service");

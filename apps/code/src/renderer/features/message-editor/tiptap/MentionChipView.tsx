@@ -1,5 +1,5 @@
-import { Tooltip } from "@components/ui/Tooltip";
-import { useSettingsStore as useFeatureSettingsStore } from "@features/settings/stores/settingsStore";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
+import { useSettingsStore as useFeatureSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import {
   ChartLineIcon,
   FileTextIcon,

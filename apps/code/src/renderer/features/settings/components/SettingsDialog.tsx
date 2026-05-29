@@ -4,11 +4,11 @@ import {
   useAuthStateValue,
   useCurrentUser,
 } from "@features/auth/hooks/authQueries";
-import { getUserInitials } from "@features/auth/utils/userInitials";
+import { getUserInitials } from "@posthog/ui/features/auth/userInitials";
 import {
   type SettingsCategory,
   useSettingsDialogStore,
-} from "@features/settings/stores/settingsDialogStore";
+} from "@posthog/ui/features/settings/settingsDialogStore";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
 import { useSeat } from "@hooks/useSeat";
 import {

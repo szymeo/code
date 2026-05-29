@@ -3,7 +3,7 @@ import { MAIN_TOKENS } from "../../di/tokens";
 import {
   ProvisioningEvent,
   type ProvisioningService,
-} from "../../services/provisioning/service";
+} from "@posthog/core/provisioning/provisioning";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>

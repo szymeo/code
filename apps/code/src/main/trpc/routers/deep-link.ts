@@ -4,17 +4,17 @@ import {
   InboxLinkEvent,
   type InboxLinkService,
   type PendingInboxDeepLink,
-} from "../../services/inbox-link/service";
+} from "@posthog/core/links/inbox-link";
 import {
   NewTaskLinkEvent,
   type NewTaskLinkPayload,
   type NewTaskLinkService,
-} from "../../services/new-task-link/service";
+} from "@posthog/core/links/new-task-link";
 import {
   type PendingDeepLink,
   TaskLinkEvent,
   type TaskLinkService,
-} from "../../services/task-link/service";
+} from "@posthog/core/links/task-link";
 import { publicProcedure, router } from "../trpc";
 
 const getTaskLinkService = () =>

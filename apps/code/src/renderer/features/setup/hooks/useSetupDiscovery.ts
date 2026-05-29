@@ -1,8 +1,8 @@
 import type { SetupRunService } from "@features/setup/services/setupRunService";
-import { useSetupStore } from "@features/setup/stores/setupStore";
+import { useSetupStore } from "@posthog/ui/features/setup/setupStore";
 import { get } from "@renderer/di/container";
 import { RENDERER_TOKENS } from "@renderer/di/tokens";
-import { useActiveRepoStore } from "@stores/activeRepoStore";
+import { useActiveRepoStore } from "@posthog/ui/workbench/activeRepoStore";
 import { useEffect } from "react";
 
 export function useSetupDiscovery() {

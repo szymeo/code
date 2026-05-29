@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useSidebarStore } from "../stores/sidebarStore";
+import { useSidebarStore } from "@posthog/ui/features/sidebar/sidebarStore";
 import type { SidebarData, TaskData } from "./useSidebarData";
 
 export function useVisualTaskOrder(sidebarData: SidebarData): TaskData[] {

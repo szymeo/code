@@ -266,7 +266,7 @@ export type SidebarPrState = z.infer<typeof sidebarPrStateSchema>;
 export type TaskPrStatus = z.infer<typeof taskPrStatusOutput>;
 
 // Type exports
-export type WorkspaceMode = z.infer<typeof workspaceModeSchema>;
+export type { WorkspaceMode } from "@posthog/shared";
 export type WorktreeInfo = z.infer<typeof worktreeInfoSchema>;
 export type WorkspaceInfo = z.infer<typeof workspaceInfoSchema>;
 export type Workspace = z.infer<typeof workspaceSchema>;

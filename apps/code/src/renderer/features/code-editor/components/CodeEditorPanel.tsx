@@ -1,6 +1,6 @@
-import { PanelMessage } from "@components/ui/PanelMessage";
-import { SafeImagePreview } from "@components/ui/SafeImagePreview";
-import { Tooltip } from "@components/ui/Tooltip";
+import { PanelMessage } from "@posthog/ui/primitives/PanelMessage";
+import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { CodeMirrorEditor } from "@features/code-editor/components/CodeMirrorEditor";
 import { EnrichmentPopover } from "@features/code-editor/components/EnrichmentPopover";
 import { useCloudFileContent } from "@features/code-editor/hooks/useCloudFileContent";
@@ -8,7 +8,7 @@ import { useFileEnrichment } from "@features/code-editor/hooks/useFileEnrichment
 import { isMarkdownFile } from "@features/code-editor/utils/markdownUtils";
 import { getRelativePath } from "@features/code-editor/utils/pathUtils";
 import { usePanelLayoutStore } from "@features/panels";
-import { useFileTreeStore } from "@features/right-sidebar/stores/fileTreeStore";
+import { useFileTreeStore } from "@posthog/ui/features/right-sidebar/fileTreeStore";
 import { useCwd } from "@features/sidebar/hooks/useCwd";
 import { useIsWorkspaceCloudRun } from "@features/workspace/hooks/useWorkspace";
 import { Check, Copy } from "@phosphor-icons/react";

@@ -14,8 +14,8 @@ const userDataPath = path.join(
 
 export default defineConfig({
   dialect: "sqlite",
-  schema: "./src/main/db/schema.ts",
-  out: "./src/main/db/migrations",
+  schema: "../../packages/workspace-server/src/db/schema.ts",
+  out: "../../packages/workspace-server/src/db/migrations",
   casing: "snake_case",
   dbCredentials: {
     url: path.join(userDataPath, "posthog-code.db"),

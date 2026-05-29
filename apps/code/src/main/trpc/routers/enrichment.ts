@@ -1,11 +1,10 @@
 import { z } from "zod";
+import { ENRICHMENT_SERVICE } from "@posthog/workspace-server/services/enrichment/identifiers";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
-import type { EnrichmentService } from "../../services/enrichment/service";
+import type { EnrichmentService } from "@posthog/workspace-server/services/enrichment/enrichment";
 import { publicProcedure, router } from "../trpc";
 
-const getService = () =>
-  container.get<EnrichmentService>(MAIN_TOKENS.EnrichmentService);
+const getService = () => container.get<EnrichmentService>(ENRICHMENT_SERVICE);
 
 const enrichFileInput = z.object({
   taskId: z.string(),

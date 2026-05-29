@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { useComboboxFilter } from "./useComboboxFilter";
+import { useComboboxFilter } from "@posthog/ui/primitives/combobox/useComboboxFilter";
 
 describe("useComboboxFilter", () => {
   beforeEach(() => {

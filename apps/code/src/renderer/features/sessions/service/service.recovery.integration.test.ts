@@ -138,7 +138,7 @@ const mockSessionConfigStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@features/sessions/stores/sessionConfigStore",
+  "@posthog/ui/features/sessions/sessionConfigStore",
   () => mockSessionConfigStore,
 );
 
@@ -158,13 +158,13 @@ const mockSessionAdapterStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@features/sessions/stores/sessionAdapterStore",
+  "@posthog/ui/features/sessions/sessionAdapterStore",
   () => mockSessionAdapterStore,
 );
 
 const mockGetIsOnline = vi.hoisted(() => vi.fn(() => true));
 
-vi.mock("@renderer/stores/connectivityStore", () => ({
+vi.mock("@posthog/ui/features/connectivity/connectivityStore", () => ({
   getIsOnline: () => mockGetIsOnline(),
 }));
 
@@ -172,7 +172,7 @@ const mockSettingsState = vi.hoisted(() => ({
   customInstructions: "",
 }));
 
-vi.mock("@features/settings/stores/settingsStore", () => ({
+vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
   useSettingsStore: {
     getState: () => mockSettingsState,
   },
@@ -203,7 +203,7 @@ vi.mock("@utils/notifications", () => ({
   notifyPermissionRequest: vi.fn(),
   notifyPromptComplete: vi.fn(),
 }));
-vi.mock("@renderer/utils/toast", () => ({
+vi.mock("@posthog/ui/primitives/toast", () => ({
   toast: { error: vi.fn(), info: vi.fn() },
 }));
 vi.mock("@utils/queryClient", () => ({
@@ -221,9 +221,9 @@ const mockConvertStoredEntriesToEvents = vi.hoisted(() =>
   vi.fn<(entries: unknown[]) => unknown[]>(() => []),
 );
 
-vi.mock("@utils/session", async () => {
+vi.mock("@posthog/ui/features/sessions/session", async () => {
   const actual =
-    await vi.importActual<typeof import("@utils/session")>("@utils/session");
+    await vi.importActual<typeof import("@posthog/ui/features/sessions/session")>("@posthog/ui/features/sessions/session");
   return {
     convertStoredEntriesToEvents: mockConvertStoredEntriesToEvents,
     createUserPromptEvent: vi.fn((prompt, ts) => ({
@@ -257,13 +257,13 @@ vi.mock("@utils/session", async () => {
   };
 });
 
-// NOTE: deliberately NOT mocking "@features/sessions/stores/sessionStore" —
+// NOTE: deliberately NOT mocking "@posthog/ui/features/sessions/sessionStore" —
 // the real Zustand store is the whole point of this test.
-import type { AgentSession } from "@features/sessions/stores/sessionStore";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
 import {
   sessionStoreSetters,
   useSessionStore,
-} from "@features/sessions/stores/sessionStore";
+} from "@posthog/ui/features/sessions/sessionStore";
 import { getSessionService, resetSessionService } from "./service";
 
 const TASK_ID = "task-299bc88e";

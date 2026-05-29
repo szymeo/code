@@ -1,4 +1,4 @@
-import { useAddDirectoryDialogStore } from "@features/folder-picker/stores/addDirectoryDialogStore";
+import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
 import {
   File,
   FolderSimple,
@@ -14,14 +14,14 @@ import {
 } from "@posthog/quill";
 import { isRasterImageFile } from "@posthog/shared";
 import { trpcClient, useTRPC } from "@renderer/trpc/client";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import {
   deriveFileLabel,
   type FileAttachment,
   type MentionChip,
-} from "../utils/content";
+} from "@posthog/ui/features/message-editor/content";
 import {
   persistBrowserFile,
   persistImageFilePath,

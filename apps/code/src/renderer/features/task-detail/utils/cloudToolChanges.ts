@@ -1,8 +1,8 @@
-import { getReadToolContent } from "@features/sessions/components/session-update/toolCallUtils";
+import { getReadToolContent } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 import type {
   ToolCallContent,
   ToolCallLocation,
-} from "@features/sessions/types";
+} from "@posthog/ui/features/sessions/types";
 import type { ChangedFile } from "@shared/types";
 import {
   type AcpMessage,

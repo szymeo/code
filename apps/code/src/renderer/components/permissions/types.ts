@@ -4,7 +4,7 @@ import type {
   ToolCallContent,
 } from "@agentclientprotocol/sdk";
 import type { SelectorOption } from "@components/ActionSelector";
-import type { CodeToolKind } from "@features/sessions/types";
+import type { CodeToolKind } from "@posthog/ui/features/sessions/types";
 
 type AcpToolCall = RequestPermissionRequest["toolCall"];
 export type PermissionToolCall = Omit<AcpToolCall, "kind"> & {
@@ -41,7 +41,7 @@ export function toSelectorOptions(
 export {
   type DiffContent,
   findDiffContent,
-} from "@features/sessions/components/session-update/toolCallUtils";
+} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 export type TerminalContent = Extract<ToolCallContent, { type: "terminal" }>;
 export type StandardContent = Extract<ToolCallContent, { type: "content" }>;
 

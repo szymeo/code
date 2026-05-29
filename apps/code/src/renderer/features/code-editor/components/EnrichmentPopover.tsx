@@ -12,7 +12,7 @@ import {
 } from "@utils/posthogLinks";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useEnrichmentPopoverStore } from "../stores/enrichmentPopoverStore";
+import { useEnrichmentPopoverStore } from "@features/code-editor/stores/enrichmentPopoverStore";
 
 const POPOVER_WIDTH = 320;
 const GAP = 8;

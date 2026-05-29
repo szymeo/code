@@ -1,6 +1,6 @@
 import { useFreeUsage } from "@features/billing/hooks/useFreeUsage";
 import { formatResetTime, isUsageExceeded } from "@features/billing/utils";
-import { useSettingsDialogStore } from "@features/settings/stores/settingsDialogStore";
+import { useSettingsDialogStore } from "@posthog/ui/features/settings/settingsDialogStore";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
 import { Circle } from "@phosphor-icons/react";
 import { BILLING_FLAG } from "@shared/constants";

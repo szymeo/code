@@ -1,15 +1,15 @@
 import { tryExecuteCodeCommand } from "@features/message-editor/commands";
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import { useTaskViewed } from "@features/sidebar/hooks/useTaskViewed";
 import { trpcClient } from "@renderer/trpc/client";
 import type { Task } from "@shared/types";
 import { useNavigationStore } from "@stores/navigationStore";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { useCallback, useRef } from "react";
 import { getSessionService } from "../service/service";
-import type { AgentSession } from "../stores/sessionStore";
-import { sessionStoreSetters } from "../stores/sessionStore";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
+import { sessionStoreSetters } from "@posthog/ui/features/sessions/sessionStore";
 import {
   combineQueuedCloudPrompts,
   promptToQueuedEditorContent,

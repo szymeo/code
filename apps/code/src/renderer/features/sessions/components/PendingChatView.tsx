@@ -1,8 +1,8 @@
-import type { UserMessageAttachment } from "@features/sessions/components/session-update/UserMessage";
+import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
 import { CHAT_CONTENT_MAX_WIDTH } from "@features/sessions/constants";
 import { Brain } from "@phosphor-icons/react";
 import { Box, Flex, Text } from "@radix-ui/themes";
-import { PendingInputPlaceholder } from "./PendingInputPlaceholder";
+import { PendingInputPlaceholder } from "@posthog/ui/features/sessions/components/PendingInputPlaceholder";
 import { UserMessage } from "./session-update/UserMessage";
 
 interface PendingChatViewProps {

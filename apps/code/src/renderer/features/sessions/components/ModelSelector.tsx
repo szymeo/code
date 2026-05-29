@@ -16,7 +16,7 @@ import {
   flattenSelectOptions,
   useModelConfigOptionForTask,
   useSessionForTask,
-} from "../stores/sessionStore";
+} from "@posthog/ui/features/sessions/sessionStore";
 
 interface ModelSelectorProps {
   taskId?: string;

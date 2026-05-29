@@ -1,12 +1,12 @@
-import { useSessions } from "@features/sessions/hooks/useSession";
-import type { AgentSession } from "@features/sessions/stores/sessionStore";
+import { useSessions } from "@posthog/ui/features/sessions/useSession";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
 import { useTasks } from "@features/tasks/hooks/useTasks";
 import { useWorkspaces } from "@features/workspace/hooks/useWorkspace";
 import type { WorkspaceMode } from "@main/services/workspace/schemas";
 import type { Task } from "@shared/types";
 import { getTaskRepository, parseRepository } from "@utils/repository";
 import { useMemo } from "react";
-import { useCommandCenterStore } from "../stores/commandCenterStore";
+import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
 
 export type CellStatus = "running" | "waiting" | "idle" | "error" | "completed";
 

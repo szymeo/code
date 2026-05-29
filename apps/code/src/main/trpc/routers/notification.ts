@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { container } from "../../di/container";
-import { MAIN_TOKENS } from "../../di/tokens";
-import type { NotificationService } from "../../services/notification/service";
+import { NOTIFICATION_SERVICE } from "@posthog/core/notification/identifiers";
+import type { NotificationService } from "@posthog/core/notification/notification";
 import { publicProcedure, router } from "../trpc";
 
 const getService = () =>
-  container.get<NotificationService>(MAIN_TOKENS.NotificationService);
+  container.get<NotificationService>(NOTIFICATION_SERVICE);
 
 export const notificationRouter = router({
   send: publicProcedure

@@ -1,4 +1,4 @@
-import { Badge } from "@components/ui/Badge";
+import { Badge } from "@posthog/ui/primitives/Badge";
 import type { SignalReportPriority } from "@shared/types";
 import type { ReactNode } from "react";
 

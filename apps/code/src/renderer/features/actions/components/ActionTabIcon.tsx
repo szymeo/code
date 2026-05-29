@@ -1,9 +1,9 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import {
   getActionSessionId,
   useActionStore,
-} from "@features/actions/stores/actionStore";
-import { terminalManager } from "@features/terminal/services/TerminalManager";
+} from "@posthog/ui/features/actions/actionStore";
+import { terminalManager } from "@posthog/ui/features/terminal/TerminalManager";
 import { ArrowClockwise, Check, X } from "@phosphor-icons/react";
 import { Spinner } from "@radix-ui/themes";
 import { trpcClient } from "@renderer/trpc/client";

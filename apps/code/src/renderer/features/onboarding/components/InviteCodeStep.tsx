@@ -1,5 +1,5 @@
 import { useRedeemInviteCodeMutation } from "@features/auth/hooks/authMutations";
-import { useAuthUiStateStore } from "@features/auth/stores/authUiStateStore";
+import { useAuthUiStateStore } from "@posthog/ui/features/auth/authUiStateStore";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { Button, Callout, Flex, Spinner, Text } from "@radix-ui/themes";
 import happyHog from "@renderer/assets/images/hedgehogs/happy-hog.png";

@@ -1,4 +1,4 @@
-import { SafeImagePreview } from "@components/ui/SafeImagePreview";
+import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
 import { File, X } from "@phosphor-icons/react";
 import {
   isGifFile,
@@ -9,7 +9,7 @@ import { Dialog, Flex, IconButton, Text } from "@radix-ui/themes";
 import { useTRPC } from "@renderer/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
-import type { FileAttachment } from "../utils/content";
+import type { FileAttachment } from "@posthog/ui/features/message-editor/content";
 
 function FrozenGifThumbnail({ src, alt }: { src: string; alt: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

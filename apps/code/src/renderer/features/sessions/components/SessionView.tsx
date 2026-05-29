@@ -5,24 +5,24 @@ import {
   PromptInput,
   type EditorHandle as PromptInputHandle,
 } from "@features/message-editor/components/PromptInput";
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
 import { resolveAndAttachDroppedFiles } from "@features/message-editor/utils/persistFile";
 import { CHAT_CONTENT_MAX_WIDTH } from "@features/sessions/constants";
-import { useSessionForTask } from "@features/sessions/hooks/useSession";
+import { useSessionForTask } from "@posthog/ui/features/sessions/useSession";
 import {
   useAdapterForTask,
   useModeConfigOptionForTask,
   usePendingPermissionsForTask,
   useThoughtLevelConfigOptionForTask,
-} from "@features/sessions/stores/sessionStore";
-import type { Plan } from "@features/sessions/types";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+} from "@posthog/ui/features/sessions/sessionStore";
+import type { Plan } from "@posthog/ui/features/sessions/types";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { useIsWorkspaceCloudRun } from "@features/workspace/hooks/useWorkspace";
 import { useAutoFocusOnTyping } from "@hooks/useAutoFocusOnTyping";
 import { useConnectivity } from "@hooks/useConnectivity";
 import { Pause, Spinner, Warning } from "@phosphor-icons/react";
 import { Box, Button, ContextMenu, Flex, Text } from "@radix-ui/themes";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import type { Task, TaskRunStatus } from "@shared/types";
 import {
   type AcpMessage,
@@ -32,17 +32,17 @@ import {
 import {
   pendingTaskPromptStoreApi,
   usePendingTaskPrompt,
-} from "@stores/pendingTaskPromptStore";
+} from "@posthog/ui/workbench/pendingTaskPromptStore";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getSessionService } from "../service/service";
-import { flattenSelectOptions } from "../stores/sessionStore";
+import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
 import {
   useSessionViewActions,
   useShowRawLogs,
-} from "../stores/sessionViewStore";
+} from "@posthog/ui/features/sessions/sessionViewStore";
 import { CloudInitializingView } from "./CloudInitializingView";
 import { ConversationView } from "./ConversationView";
-import { DropZoneOverlay } from "./DropZoneOverlay";
+import { DropZoneOverlay } from "@posthog/ui/features/sessions/components/DropZoneOverlay";
 import { ModelSelector } from "./ModelSelector";
 import { PendingChatView } from "./PendingChatView";
 import { PlanStatusBar } from "./PlanStatusBar";

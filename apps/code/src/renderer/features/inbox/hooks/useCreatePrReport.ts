@@ -1,10 +1,10 @@
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { useCreateTask } from "@features/tasks/hooks/useTasks";
 import { useUserRepositoryIntegration } from "@hooks/useIntegrations";
 import { get } from "@renderer/di/container";
 import { RENDERER_TOKENS } from "@renderer/di/tokens";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { getCloudUrlFromRegion } from "@shared/utils/urls";
 import { useNavigationStore } from "@stores/navigationStore";

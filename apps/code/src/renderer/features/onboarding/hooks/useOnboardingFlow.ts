@@ -1,14 +1,14 @@
 import { useAuthStateValue } from "@features/auth/hooks/authQueries";
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
 import { trpcClient } from "@renderer/trpc/client";
 import {
   ANALYTICS_EVENTS,
   type RepositoryProvider,
 } from "@shared/types/analytics";
-import { useActiveRepoStore } from "@stores/activeRepoStore";
+import { useActiveRepoStore } from "@posthog/ui/workbench/activeRepoStore";
 import { track } from "@utils/analytics";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ONBOARDING_STEPS, type OnboardingStep } from "../types";
+import { ONBOARDING_STEPS, type OnboardingStep } from "@posthog/ui/features/onboarding/types";
 
 function inferRepositoryProvider(
   remote: string | undefined,

@@ -5,7 +5,7 @@ import {
   getPostHogExecDisplay,
   isPostHogExecTool,
 } from "@features/posthog-mcp/utils/posthog-exec-display";
-import { formatInput } from "@features/sessions/components/session-update/toolCallUtils";
+import { formatInput } from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 import { Box, Code } from "@radix-ui/themes";
 import { DefaultPermission } from "./DefaultPermission";
 import { type BasePermissionProps, toSelectorOptions } from "./types";

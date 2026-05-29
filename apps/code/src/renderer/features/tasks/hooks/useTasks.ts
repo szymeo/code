@@ -6,7 +6,7 @@ import { useAuthenticatedMutation } from "@hooks/useAuthenticatedMutation";
 import { useAuthenticatedQuery } from "@hooks/useAuthenticatedQuery";
 import { useMeQuery } from "@hooks/useMeQuery";
 import type { Schemas } from "@posthog/api-client";
-import { useFocusStore } from "@renderer/stores/focusStore";
+import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
 import { useNavigationStore } from "@renderer/stores/navigationStore";
 import { trpcClient } from "@renderer/trpc/client";
 import type { Task } from "@shared/types";

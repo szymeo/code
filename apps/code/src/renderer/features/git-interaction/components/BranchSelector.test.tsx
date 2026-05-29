@@ -24,7 +24,7 @@ vi.mock("@renderer/trpc", () => ({
   }),
 }));
 
-vi.mock("@renderer/utils/toast", () => ({
+vi.mock("@posthog/ui/primitives/toast", () => ({
   toast: { error: vi.fn() },
 }));
 

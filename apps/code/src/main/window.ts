@@ -9,8 +9,8 @@ import {
   screen,
   shell,
 } from "electron";
+import { MAIN_WINDOW_SERVICE } from "@posthog/platform/main-window";
 import { container } from "./di/container";
-import { MAIN_TOKENS } from "./di/tokens";
 import { buildApplicationMenu } from "./menu";
 import type { ElectronMainWindow } from "./platform-adapters/electron-main-window";
 import { trpcRouter } from "./trpc/router";
@@ -240,7 +240,7 @@ export function createWindow(): void {
   mainWindow.on("close", () => mainWindow && saveWindowState(mainWindow));
 
   container
-    .get<ElectronMainWindow>(MAIN_TOKENS.MainWindow)
+    .get<ElectronMainWindow>(MAIN_WINDOW_SERVICE)
     .setMainWindowGetter(() => mainWindow);
 
   createIPCHandler({

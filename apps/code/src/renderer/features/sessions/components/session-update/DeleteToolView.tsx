@@ -8,7 +8,7 @@ import {
   StatusIndicators,
   type ToolViewProps,
   useToolCallStatus,
-} from "./toolCallUtils";
+} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 function getDeletedLineCount(diff: DiffContent | undefined): number | null {
   if (!diff?.oldText) return null;

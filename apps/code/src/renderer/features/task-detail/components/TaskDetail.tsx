@@ -1,6 +1,6 @@
 import { CloudReviewPage } from "@features/code-review/components/CloudReviewPage";
 import { ReviewPage } from "@features/code-review/components/ReviewPage";
-import { useReviewNavigationStore } from "@features/code-review/stores/reviewNavigationStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import { FilePicker } from "@features/command/components/FilePicker";
 import { clearGitReviewQueries } from "@features/git-interaction/utils/gitCacheKeys";
 import { PanelLayout } from "@features/panels";

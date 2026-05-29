@@ -1,0 +1,168 @@
+import { useService } from "@posthog/di/react";
+import { WORKBENCH_LOGGER, type WorkbenchLogger } from "@posthog/di/logger";
+import { useFolders } from "@posthog/ui/features/folders/useFolders";
+import {
+  FOLDERS_CLIENT,
+  type FoldersClient,
+} from "@posthog/ui/features/folders/ports";
+import { FIELD_TRIGGER_CLASS } from "@posthog/ui/styles/fieldTrigger";
+import {
+  CaretDown,
+  Folder as FolderIcon,
+  FolderOpen,
+  GitBranch,
+} from "@phosphor-icons/react";
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  MenuLabel,
+} from "@posthog/quill";
+import { Flex, Text } from "@radix-ui/themes";
+import type { RefObject } from "react";
+
+interface FolderPickerProps {
+  value: string;
+  onChange: (path: string) => void;
+  placeholder?: string;
+  variant?: "compact" | "field";
+  anchor?: RefObject<HTMLElement | null>;
+}
+
+export function FolderPicker({
+  value,
+  onChange,
+  placeholder = "Select folder...",
+  variant = "compact",
+  anchor,
+}: FolderPickerProps) {
+  const folderClient = useService<FoldersClient>(FOLDERS_CLIENT);
+  const log = useService<WorkbenchLogger>(WORKBENCH_LOGGER);
+  const {
+    getRecentFolders,
+    getFolderDisplayName,
+    addFolder,
+    updateLastAccessed,
+    getFolderByPath,
+  } = useFolders();
+
+  const recentFolders = getRecentFolders();
+  const displayValue = getFolderDisplayName(value);
+  const isField = variant === "field";
+
+  const handleSelect = (path: string) => {
+    onChange(path);
+    const folder = getFolderByPath(path);
+    if (folder) updateLastAccessed(folder.id);
+  };
+
+  const handleOpenFilePicker = async () => {
+    try {
+      const selectedPath = await folderClient.selectDirectory();
+      if (!selectedPath) return;
+      await addFolder(selectedPath);
+      onChange(selectedPath);
+    } catch (error) {
+      log.error("Failed to open folder picker", { error });
+    }
+  };
+
+  const fieldContent = (
+    <>
+      <Flex align="center" gap="2" className="min-w-0 flex-1">
+        <FolderIcon size={16} className="shrink-0 text-(--gray-12)" />
+        <Text
+          className="min-w-0 max-w-full truncate text-left font-medium text-(--gray-12)"
+          title={displayValue || undefined}
+        >
+          {displayValue || placeholder}
+        </Text>
+      </Flex>
+      <CaretDown size={14} className="shrink-0 text-(--gray-9)" />
+    </>
+  );
+
+  const compactContent = (
+    <>
+      <FolderIcon size={14} weight="regular" className="shrink-0" />
+      <span className="max-w-[120px] truncate">
+        {displayValue || placeholder}
+      </span>
+      <CaretDown size={10} weight="bold" className="text-muted-foreground" />
+    </>
+  );
+
+  if (recentFolders.length === 0) {
+    return isField ? (
+      <button
+        type="button"
+        onClick={handleOpenFilePicker}
+        className={FIELD_TRIGGER_CLASS}
+      >
+        {fieldContent}
+      </button>
+    ) : (
+      <Button
+        variant="outline"
+        size="sm"
+        aria-label="Folder"
+        onClick={handleOpenFilePicker}
+      >
+        {compactContent}
+      </Button>
+    );
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={
+          isField ? (
+            <button type="button" className={FIELD_TRIGGER_CLASS}>
+              {fieldContent}
+            </button>
+          ) : (
+            <Button variant="outline" size="sm" aria-label="Folder">
+              {compactContent}
+            </Button>
+          )
+        }
+      />
+      <DropdownMenuContent
+        anchor={anchor}
+        align="start"
+        side="bottom"
+        sideOffset={isField ? 4 : 6}
+        className={
+          isField
+            ? "w-(--anchor-width) min-w-(--anchor-width) max-w-(--anchor-width)"
+            : "min-w-[200px]"
+        }
+      >
+        <MenuLabel>Recent</MenuLabel>
+        {recentFolders.map((folder) => (
+          <DropdownMenuItem
+            key={folder.id}
+            onClick={() => handleSelect(folder.path)}
+          >
+            <GitBranch size={12} className="shrink-0" />
+            <span
+              className="min-w-0 flex-1 truncate text-left"
+              title={folder.path}
+            >
+              {folder.name}
+            </span>
+          </DropdownMenuItem>
+        ))}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={handleOpenFilePicker}>
+          <FolderOpen size={12} className="shrink-0" />
+          <span className="whitespace-nowrap">Open folder...</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}

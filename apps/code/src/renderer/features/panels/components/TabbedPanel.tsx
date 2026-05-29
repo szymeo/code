@@ -1,4 +1,4 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useDroppable } from "@dnd-kit/react";
 import { Plus, SquareSplitHorizontalIcon } from "@phosphor-icons/react";
 import { Box, Flex } from "@radix-ui/themes";

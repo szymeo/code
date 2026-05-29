@@ -5,8 +5,8 @@ import {
   selectRepoDiscovery,
   selectRepoEnricher,
   useSetupStore,
-} from "@features/setup/stores/setupStore";
-import type { DiscoveredTask } from "@features/setup/types";
+} from "@posthog/ui/features/setup/setupStore";
+import type { DiscoveredTask } from "@posthog/ui/features/setup/types";
 import {
   CaretLeft,
   CaretRight,
@@ -14,7 +14,7 @@ import {
   MagnifyingGlass,
 } from "@phosphor-icons/react";
 import { Flex, Text } from "@radix-ui/themes";
-import { useActiveRepoStore } from "@stores/activeRepoStore";
+import { useActiveRepoStore } from "@posthog/ui/workbench/activeRepoStore";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   useCallback,

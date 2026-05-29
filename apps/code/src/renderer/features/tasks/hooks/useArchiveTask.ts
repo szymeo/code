@@ -1,15 +1,15 @@
-import { useCommandCenterStore } from "@features/command-center/stores/commandCenterStore";
+import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
 import { getSessionService } from "@features/sessions/service/service";
 import { pinnedTasksApi } from "@features/sidebar/hooks/usePinnedTasks";
-import { useTerminalStore } from "@features/terminal/stores/terminalStore";
+import { useTerminalStore } from "@posthog/ui/features/terminal/terminalStore";
 import { workspaceApi } from "@features/workspace/hooks/useWorkspace";
 import { trpc, trpcClient } from "@renderer/trpc";
 import type { ArchivedTask } from "@shared/types/archive";
-import { useFocusStore } from "@stores/focusStore";
+import { useFocusStore } from "@posthog/ui/features/focus/focusStore";
 import { useNavigationStore } from "@stores/navigationStore";
 import { type QueryClient, useQueryClient } from "@tanstack/react-query";
 import { logger } from "@utils/logger";
-import { toast } from "@utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 
 const log = logger.scope("archive-task");
 

@@ -8,39 +8,39 @@ import {
   getAuthenticatedClient,
 } from "@features/auth/hooks/authClient";
 import { fetchAuthState } from "@features/auth/hooks/authQueries";
-import { useUsageLimitStore } from "@features/billing/stores/usageLimitStore";
-import { useAddDirectoryDialogStore } from "@features/folder-picker/stores/addDirectoryDialogStore";
-import { useSessionAdapterStore } from "@features/sessions/stores/sessionAdapterStore";
+import { useUsageLimitStore } from "@posthog/ui/features/billing/usageLimitStore";
+import { useAddDirectoryDialogStore } from "@posthog/ui/features/folder-picker/addDirectoryDialogStore";
+import { useSessionAdapterStore } from "@posthog/ui/features/sessions/sessionAdapterStore";
 import {
   getPersistedConfigOptions,
   removePersistedConfigOptions,
   setPersistedConfigOptions,
   updatePersistedConfigOptionValue,
-} from "@features/sessions/stores/sessionConfigStore";
+} from "@posthog/ui/features/sessions/sessionConfigStore";
 import type {
   Adapter,
   AgentSession,
   PermissionRequest,
-} from "@features/sessions/stores/sessionStore";
+} from "@posthog/ui/features/sessions/sessionStore";
 import {
   flattenSelectOptions,
   getConfigOptionByCategory,
   mergeConfigOptions,
   sessionStoreSetters,
-} from "@features/sessions/stores/sessionStore";
-import { useSettingsStore } from "@features/settings/stores/settingsStore";
+} from "@posthog/ui/features/sessions/sessionStore";
+import { useSettingsStore } from "@posthog/ui/features/settings/settingsStore";
 import { taskViewedApi } from "@features/sidebar/hooks/useTaskViewed";
-import { extractSkillButtonId } from "@features/skill-buttons/prompts";
+import { extractSkillButtonId } from "@posthog/ui/features/skill-buttons/prompts";
 import { isNotification, POSTHOG_NOTIFICATIONS } from "@posthog/agent";
 import {
   getAvailableCodexModes,
   getAvailableModes,
 } from "@posthog/agent/execution-mode";
 import { DEFAULT_GATEWAY_MODEL } from "@posthog/agent/gateway-models";
-import { getIsOnline } from "@renderer/stores/connectivityStore";
+import { getIsOnline } from "@posthog/ui/features/connectivity/connectivityStore";
 import { trpc } from "@renderer/trpc";
 import { trpcClient } from "@renderer/trpc/client";
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import {
   type CloudTaskPermissionRequestUpdate,
   type CloudTaskUpdatePayload,
@@ -74,7 +74,7 @@ import {
   isRateLimitError,
   normalizePromptToBlocks,
   shellExecutesToContextBlocks,
-} from "@utils/session";
+} from "@posthog/ui/features/sessions/session";
 import {
   cloudPromptToBlocks,
   combineQueuedCloudPrompts,

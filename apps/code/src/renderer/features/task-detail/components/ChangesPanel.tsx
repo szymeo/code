@@ -1,6 +1,6 @@
 import { TreeFileRow } from "@components/TreeDirectoryRow";
-import { PanelMessage } from "@components/ui/PanelMessage";
-import { Tooltip } from "@components/ui/Tooltip";
+import { PanelMessage } from "@posthog/ui/primitives/PanelMessage";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { useEffectiveDiffSource } from "@features/code-review/hooks/useEffectiveDiffSource";
 import { useExternalApps } from "@features/external-apps/hooks/useExternalApps";
 import {
@@ -32,7 +32,7 @@ import {
   Spinner,
   Text,
 } from "@radix-ui/themes";
-import { useReviewNavigationStore } from "@renderer/features/code-review/stores/reviewNavigationStore";
+import { useReviewNavigationStore } from "@posthog/ui/features/code-review/reviewNavigationStore";
 import { getStatusIndicator } from "@renderer/features/git-interaction/utils/gitStatusUtils";
 import { useIsCloudTask } from "@renderer/features/workspace/hooks/useIsCloudTask";
 import { useWorkspace } from "@renderer/features/workspace/hooks/useWorkspace";

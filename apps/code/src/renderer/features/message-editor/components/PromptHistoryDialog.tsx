@@ -17,7 +17,7 @@ import { showMessageBox } from "@utils/dialog";
 import { formatRelativeTimeLong } from "@utils/time";
 import Fuse from "fuse.js";
 import { useMemo, useRef, useState } from "react";
-import { useTaskInputHistoryStore } from "../stores/taskInputHistoryStore";
+import { useTaskInputHistoryStore } from "@posthog/ui/features/message-editor/taskInputHistoryStore";
 
 const COLLAPSED_LIMIT = 180;
 

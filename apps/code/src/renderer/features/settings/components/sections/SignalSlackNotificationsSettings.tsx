@@ -1,10 +1,10 @@
 import { useSignalSourceManager } from "@features/inbox/hooks/useSignalSourceManager";
 import { useSlackChannels } from "@features/inbox/hooks/useSlackChannels";
 import { useSlackConnect } from "@features/integrations/hooks/useSlackConnect";
-import { useIntegrationSelectors } from "@features/integrations/stores/integrationStore";
+import { useIntegrationSelectors } from "@posthog/ui/features/integrations/store";
 import { ModalInlineComboboxContent } from "@features/settings/components/ModalInlineComboboxContent";
 import { SettingsOptionSelect } from "@features/settings/components/SettingsOptionSelect";
-import { useDebouncedValue } from "@hooks/useDebouncedValue";
+import { useDebouncedValue } from "@posthog/ui/primitives/hooks/useDebouncedValue";
 import { CaretDown, Hash, Lock } from "@phosphor-icons/react";
 import {
   Button,

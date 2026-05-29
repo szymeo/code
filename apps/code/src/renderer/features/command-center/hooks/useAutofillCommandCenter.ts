@@ -3,7 +3,7 @@ import { useTasks } from "@features/tasks/hooks/useTasks";
 import { useWorkspaces } from "@features/workspace/hooks/useWorkspace";
 import type { Task } from "@shared/types";
 import { useEffect, useRef } from "react";
-import { useCommandCenterStore } from "../stores/commandCenterStore";
+import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
 
 // Window for "still in the current working session". Tasks last touched
 // within this window are eligible to autofill empty cells when the

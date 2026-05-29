@@ -1,4 +1,4 @@
-import { Divider } from "@components/Divider";
+import { Divider } from "@posthog/ui/primitives/Divider";
 import { Box, Flex } from "@radix-ui/themes";
 import type { AcpMessage } from "@shared/types/session-events";
 import { useCallback, useMemo, useRef } from "react";
@@ -6,10 +6,10 @@ import {
   useSearchQuery,
   useSessionViewActions,
   useShowSearch,
-} from "../../stores/sessionViewStore";
+} from "@posthog/ui/features/sessions/sessionViewStore";
 import { VirtualizedList } from "../VirtualizedList";
 import { RawLogEntry } from "./RawLogEntry";
-import { RawLogsHeader } from "./RawLogsHeader";
+import { RawLogsHeader } from "@posthog/ui/features/sessions/components/raw-logs/RawLogsHeader";
 
 interface RawLogsViewProps {
   events: AcpMessage[];

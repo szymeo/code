@@ -1,14 +1,1 @@
-import { useHeaderStore } from "@stores/headerStore";
-import { type ReactNode, useLayoutEffect } from "react";
-
-export function useSetHeaderContent(content: ReactNode) {
-  const setContent = useHeaderStore((state) => state.setContent);
-
-  useLayoutEffect(() => {
-    setContent(content);
-
-    return () => {
-      setContent(null);
-    };
-  }, [content, setContent]);
-}
+export * from "@posthog/ui/hooks/useSetHeaderContent";

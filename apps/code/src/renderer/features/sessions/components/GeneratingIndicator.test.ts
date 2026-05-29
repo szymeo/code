@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { formatDuration } from "./GeneratingIndicator";
+import { formatDuration } from "@posthog/ui/features/sessions/components/GeneratingIndicator";
 
 describe("formatDuration", () => {
   it("formats sub-minute durations with configurable precision", () => {

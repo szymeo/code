@@ -50,6 +50,10 @@ const workspaceAliases: Alias[] = [
     replacement: path.resolve(__dirname, "../../packages/agent/src/index.ts"),
   },
   {
+    find: /^@posthog\/shared\/(.+)$/,
+    replacement: path.resolve(__dirname, "../../packages/shared/src/$1"),
+  },
+  {
     find: "@posthog/shared",
     replacement: path.resolve(__dirname, "../../packages/shared/src/index.ts"),
   },
@@ -63,6 +67,10 @@ const workspaceAliases: Alias[] = [
   {
     find: /^@posthog\/core\/(.+)$/,
     replacement: path.resolve(__dirname, "../../packages/core/src/$1"),
+  },
+  {
+    find: /^@posthog\/di\/(.+)$/,
+    replacement: path.resolve(__dirname, "../../packages/di/src/$1"),
   },
   {
     find: /^@posthog\/api-client\/(.+)$/,

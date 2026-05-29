@@ -1,4 +1,4 @@
-import { SafeImagePreview } from "@components/ui/SafeImagePreview";
+import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
 import { FileText } from "@phosphor-icons/react";
 import { Box, Flex } from "@radix-ui/themes";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import {
   ToolTitle,
   type ToolViewProps,
   useToolCallStatus,
-} from "./toolCallUtils";
+} from "@posthog/ui/features/sessions/components/session-update/toolCallUtils";
 
 export function ReadToolView({
   toolCall,

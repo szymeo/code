@@ -1,4 +1,5 @@
-import { Tooltip } from "@components/ui/Tooltip";
+import type { UserMessageAttachment } from "@posthog/ui/features/sessions/userMessageTypes";
+import { Tooltip } from "@posthog/ui/primitives/Tooltip";
 import { MarkdownRenderer } from "@features/editor/components/MarkdownRenderer";
 import {
   CaretDown,
@@ -18,11 +19,6 @@ import {
 } from "./parseFileMentions";
 
 const COLLAPSED_MAX_HEIGHT = 160;
-
-export interface UserMessageAttachment {
-  id: string;
-  label: string;
-}
 
 interface UserMessageProps {
   content: string;

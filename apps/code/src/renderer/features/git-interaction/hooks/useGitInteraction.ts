@@ -21,14 +21,14 @@ import { getSuggestedBranchName } from "@features/git-interaction/utils/getSugge
 import { invalidateGitBranchQueries } from "@features/git-interaction/utils/gitCacheKeys";
 import { partitionByStaged } from "@features/git-interaction/utils/partitionByStaged";
 import { updateGitCacheFromSnapshot } from "@features/git-interaction/utils/updateGitCache";
-import { useOnboardingStore } from "@features/onboarding/stores/onboardingStore";
-import { useSessionStore } from "@features/sessions/stores/sessionStore";
+import { useOnboardingStore } from "@posthog/ui/features/onboarding/onboardingStore";
+import { useSessionStore } from "@posthog/ui/features/sessions/sessionStore";
 import { trpc, trpcClient } from "@renderer/trpc";
 import type { ChangedFile } from "@shared/types";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { useQueryClient } from "@tanstack/react-query";
 import { track } from "@utils/analytics";
-import { celebrate } from "@utils/confetti";
+import { celebrate } from "@posthog/ui/primitives/confetti";
 import { logger } from "@utils/logger";
 import { useMemo, useRef } from "react";
 

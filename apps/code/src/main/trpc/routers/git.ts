@@ -1,3 +1,4 @@
+import type { WorkspaceClient } from "@posthog/workspace-client/client";
 import { z } from "zod";
 import { container } from "../../di/container";
 import { MAIN_TOKENS } from "../../di/tokens";
@@ -91,16 +92,32 @@ import { publicProcedure, router } from "../trpc";
 
 const getService = () => container.get<GitService>(MAIN_TOKENS.GitService);
 
+// PORT NOTE: git-read bridge. Read-only git ops now execute in
+// @posthog/workspace-server (git-read slice); these procedures forward to it
+// via workspace-client. GitService keeps the same read methods for in-process
+// callers (WorkspaceService/HandoffService). Retire this forwarding when the
+// renderer git-interaction consumes workspace-client.git.* directly.
+const getWorkspaceClient = () =>
+  container.get<WorkspaceClient>(MAIN_TOKENS.WorkspaceClient);
+
 export const gitRouter = router({
   detectRepo: publicProcedure
     .input(detectRepoInput)
     .output(detectRepoOutput)
-    .query(({ input }) => getService().detectRepo(input.directoryPath)),
+    .query(({ input }) =>
+      getWorkspaceClient().git.detectRepo.query({
+        directoryPath: input.directoryPath,
+      }),
+    ),
 
   validateRepo: publicProcedure
     .input(validateRepoInput)
     .output(validateRepoOutput)
-    .query(({ input }) => getService().validateRepo(input.directoryPath)),
+    .query(({ input }) =>
+      getWorkspaceClient().git.validateRepo.query({
+        directoryPath: input.directoryPath,
+      }),
+    ),
 
   cloneRepository: publicProcedure
     .input(cloneRepositoryInput)
@@ -128,14 +145,20 @@ export const gitRouter = router({
     .input(getCurrentBranchInput)
     .output(getCurrentBranchOutput)
     .query(({ input, signal }) =>
-      getService().getCurrentBranch(input.directoryPath, signal),
+      getWorkspaceClient().git.getCurrentBranch.query(
+        { directoryPath: input.directoryPath },
+        { signal },
+      ),
     ),
 
   getAllBranches: publicProcedure
     .input(getAllBranchesInput)
     .output(getAllBranchesOutput)
     .query(({ input, signal }) =>
-      getService().getAllBranches(input.directoryPath, signal),
+      getWorkspaceClient().git.getAllBranches.query(
+        { directoryPath: input.directoryPath },
+        { signal },
+      ),
     ),
 
   getGitBusyState: publicProcedure
@@ -163,24 +186,32 @@ export const gitRouter = router({
     .input(getChangedFilesHeadInput)
     .output(getChangedFilesHeadOutput)
     .query(({ input, signal }) =>
-      getService().getChangedFilesHead(input.directoryPath, signal),
+      getWorkspaceClient().git.getChangedFilesHead.query(
+        { directoryPath: input.directoryPath },
+        { signal },
+      ),
     ),
 
   getFileAtHead: publicProcedure
     .input(getFileAtHeadInput)
     .output(getFileAtHeadOutput)
     .query(({ input, signal }) =>
-      getService().getFileAtHead(input.directoryPath, input.filePath, signal),
+      getWorkspaceClient().git.getFileAtHead.query(
+        { directoryPath: input.directoryPath, filePath: input.filePath },
+        { signal },
+      ),
     ),
 
   getDiffHead: publicProcedure
     .input(diffInput)
     .output(diffOutput)
     .query(({ input, signal }) =>
-      getService().getDiffHead(
-        input.directoryPath,
-        input.ignoreWhitespace,
-        signal,
+      getWorkspaceClient().git.getDiffHead.query(
+        {
+          directoryPath: input.directoryPath,
+          ignoreWhitespace: input.ignoreWhitespace,
+        },
+        { signal },
       ),
     ),
 
@@ -188,10 +219,12 @@ export const gitRouter = router({
     .input(diffInput)
     .output(diffOutput)
     .query(({ input, signal }) =>
-      getService().getDiffCached(
-        input.directoryPath,
-        input.ignoreWhitespace,
-        signal,
+      getWorkspaceClient().git.getDiffCached.query(
+        {
+          directoryPath: input.directoryPath,
+          ignoreWhitespace: input.ignoreWhitespace,
+        },
+        { signal },
       ),
     ),
 
@@ -199,10 +232,12 @@ export const gitRouter = router({
     .input(diffInput)
     .output(diffOutput)
     .query(({ input, signal }) =>
-      getService().getDiffUnstaged(
-        input.directoryPath,
-        input.ignoreWhitespace,
-        signal,
+      getWorkspaceClient().git.getDiffUnstaged.query(
+        {
+          directoryPath: input.directoryPath,
+          ignoreWhitespace: input.ignoreWhitespace,
+        },
+        { signal },
       ),
     ),
 
@@ -256,13 +291,20 @@ export const gitRouter = router({
     .input(getLatestCommitInput)
     .output(getLatestCommitOutput)
     .query(({ input, signal }) =>
-      getService().getLatestCommit(input.directoryPath, signal),
+      getWorkspaceClient().git.getLatestCommit.query(
+        { directoryPath: input.directoryPath },
+        { signal },
+      ),
     ),
 
   getGitRepoInfo: publicProcedure
     .input(getGitRepoInfoInput)
     .output(getGitRepoInfoOutput)
-    .query(({ input }) => getService().getGitRepoInfo(input.directoryPath)),
+    .query(({ input }) =>
+      getWorkspaceClient().git.getGitRepoInfo.query({
+        directoryPath: input.directoryPath,
+      }),
+    ),
 
   commit: publicProcedure
     .input(commitInput)

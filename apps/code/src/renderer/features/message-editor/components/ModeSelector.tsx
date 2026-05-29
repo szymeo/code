@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
   MenuLabel,
 } from "@posthog/quill";
-import { flattenSelectOptions } from "@renderer/features/sessions/stores/sessionStore";
+import { flattenSelectOptions } from "@posthog/ui/features/sessions/sessionStore";
 import { useRef, useState } from "react";
 
 interface ModeStyle {

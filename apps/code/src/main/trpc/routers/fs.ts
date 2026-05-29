@@ -13,7 +13,7 @@ import {
   readRepoFilesInput,
   readRepoFilesOutput,
   writeRepoFileInput,
-} from "../../services/fs/schemas";
+} from "@posthog/workspace-server/services/fs/schemas";
 import type { FsService } from "../../services/fs/service";
 import { publicProcedure, router } from "../trpc";
 

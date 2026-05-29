@@ -1,5 +1,5 @@
-import type { DiscoveredTask } from "@features/setup/types";
-import { SKILL_BUTTONS } from "@features/skill-buttons/prompts";
+import type { DiscoveredTask } from "@posthog/ui/features/setup/types";
+import { SKILL_BUTTONS } from "@posthog/ui/features/skill-buttons/prompts";
 
 function buildExperimentTaskPrompt(task: DiscoveredTask): string {
   const sections: string[] = [

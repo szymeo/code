@@ -1,9 +1,9 @@
 import { EditorView } from "@codemirror/view";
-import { SafeImagePreview } from "@components/ui/SafeImagePreview";
+import { SafeImagePreview } from "@posthog/ui/primitives/SafeImagePreview";
 import { MultiFileDiff } from "@pierre/diffs/react";
 import { parseImageDataUrl } from "@posthog/shared";
 import { Code } from "@radix-ui/themes";
-import { useThemeStore } from "@stores/themeStore";
+import { useThemeStore } from "@posthog/ui/workbench/themeStore";
 import { compactHomePath } from "@utils/path";
 import { useEffect, useMemo, useRef } from "react";
 import {

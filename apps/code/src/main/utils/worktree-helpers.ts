@@ -1,18 +1,16 @@
-import path from "node:path";
+// PORT NOTE: thin host wrapper over the shared ws-server worktree-path deriver,
+// supplying the worktree base path from main-process settings. The path logic
+// is owned by @posthog/workspace-server/services/worktree-path.
+import { deriveWorktreePath as deriveWorktreePathShared } from "@posthog/workspace-server/services/worktree-path/worktree-path";
 import { getWorktreeLocation } from "../services/settingsStore";
-
-function isLegacyWorktreeName(name: string): boolean {
-  return !/^\d+$/.test(name);
-}
 
 export function deriveWorktreePath(
   folderPath: string,
   worktreeName: string,
 ): string {
-  const worktreeBasePath = getWorktreeLocation();
-  const repoName = path.basename(folderPath);
-  if (isLegacyWorktreeName(worktreeName)) {
-    return path.join(worktreeBasePath, repoName, worktreeName);
-  }
-  return path.join(worktreeBasePath, worktreeName, repoName);
+  return deriveWorktreePathShared(
+    getWorktreeLocation(),
+    folderPath,
+    worktreeName,
+  );
 }

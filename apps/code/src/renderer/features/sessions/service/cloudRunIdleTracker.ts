@@ -1,4 +1,4 @@
-import type { AgentSession } from "@features/sessions/stores/sessionStore";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
 import { isNotification, POSTHOG_NOTIFICATIONS } from "@posthog/agent";
 import { isJsonRpcRequest } from "@shared/types/session-events";
 

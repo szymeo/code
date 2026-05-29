@@ -13,7 +13,7 @@ import type {
 import {
   type LayoutPreset,
   useCommandCenterStore,
-} from "../stores/commandCenterStore";
+} from "@posthog/ui/features/command-center/commandCenterStore";
 
 function LayoutIcon({ cols, rows }: { cols: number; rows: number }) {
   const size = 14;

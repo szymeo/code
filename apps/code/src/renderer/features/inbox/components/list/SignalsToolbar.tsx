@@ -1,7 +1,7 @@
-import { Button, type ButtonProps } from "@components/ui/Button";
-import { Tooltip as ActionTooltip } from "@components/ui/Tooltip";
+import { Button, type ButtonProps } from "@posthog/ui/primitives/Button";
+import { Tooltip as ActionTooltip } from "@posthog/ui/primitives/Tooltip";
 import { useInboxBulkActions } from "@features/inbox/hooks/useInboxBulkActions";
-import { useInboxSignalsFilterStore } from "@features/inbox/stores/inboxSignalsFilterStore";
+import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/inboxSignalsFilterStore";
 import { INBOX_REFETCH_INTERVAL_MS } from "@features/inbox/utils/inboxConstants";
 import {
   ArrowClockwiseIcon,

@@ -113,10 +113,13 @@ Next steps:
        # or just the desktop app:
        pnpm dev:code
   4. Work the slice per REFACTOR.md "Per-Feature Procedure".
-  5. Finish per REFACTOR.md "Agent Finish Protocol": focused tests, real smoke
-     test, update REFACTOR_SLICES.json + REFACTOR_PROGRESS.md + MIGRATION.md.
-  6. Before committing: pnpm biome format --write . && pnpm typecheck
-     (Biome formats REFACTOR_SLICES.json too; commit the formatted version.)
+  5. Wrap up per REFACTOR.md "Per-Slice Wrap-Up": focused tests, real smoke test,
+     pnpm biome format --write . && pnpm typecheck, then update
+     REFACTOR_SLICES.json + REFACTOR_PROGRESS.md + MIGRATION.md.
+  6. DO NOT commit and DO NOT use git worktrees. All work stays as uncommitted
+     edits in this one shared working tree.
+  7. NEVER STOP: immediately claim the next highest-priority todo and repeat.
+     Keep going until you run out of context.
 
 Do NOT set passes:true until acceptance checks AND a real smoke test pass.
 EOF

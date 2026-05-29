@@ -1,15 +1,20 @@
-import type { PostHogAPIClient } from "@renderer/api/posthogClient";
+import { getAuthIdentity, useAuthStore } from "@posthog/ui/features/auth/store";
 import { trpc, trpcClient } from "@renderer/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "@utils/queryClient";
 
+// PORT NOTE: useCurrentUser/authKeys/AUTH_SCOPED_QUERY_META/getAuthIdentity now
+// live in @posthog/ui/features/auth; re-exported here for existing importers.
+export {
+  AUTH_SCOPED_QUERY_META,
+  authKeys,
+  useCurrentUser,
+} from "@posthog/ui/features/auth/useCurrentUser";
+export { getAuthIdentity };
+
 export type AuthState = Awaited<
   ReturnType<typeof trpcClient.auth.getState.query>
 >;
-
-export const AUTH_SCOPED_QUERY_META = {
-  authScoped: true,
-} as const;
 
 export const ANONYMOUS_AUTH_STATE: AuthState = {
   status: "anonymous",
@@ -20,12 +25,6 @@ export const ANONYMOUS_AUTH_STATE: AuthState = {
   availableOrgIds: [],
   hasCodeAccess: null,
   needsScopeReauth: false,
-};
-
-export const authKeys = {
-  currentUsers: () => ["auth", "current-user"] as const,
-  currentUser: (identity: string | null) =>
-    [...authKeys.currentUsers(), identity ?? "anonymous"] as const,
 };
 
 function getAuthStateQueryOptions() {
@@ -53,14 +52,6 @@ export function clearAuthScopedQueries(): void {
   });
 }
 
-export function getAuthIdentity(authState: AuthState): string | null {
-  if (authState.status !== "authenticated" || !authState.cloudRegion) {
-    return null;
-  }
-
-  return `${authState.cloudRegion}:${authState.projectId ?? "none"}`;
-}
-
 export function useAuthState() {
   return useQuery({
     ...getAuthStateQueryOptions(),
@@ -70,36 +61,14 @@ export function useAuthState() {
 }
 
 export function useAuthStateFetched(): boolean {
-  const { isFetched } = useAuthState();
-  return isFetched;
+  // PORT NOTE: store-backed via AuthContribution; bootstrapComplete is the
+  // "auth resolved" signal (replaces the old query.isFetched).
+  return useAuthStore((s) => s.authState.bootstrapComplete);
 }
 
 export function useAuthStateValue<T>(selector: (state: AuthState) => T): T {
-  const { data } = useAuthState();
-  return selector(data ?? ANONYMOUS_AUTH_STATE);
-}
-
-export function useCurrentUser(options?: {
-  enabled?: boolean;
-  client?: PostHogAPIClient | null;
-  refetchOnWindowFocus?: boolean | "always";
-}) {
-  const authState = useAuthStateValue((state) => state);
-  const client = options?.client ?? null;
-  const authIdentity = getAuthIdentity(authState);
-
-  return useQuery({
-    queryKey: authKeys.currentUser(authIdentity),
-    queryFn: async () => {
-      if (!client) {
-        throw new Error("Not authenticated");
-      }
-
-      return await client.getCurrentUser();
-    },
-    enabled: !!client && !!authIdentity && (options?.enabled ?? true),
-    staleTime: 5 * 60 * 1000,
-    refetchOnWindowFocus: options?.refetchOnWindowFocus,
-    meta: AUTH_SCOPED_QUERY_META,
-  });
+  // PORT NOTE: reads the @posthog/ui auth store (fed by AuthContribution's
+  // AUTH_CLIENT.onStateChanged subscription) instead of the local tRPC query,
+  // so renderer auth-state access flows through the migrated store.
+  return useAuthStore((s) => selector(s.authState as AuthState));
 }

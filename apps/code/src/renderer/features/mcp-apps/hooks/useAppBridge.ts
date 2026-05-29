@@ -1,5 +1,5 @@
-import { useDraftStore } from "@features/message-editor/stores/draftStore";
-import type { ToolCall } from "@features/sessions/types";
+import { useDraftStore } from "@posthog/ui/features/message-editor/draftStore";
+import type { ToolCall } from "@posthog/ui/features/sessions/types";
 import {
   AppBridge,
   type McpUiDisplayMode,

@@ -21,10 +21,10 @@ import {
 } from "@features/inbox/hooks/useInboxReports";
 import { useSeedSuggestedReviewerFilter } from "@features/inbox/hooks/useSeedSuggestedReviewerFilter";
 import { useSignalSourceConfigs } from "@features/inbox/hooks/useSignalSourceConfigs";
-import { useInboxReportSelectionStore } from "@features/inbox/stores/inboxReportSelectionStore";
-import { useInboxSignalsFilterStore } from "@features/inbox/stores/inboxSignalsFilterStore";
+import { useInboxReportSelectionStore } from "@posthog/ui/features/inbox/inboxReportSelectionStore";
+import { useInboxSignalsFilterStore } from "@posthog/ui/features/inbox/inboxSignalsFilterStore";
 import { useInboxSignalsSidebarStore } from "@features/inbox/stores/inboxSignalsSidebarStore";
-import { useInboxSourcesDialogStore } from "@features/inbox/stores/inboxSourcesDialogStore";
+import { useInboxSourcesDialogStore } from "@posthog/ui/features/inbox/inboxSourcesDialogStore";
 import {
   buildSignalReportListOrdering,
   buildStatusFilterParam,
@@ -44,7 +44,7 @@ import { isDismissalReasonSnooze } from "@shared/dismissalReasons";
 import type { SignalReport, SignalReportsQueryParams } from "@shared/types";
 import { ANALYTICS_EVENTS } from "@shared/types/analytics";
 import { useNavigationStore } from "@stores/navigationStore";
-import { useRendererWindowFocusStore } from "@stores/rendererWindowFocusStore";
+import { useRendererWindowFocusStore } from "@posthog/ui/workbench/rendererWindowFocusStore";
 import { track } from "@utils/analytics";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {

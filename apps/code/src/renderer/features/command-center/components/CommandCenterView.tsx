@@ -5,7 +5,7 @@ import { Box, Flex, Text } from "@radix-ui/themes";
 import { useEffect, useMemo } from "react";
 import { useAutofillCommandCenter } from "../hooks/useAutofillCommandCenter";
 import { useCommandCenterData } from "../hooks/useCommandCenterData";
-import { useCommandCenterStore } from "../stores/commandCenterStore";
+import { useCommandCenterStore } from "@posthog/ui/features/command-center/commandCenterStore";
 import { CommandCenterGrid } from "./CommandCenterGrid";
 import { CommandCenterToolbar } from "./CommandCenterToolbar";
 

@@ -7,7 +7,7 @@ import {
   useAuthStateValue,
   useCurrentUser,
 } from "@features/auth/hooks/authQueries";
-import { useAuthUiStateStore } from "@features/auth/stores/authUiStateStore";
+import { useAuthUiStateStore } from "@posthog/ui/features/auth/authUiStateStore";
 import { useSeatStore } from "@features/billing/stores/seatStore";
 import { useFeatureFlag } from "@hooks/useFeatureFlag";
 import { trpcClient } from "@renderer/trpc/client";

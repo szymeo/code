@@ -1,5 +1,5 @@
 import { fetchAuthState } from "@features/auth/hooks/authQueries";
-import { xmlToContent } from "@features/message-editor/utils/content";
+import { xmlToContent } from "@posthog/ui/features/message-editor/content";
 import { isBinaryFile } from "@posthog/shared";
 import { trpcClient } from "@renderer/trpc";
 import { logger } from "@utils/logger";

@@ -8,7 +8,7 @@ import {
   useLogoutMutation,
   useRedeemInviteCodeMutation,
 } from "../hooks/authMutations";
-import { useAuthUiStateStore } from "../stores/authUiStateStore";
+import { useAuthUiStateStore } from "@posthog/ui/features/auth/authUiStateStore";
 
 export function InviteCodeScreen() {
   const code = useAuthUiStateStore((state) => state.inviteCode);

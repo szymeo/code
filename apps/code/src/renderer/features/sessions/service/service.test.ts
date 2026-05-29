@@ -1,5 +1,5 @@
 import type { ContentBlock } from "@agentclientprotocol/sdk";
-import type { AgentSession } from "@features/sessions/stores/sessionStore";
+import type { AgentSession } from "@posthog/ui/features/sessions/sessionStore";
 import type { Task } from "@shared/types";
 import type { AcpMessage } from "@shared/types/session-events";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -104,7 +104,7 @@ const mockGetConfigOptionByCategory = vi.hoisted(() =>
   ),
 );
 
-vi.mock("@features/sessions/stores/sessionStore", () => ({
+vi.mock("@posthog/ui/features/sessions/sessionStore", () => ({
   sessionStoreSetters: mockSessionStoreSetters,
   getConfigOptionByCategory: mockGetConfigOptionByCategory,
   mergeConfigOptions: vi.fn((live: unknown[], _persisted: unknown[]) => live),
@@ -189,7 +189,7 @@ const mockSessionConfigStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@features/sessions/stores/sessionConfigStore",
+  "@posthog/ui/features/sessions/sessionConfigStore",
   () => mockSessionConfigStore,
 );
 
@@ -209,13 +209,13 @@ const mockSessionAdapterStore = vi.hoisted(() => ({
 }));
 
 vi.mock(
-  "@features/sessions/stores/sessionAdapterStore",
+  "@posthog/ui/features/sessions/sessionAdapterStore",
   () => mockSessionAdapterStore,
 );
 
 const mockGetIsOnline = vi.hoisted(() => vi.fn(() => true));
 
-vi.mock("@renderer/stores/connectivityStore", () => ({
+vi.mock("@posthog/ui/features/connectivity/connectivityStore", () => ({
   getIsOnline: () => mockGetIsOnline(),
 }));
 
@@ -223,7 +223,7 @@ const mockSettingsState = vi.hoisted(() => ({
   customInstructions: "",
 }));
 
-vi.mock("@features/settings/stores/settingsStore", () => ({
+vi.mock("@posthog/ui/features/settings/settingsStore", () => ({
   useSettingsStore: {
     getState: () => mockSettingsState,
   },
@@ -254,7 +254,7 @@ vi.mock("@utils/notifications", () => ({
   notifyPermissionRequest: vi.fn(),
   notifyPromptComplete: vi.fn(),
 }));
-vi.mock("@renderer/utils/toast", () => ({
+vi.mock("@posthog/ui/primitives/toast", () => ({
   toast: { error: vi.fn(), info: vi.fn() },
 }));
 vi.mock("@utils/queryClient", () => ({
@@ -271,9 +271,9 @@ const mockConvertStoredEntriesToEvents = vi.hoisted(() =>
   vi.fn<(entries: unknown[]) => unknown[]>(() => []),
 );
 
-vi.mock("@utils/session", async () => {
+vi.mock("@posthog/ui/features/sessions/session", async () => {
   const actual =
-    await vi.importActual<typeof import("@utils/session")>("@utils/session");
+    await vi.importActual<typeof import("@posthog/ui/features/sessions/session")>("@posthog/ui/features/sessions/session");
   return {
     convertStoredEntriesToEvents: mockConvertStoredEntriesToEvents,
     createUserPromptEvent: vi.fn((prompt, ts) => ({
@@ -307,7 +307,7 @@ vi.mock("@utils/session", async () => {
   };
 });
 
-import { toast } from "@renderer/utils/toast";
+import { toast } from "@posthog/ui/primitives/toast";
 import { getSessionService, resetSessionService } from "./service";
 
 // --- Test Fixtures ---

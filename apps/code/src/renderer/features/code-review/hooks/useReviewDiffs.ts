@@ -1,4 +1,4 @@
-import { useDiffViewerStore } from "@features/code-editor/stores/diffViewerStore";
+import { useDiffViewerStore } from "@posthog/ui/features/code-editor/diffViewerStore";
 import { useGitQueries } from "@features/git-interaction/hooks/useGitQueries";
 import { makeFileKey } from "@features/git-interaction/utils/fileKey";
 import { invalidateGitWorkingTreeQueries } from "@features/git-interaction/utils/gitCacheKeys";

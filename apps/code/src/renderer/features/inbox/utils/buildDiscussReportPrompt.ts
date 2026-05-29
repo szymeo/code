@@ -1,5 +1,5 @@
 import { buildDiscussReportPrompt as buildSharedDiscussReportPrompt } from "@posthog/shared";
-import { buildInboxDeeplink } from "@shared/deeplink";
+import { buildInboxDeeplink } from "@posthog/shared";
 
 interface BuildDiscussReportPromptOptions {
   reportId: string;

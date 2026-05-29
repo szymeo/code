@@ -1,4 +1,4 @@
-import { Button } from "@components/ui/Button";
+import { Button } from "@posthog/ui/primitives/Button";
 import {
   ExplainedPauseLabel,
   ExplainedSuppressLabel,
