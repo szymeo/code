@@ -2214,9 +2214,12 @@ export class PostHogAPIClient {
     return (await response.json()) as SignalTeamConfig;
   }
 
-  async updateSignalTeamConfig(updates: {
-    default_autostart_priority: string;
-  }): Promise<SignalTeamConfig> {
+  async updateSignalTeamConfig(
+    updates: Partial<{
+      default_autostart_priority: string;
+      slack_notification_channel: string | null;
+    }>,
+  ): Promise<SignalTeamConfig> {
     const teamId = await this.getTeamId();
     const url = new URL(
       `${this.api.baseUrl}/api/projects/${teamId}/signals/config/`,
