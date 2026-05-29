@@ -750,6 +750,26 @@ export class AgentServer {
         const mcpServers = Array.isArray(params.mcpServers)
           ? params.mcpServers
           : [];
+        const refreshedCredentials = Array.isArray(params.refreshedCredentials)
+          ? (params.refreshedCredentials as string[])
+          : [];
+        const authorship =
+          typeof params.authorship === "string" ? params.authorship : "";
+
+        if (refreshedCredentials.length > 0) {
+          const owner = authorship ? ` (${authorship})` : "";
+          this.logger.debug(
+            `Refreshed sandbox credentials${owner}: ${refreshedCredentials.join(", ")}`,
+          );
+        }
+
+        // A credentials-only notification (no mcpServers) just surfaces the log
+        // above and returns. Rebuilding the agent session is heavyweight and
+        // rejects mid-turn (-32002), so only do it when fresh MCP servers are
+        // actually provided.
+        if (mcpServers.length === 0) {
+          return { refreshed: true };
+        }
 
         this.logger.debug("Refresh session requested", {
           serverCount: mcpServers.length,
